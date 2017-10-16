@@ -1,11 +1,11 @@
 const { GraphQLBoolean, GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql')
 
 module.exports = {
-  todos: {
+  blogs: {
     method: 'GET',
-    url: '/todo',
+    url: '/blog',
     response: new GraphQLList(new GraphQLObjectType({
-      name: 'todosResponse',
+      name: 'blogsResponse',
       fields: {
         id: {
           type: GraphQLString
@@ -19,16 +19,16 @@ module.exports = {
       }
     })),
   },
-  todo: {
+  blog: {
     method: 'GET',
-    url: '/todo/{id}',
+    url: '/blog/{id}',
     urlParams: {
       id: {
         type: GraphQLString
       }
     },
     response: new GraphQLObjectType({
-      name: 'todoResponse',
+      name: 'blogResponse',
       fields: {
         id: {
           type: GraphQLString
@@ -42,9 +42,9 @@ module.exports = {
       }
     }),
   },
-  removeTodo: {
+  removeBlog: {
     method: 'DELETE',
-    url: '/todo/{id}',
+    url: '/blog/{id}',
     urlParams: {
       id: {
         type: GraphQLString
@@ -52,9 +52,9 @@ module.exports = {
     },
     response: GraphQLBoolean
   },
-  addTodo: {
+  addBlog: {
     method: 'POST',
-    url: '/todo',
+    url: '/blog',
     body: {
       fields: {
         id: {
@@ -69,7 +69,7 @@ module.exports = {
       }
     },
     response: new GraphQLObjectType({
-      name: 'addTodoResponse',
+      name: 'addBlogResponse',
       fields: {
         id: {
           type: GraphQLString
@@ -83,9 +83,9 @@ module.exports = {
       }
     })
   },
-  updateTodo: {
+  updateBlog: {
     method: 'PUT',
-    url: '/todo/{id}',
+    url: '/blog/{id}',
     urlParams: {
       id: {
         type: GraphQLString

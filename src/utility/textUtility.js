@@ -1,6 +1,6 @@
 const mapEnclosedValueArgs = (value, args, delimiterStart, delimiterEnd) => {
     const regexValue = new RegExp(`((?!^)${delimiterStart}.*?${delimiterEnd})`)
-    return value.split(regexValue).reduce((results, item) => {
+    const url = value.split(regexValue).reduce((results, item) => {
         if (item.includes('{')) {
             const newItem = args[item.replace(/{/, '').replace(/}/, '')] || ''
             results += newItem
@@ -9,6 +9,7 @@ const mapEnclosedValueArgs = (value, args, delimiterStart, delimiterEnd) => {
         }
         return results
     }, '')
+    return url
 }
 
 module.exports = {
