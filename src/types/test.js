@@ -15,19 +15,15 @@ module.exports = {
         lastName: {
           type: graphql.GraphQLString
         },
+        customData: {
+          type: graphql.GraphQLString
+        },
         emailAddress: {
           type: graphql.GraphQLString
         }
       }
     },
-    response: new graphql.GraphQLObjectType({
-      name: 'apiAccountEmailResponse',
-      fields: {
-        response: { type: graphql.GraphQLString },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
+    response: new graphql.GraphQLObjectType({name:'apiAccountEmailResponse',fields:{response:{type:graphql.GraphQLString},success:{type:graphql.GraphQLBoolean},message:{type:graphql.GraphQLString}}})
   },
   apiAccountEmailRegisterBytoken: {
     method: 'POST',
@@ -80,44 +76,7 @@ module.exports = {
         }
       }
     },
-    response: new graphql.GraphQLObjectType({
-      name: 'apiAccountEmailRegisterBytokenResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'apiAccountEmailRegisterBytokenresponseResponse',
-            fields: {
-              entityId: { type: graphql.GraphQLInt },
-              userLoginToken: { type: graphql.GraphQLString },
-              entityMembershipId: { type: graphql.GraphQLString },
-              entityMembershipToken: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              entityName: { type: graphql.GraphQLString },
-              displayName: { type: graphql.GraphQLString },
-              isAdministrator: { type: graphql.GraphQLBoolean },
-              registrationDateTime: { type: graphql.GraphQLString },
-              lastLoginDateTime: { type: graphql.GraphQLString },
-              entityImageUrl: { type: graphql.GraphQLString },
-              playerSubscriptionTypeId: { type: graphql.GraphQLInt },
-              muut: {
-                type: new graphql.GraphQLObjectType({
-                  name: 'apiAccountEmailRegisterBytokenresponsemuutResponse',
-                  fields: {
-                    timestamp: { type: graphql.GraphQLInt },
-                    message: { type: graphql.GraphQLString },
-                    signature: { type: graphql.GraphQLString }
-                  }
-                })
-              }
-            }
-          })
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
+    response: new graphql.GraphQLObjectType({name:'apiAccountEmailRegisterBytokenResponse',fields:{response:{type:new graphql.GraphQLObjectType({name:'apiAccountEmailRegisterBytokenresponseResponse',fields:{entityId:{type:graphql.GraphQLInt},userLoginToken:{type:graphql.GraphQLString},entityMembershipId:{type:graphql.GraphQLString},entityMembershipToken:{type:graphql.GraphQLString},emailAddress:{type:graphql.GraphQLString},firstName:{type:graphql.GraphQLString},lastName:{type:graphql.GraphQLString},entityName:{type:graphql.GraphQLString},displayName:{type:graphql.GraphQLString},isAdministrator:{type:graphql.GraphQLBoolean},registrationDateTime:{type:graphql.GraphQLString},lastLoginDateTime:{type:graphql.GraphQLString},entityImageUrl:{type:graphql.GraphQLString},playerSubscriptionTypeId:{type:graphql.GraphQLInt},muut:{type:new graphql.GraphQLObjectType({name:'apiAccountEmailRegisterBytokenresponsemuutResponse',fields:{timestamp:{type:graphql.GraphQLInt},message:{type:graphql.GraphQLString},signature:{type:graphql.GraphQLString}}})}}})},success:{type:graphql.GraphQLBoolean},message:{type:graphql.GraphQLString}}})
   },
   apiAccountEmailConfirmationBytoken: {
     method: 'GET',
@@ -127,35 +86,7 @@ module.exports = {
         type: graphql.GraphQLString
       }
     },
-    response: new graphql.GraphQLObjectType({
-      name: 'apiAccountEmailConfirmationBytokenResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'apiAccountEmailConfirmationBytokenresponseResponse',
-            fields: {
-              token: { type: graphql.GraphQLString },
-              membershipId: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              membershipTypeId: { type: graphql.GraphQLInt },
-              ipAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              addressCountryId: { type: graphql.GraphQLInt },
-              addressCountry: { type: graphql.GraphQLString },
-              addressStateId: { type: graphql.GraphQLInt },
-              addressState: { type: graphql.GraphQLString },
-              regionId: { type: graphql.GraphQLInt },
-              tempPassword: { type: graphql.GraphQLString },
-              customData: { type: graphql.GraphQLString },
-              createdDateTime: { type: graphql.GraphQLString }
-            }
-          })
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
+    response: new graphql.GraphQLObjectType({name:'apiAccountEmailConfirmationBytokenResponse',fields:{response:{type:new graphql.GraphQLObjectType({name:'apiAccountEmailConfirmationBytokenresponseResponse',fields:{token:{type:graphql.GraphQLString},membershipId:{type:graphql.GraphQLString},emailAddress:{type:graphql.GraphQLString},membershipTypeId:{type:graphql.GraphQLInt},ipAddress:{type:graphql.GraphQLString},firstName:{type:graphql.GraphQLString},lastName:{type:graphql.GraphQLString},addressCountryId:{type:graphql.GraphQLInt},addressCountry:{type:graphql.GraphQLString},addressStateId:{type:graphql.GraphQLInt},addressState:{type:graphql.GraphQLString},regionId:{type:graphql.GraphQLInt},tempPassword:{type:graphql.GraphQLString},customData:{type:graphql.GraphQLString},createdDateTime:{type:graphql.GraphQLString}}})},success:{type:graphql.GraphQLBoolean},message:{type:graphql.GraphQLString}}})
   },
   apiAccountConfirmationBytoken: {
     method: 'POST',
@@ -172,13 +103,7 @@ module.exports = {
         }
       }
     },
-    response: new graphql.GraphQLObjectType({
-      name: 'apiAccountConfirmationBytokenResponse',
-      fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
+    response: new graphql.GraphQLObjectType({name:'apiAccountConfirmationBytokenResponse',fields:{success:{type:graphql.GraphQLBoolean},message:{type:graphql.GraphQLString}}})
   },
   apiAccount: {
     method: 'POST',
@@ -208,43 +133,6 @@ module.exports = {
         }
       }
     },
-    response: new graphql.GraphQLObjectType({
-      name: 'apiAccountResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'apiAccountresponseResponse',
-            fields: {
-              entityId: { type: graphql.GraphQLInt },
-              userLoginToken: { type: graphql.GraphQLString },
-              entityMembershipId: { type: graphql.GraphQLString },
-              entityMembershipToken: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              entityName: { type: graphql.GraphQLString },
-              displayName: { type: graphql.GraphQLString },
-              isAdministrator: { type: graphql.GraphQLBoolean },
-              registrationDateTime: { type: graphql.GraphQLString },
-              lastLoginDateTime: { type: graphql.GraphQLString },
-              entityImageUrl: { type: graphql.GraphQLString },
-              playerSubscriptionTypeId: { type: graphql.GraphQLInt },
-              muut: {
-                type: new graphql.GraphQLObjectType({
-                  name: 'apiAccountresponsemuutResponse',
-                  fields: {
-                    timestamp: { type: graphql.GraphQLInt },
-                    message: { type: graphql.GraphQLString },
-                    signature: { type: graphql.GraphQLString }
-                  }
-                })
-              }
-            }
-          })
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
+    response: new graphql.GraphQLObjectType({name:'apiAccountResponse',fields:{response:{type:new graphql.GraphQLObjectType({name:'apiAccountresponseResponse',fields:{entityId:{type:graphql.GraphQLInt},userLoginToken:{type:graphql.GraphQLString},entityMembershipId:{type:graphql.GraphQLString},entityMembershipToken:{type:graphql.GraphQLString},emailAddress:{type:graphql.GraphQLString},firstName:{type:graphql.GraphQLString},lastName:{type:graphql.GraphQLString},entityName:{type:graphql.GraphQLString},displayName:{type:graphql.GraphQLString},isAdministrator:{type:graphql.GraphQLBoolean},registrationDateTime:{type:graphql.GraphQLString},lastLoginDateTime:{type:graphql.GraphQLString},entityImageUrl:{type:graphql.GraphQLString},playerSubscriptionTypeId:{type:graphql.GraphQLInt},muut:{type:new graphql.GraphQLObjectType({name:'apiAccountresponsemuutResponse',fields:{timestamp:{type:graphql.GraphQLInt},message:{type:graphql.GraphQLString},signature:{type:graphql.GraphQLString}}})}}})},success:{type:graphql.GraphQLBoolean},message:{type:graphql.GraphQLString}}})
   }
 }

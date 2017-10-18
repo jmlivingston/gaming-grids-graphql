@@ -1,3 +1,12 @@
+const {
+  GraphQLBoolean,
+  GraphQLInputObjectType,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList
+} = require('graphql')
+const { encode } = require('querystring')
+
 const restApi = require('../utility/restApi')
 const { mapEnclosedValueArgs } = require('./textUtility')
 
@@ -15,9 +24,8 @@ const combineQueryMutations = (...types) => {
       }
     }
     return results
-  }, {});
+  }, {})
 
-  console.log(JSON.stringify(queryMutations, null, 2))
   return queryMutations
 }
 
@@ -32,7 +40,7 @@ const createQueriesMutations = type => {
       mutations: {
         ...results.mutations,
         ...queriesMutations.mutations
-      },
+      }
     }
     return results
   }, {})
@@ -45,11 +53,17 @@ const createField = (name, type) => {
 
   const coreProperties = {
     type: type.response,
-    args: type.body ? type.body.fields : type.urlParams,
-    resolve: (root, args) => restApi[type.method]({ url: mapEnclosedValueArgs(type.url, args, '{', '}'), body: args })
+    args: type.args,
+    resolve: (root, args) => {
+      console.log(encode(args.uriParams))
+      return restApi[type.method]({
+        url: mapEnclosedValueArgs(type.url, args.args, '{', '}') + '?' + encode(args.uriParams),
+        body: args
+      })
+    }
   }
 
-  if(type.method === 'GET') {
+  if (type.method === 'GET') {
     queries[name] = {
       ...coreProperties
     }
