@@ -12,7 +12,7 @@ const {
 module.exports = {
   todos: {
     method: 'GET',
-    url: '/todo',
+    url: '/to-dos',
     response: new GraphQLList(
       new GraphQLObjectType({
         name: 'todosResponse',
@@ -32,7 +32,7 @@ module.exports = {
   },
   todo: {
     method: 'GET',
-    url: '/todo/{id}/{id3}',
+    url: '/to-dos/{id}/{id3}',
     args: {
       urlParams: {
         type: new GraphQLNonNull(
@@ -82,7 +82,7 @@ module.exports = {
   },
   removeTodo: {
     method: 'DELETE',
-    url: '/todo/{id}',
+    url: '/to-dos/{id}',
     args: {
       urlParams: {
         type: new GraphQLNonNull(
@@ -101,7 +101,7 @@ module.exports = {
   },
   addTodo: {
     method: 'POST',
-    url: '/todo',
+    url: '/to-dos',
     args: {
       body: {
         type: new GraphQLNonNull(
@@ -139,7 +139,7 @@ module.exports = {
   },
   updateTodo: {
     method: 'PUT',
-    url: '/todo/{id}',
+    url: '/to-dos/{id}',
     args: {
       urlParams: {
         type: new GraphQLNonNull(

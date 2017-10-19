@@ -5,7 +5,7 @@ const cors = require('cors')
 
 const schema = require('./schema')
 
-const port = 3000
+const port = 5000
 
 const app = express().use('*', cors())
 
