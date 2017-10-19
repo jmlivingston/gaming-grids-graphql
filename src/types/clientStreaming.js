@@ -1,39 +1,63 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiStreamingVideoPlayer: {
+  ApiStreamingVideoPlayer: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.StreamingController.RemoveServiceFromPlayer',
     method: 'DELETE',
-    url: 'api/Streaming/Video/Player',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        serviceId: { type: graphql.GraphQLInt },
-        nickName: { type: graphql.GraphQLString }
+    url: '/api/Streaming/Video/Player',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientStreamingApiStreamingVideoPlayerbody',
+            fields: {
+              ServiceId: { type: graphql.GraphQLInt },
+              NickName: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientStreamingapiStreamingVideoPlayerResponse',
+      name: 'clientStreamingApiStreamingVideoPlayerResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiStreamingVideoTeamByentityName: {
+  ApiStreamingVideoTeamByentityName: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.StreamingController.RemoveServiceFromTeam',
     method: 'DELETE',
-    url: 'api/Streaming/Video/Team/{entityName}',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        serviceId: { type: graphql.GraphQLInt },
-        nickName: { type: graphql.GraphQLString }
+    url: '/api/Streaming/Video/Team/{entityName}',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientStreamingApiStreamingVideoTeamByentityNamebody',
+            fields: {
+              ServiceId: { type: graphql.GraphQLInt },
+              NickName: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientStreamingApiStreamingVideoTeamByentityNameurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientStreamingapiStreamingVideoTeamByentityNameResponse',
+      name: 'clientStreamingApiStreamingVideoTeamByentityNameResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

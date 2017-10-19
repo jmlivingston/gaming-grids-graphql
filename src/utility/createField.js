@@ -5,10 +5,9 @@ const {
   GraphQLString,
   GraphQLList
 } = require('graphql')
-const { encode } = require('querystring')
 
 const restApi = require('../utility/restApi')
-const { mapEnclosedValueArgs } = require('./textUtility')
+const { encodeUriParams, mapEnclosedValueArgs } = require('./textUtility')
 
 const combineQueryMutations = (...types) => {
   const queryMutations = types.reduce((results, type) => {
@@ -55,10 +54,10 @@ const createField = (name, type) => {
     type: type.response,
     args: type.args,
     resolve: (root, args) => {
-      console.log(encode(args.uriParams))
+      const url = mapEnclosedValueArgs(type.url, args.urlParams, '{', '}') + encodeUriParams(args.uriParams)
       return restApi[type.method]({
-        url: mapEnclosedValueArgs(type.url, args.args, '{', '}') + '?' + encode(args.uriParams),
-        body: args
+        url,
+        body: args.body
       })
     }
   }

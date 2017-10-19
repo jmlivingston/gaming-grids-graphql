@@ -1,587 +1,489 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiLookupsRosterRoles: {
+  ApiLookupsRosterRoles: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.GetRosterRoles',
     method: 'GET',
-    url: 'api/Lookups/RosterRoles',
+    url: '/api/Lookups/RosterRoles',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsRosterRolesResponse',
+      name: 'controlLookupsApiLookupsRosterRolesResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'controlLookupsapiLookupsRosterRolesresponseResponse',
+              name: 'controlLookupsApiLookupsRosterRolesResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsRosterRolesresponseitemResponse',
-                    fields: {
-                      rosterRoleId: { type: graphql.GraphQLInt },
-                      rosterRoleName: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                RosterRoleId: { type: graphql.GraphQLInt },
+                RosterRoleName: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsSiteCurrency: {
+  ApiLookupsSiteCurrency: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.GetSiteCurrency',
     method: 'GET',
-    url: 'api/Lookups/SiteCurrency',
+    url: '/api/Lookups/SiteCurrency',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsSiteCurrencyResponse',
+      name: 'controlLookupsApiLookupsSiteCurrencyResponse',
       fields: {
-        response: { type: graphql.GraphQLString },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLString },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsDefaultXperiencePoints: {
+  ApiLookupsDefaultXperiencePoints: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.GetDefaultXperiencePoints',
     method: 'GET',
-    url: 'api/Lookups/DefaultXperiencePoints',
+    url: '/api/Lookups/DefaultXperiencePoints',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsDefaultXperiencePointsResponse',
+      name: 'controlLookupsApiLookupsDefaultXperiencePointsResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'controlLookupsapiLookupsDefaultXperiencePointsresponseResponse',
+              'controlLookupsApiLookupsDefaultXperiencePointsResponseResponse',
             fields: {
-              pointsToJoinTournament: { type: graphql.GraphQLInt },
-              pointsToWinTournamentRound: { type: graphql.GraphQLInt },
-              pointsToTournamentPlace1: { type: graphql.GraphQLInt },
-              pointsToTournamentPlace2: { type: graphql.GraphQLInt },
-              pointsToTournamentPlace3: { type: graphql.GraphQLInt }
+              PointsToJoinTournament: { type: graphql.GraphQLInt },
+              PointsToWinTournamentRound: { type: graphql.GraphQLInt },
+              PointsToTournamentPlace1: { type: graphql.GraphQLInt },
+              PointsToTournamentPlace2: { type: graphql.GraphQLInt },
+              PointsToTournamentPlace3: { type: graphql.GraphQLInt }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsXperiencePoints: {
+  ApiLookupsXperiencePoints: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.GetXperiencePoints',
     method: 'GET',
-    url: 'api/Lookups/XperiencePoints',
+    url: '/api/Lookups/XperiencePoints',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsXperiencePointsResponse',
+      name: 'controlLookupsApiLookupsXperiencePointsResponse',
       fields: {
-        response: { type: graphql.GraphQLBoolean },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLBoolean },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsLolValidationPrefix: {
+  ApiLookupsLolValidationPrefix: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.GetLolValidationPrefix',
     method: 'GET',
-    url: 'api/Lookups/LolValidationPrefix',
+    url: '/api/Lookups/LolValidationPrefix',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsLolValidationPrefixResponse',
+      name: 'controlLookupsApiLookupsLolValidationPrefixResponse',
       fields: {
-        response: { type: graphql.GraphQLString },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLString },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsRegistrationRegionRestrictionTypeList: {
+  ApiLookupsRegistrationRegionRestrictionTypeList: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.RegistrationRegionRestrictionTypeList',
     method: 'GET',
-    url: 'api/Lookups/RegistrationRegionRestrictionTypeList',
-    response: new graphql.GraphQLObjectType({
-      name:
-        'controlLookupsapiLookupsRegistrationRegionRestrictionTypeListResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name:
-                'controlLookupsapiLookupsRegistrationRegionRestrictionTypeListresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsRegistrationRegionRestrictionTypeListresponseitemResponse',
-                    fields: {
-                      registrationRestrictionTypeId: {
-                        type: graphql.GraphQLInt
-                      },
-                      registrationRestrictionType: {
-                        type: graphql.GraphQLString
-                      }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiLookupsRegistrationCountryRestrictionTypeList: {
-    method: 'GET',
-    url: 'api/Lookups/RegistrationCountryRestrictionTypeList',
+    url: '/api/Lookups/RegistrationRegionRestrictionTypeList',
+    args: {},
     response: new graphql.GraphQLObjectType({
       name:
-        'controlLookupsapiLookupsRegistrationCountryRestrictionTypeListResponse',
+        'controlLookupsApiLookupsRegistrationRegionRestrictionTypeListResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsRegistrationCountryRestrictionTypeListresponseResponse',
+                'controlLookupsApiLookupsRegistrationRegionRestrictionTypeListResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsRegistrationCountryRestrictionTypeListresponseitemResponse',
-                    fields: {
-                      registrationRestrictionTypeId: {
-                        type: graphql.GraphQLInt
-                      },
-                      registrationRestrictionType: {
-                        type: graphql.GraphQLString
-                      }
-                    }
-                  })
-                }
+                RegistrationRestrictionTypeId: { type: graphql.GraphQLInt },
+                RegistrationRestrictionType: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsFileStorageTypeList: {
+  ApiLookupsRegistrationCountryRestrictionTypeList: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.RegistrationCountryRestrictionTypeList',
     method: 'GET',
-    url: 'api/Lookups/FileStorageTypeList',
+    url: '/api/Lookups/RegistrationCountryRestrictionTypeList',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsFileStorageTypeListResponse',
+      name:
+        'controlLookupsApiLookupsRegistrationCountryRestrictionTypeListResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsFileStorageTypeListresponseResponse',
+                'controlLookupsApiLookupsRegistrationCountryRestrictionTypeListResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsFileStorageTypeListresponseitemResponse',
-                    fields: {
-                      fileStorageTypeId: { type: graphql.GraphQLInt },
-                      fileStorageType: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                RegistrationRestrictionTypeId: { type: graphql.GraphQLInt },
+                RegistrationRestrictionType: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsEmailSubjectList: {
+  ApiLookupsFileStorageTypeList: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.FileStorageTypeList',
     method: 'GET',
-    url: 'api/Lookups/EmailSubjectList',
+    url: '/api/Lookups/FileStorageTypeList',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsEmailSubjectListResponse',
+      name: 'controlLookupsApiLookupsFileStorageTypeListResponse',
       fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'controlLookupsapiLookupsEmailSubjectListresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsEmailSubjectListresponseitemResponse',
-                    fields: {
-                      emailSubjectId: { type: graphql.GraphQLInt },
-                      emailSubject: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiLookupsCountryList: {
-    method: 'GET',
-    url: 'api/Lookups/CountryList',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsCountryListResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'controlLookupsapiLookupsCountryListresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsCountryListresponseitemResponse',
-                    fields: {
-                      addressCountryId: { type: graphql.GraphQLInt },
-                      addressCountryCode: { type: graphql.GraphQLString },
-                      addressCountry3LetterCode: {
-                        type: graphql.GraphQLString
-                      },
-                      addressCountry: { type: graphql.GraphQLString },
-                      allowsRealMoney: { type: graphql.GraphQLBoolean },
-                      flagSmallImageUrl: { type: graphql.GraphQLString },
-                      flagLargeImageUrl: { type: graphql.GraphQLString },
-                      showInList: { type: graphql.GraphQLBoolean },
-                      orderBy: { type: graphql.GraphQLInt }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiLookupsStateListBycountryId: {
-    method: 'GET',
-    url: 'api/Lookups/StateList/{countryId}',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsStateListBycountryIdResponse',
-      fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsStateListBycountryIdresponseResponse',
+                'controlLookupsApiLookupsFileStorageTypeListResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsStateListBycountryIdresponseitemResponse',
-                    fields: {
-                      addressStateProvenceId: { type: graphql.GraphQLInt },
-                      addressCountryId: { type: graphql.GraphQLInt },
-                      addressStateProvenceCode: { type: graphql.GraphQLString },
-                      addressStateProvence: { type: graphql.GraphQLString },
-                      allowsRealMoney: { type: graphql.GraphQLBoolean }
-                    }
-                  })
-                }
+                FileStorageTypeId: { type: graphql.GraphQLInt },
+                FileStorageType: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsQualifierTieBreakerTypes: {
+  ApiLookupsEmailSubjectList: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.EmailSubjectist',
     method: 'GET',
-    url: 'api/Lookups/QualifierTieBreakerTypes',
+    url: '/api/Lookups/EmailSubjectList',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsQualifierTieBreakerTypesResponse',
+      name: 'controlLookupsApiLookupsEmailSubjectListResponse',
       fields: {
-        response: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name: 'controlLookupsApiLookupsEmailSubjectListResponseResponse',
+              fields: {
+                EmailSubjectId: { type: graphql.GraphQLInt },
+                EmailSubject: { type: graphql.GraphQLString }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiLookupsCountryList: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.CountryList',
+    method: 'GET',
+    url: '/api/Lookups/CountryList',
+    args: {},
+    response: new graphql.GraphQLObjectType({
+      name: 'controlLookupsApiLookupsCountryListResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name: 'controlLookupsApiLookupsCountryListResponseResponse',
+              fields: {
+                AddressCountryId: { type: graphql.GraphQLInt },
+                AddressCountryCode: { type: graphql.GraphQLString },
+                AddressCountry3LetterCode: { type: graphql.GraphQLString },
+                AddressCountry: { type: graphql.GraphQLString },
+                AllowsRealMoney: { type: graphql.GraphQLBoolean },
+                FlagSmallImageUrl: { type: graphql.GraphQLString },
+                FlagLargeImageUrl: { type: graphql.GraphQLString },
+                ShowInList: { type: graphql.GraphQLBoolean },
+                OrderBy: { type: graphql.GraphQLInt }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiLookupsStateListBycountryId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.StateList',
+    method: 'GET',
+    url: '/api/Lookups/StateList/{countryId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlLookupsApiLookupsStateListBycountryIdurlParams',
+            fields: { countryId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlLookupsApiLookupsStateListBycountryIdResponse',
+      fields: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsQualifierTieBreakerTypesresponseResponse',
+                'controlLookupsApiLookupsStateListBycountryIdResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsQualifierTieBreakerTypesresponseitemResponse',
-                    fields: {
-                      qualifierTieBreakerTypeId: { type: graphql.GraphQLInt },
-                      qualifierTieBreakerType: { type: graphql.GraphQLString },
-                      qualifierTieBreakerTypeDescription: {
-                        type: graphql.GraphQLString
-                      }
-                    }
-                  })
-                }
+                AddressStateProvenceId: { type: graphql.GraphQLInt },
+                AddressCountryId: { type: graphql.GraphQLInt },
+                AddressStateProvenceCode: { type: graphql.GraphQLString },
+                AddressStateProvence: { type: graphql.GraphQLString },
+                AllowsRealMoney: { type: graphql.GraphQLBoolean }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsTournamentPrizeFundingTypes: {
+  ApiLookupsQualifierTieBreakerTypes: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.QualifierTieBreakerTypes',
     method: 'GET',
-    url: 'api/Lookups/TournamentPrizeFundingTypes',
+    url: '/api/Lookups/QualifierTieBreakerTypes',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsTournamentPrizeFundingTypesResponse',
+      name: 'controlLookupsApiLookupsQualifierTieBreakerTypesResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsTournamentPrizeFundingTypesresponseResponse',
+                'controlLookupsApiLookupsQualifierTieBreakerTypesResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsTournamentPrizeFundingTypesresponseitemResponse',
-                    fields: {
-                      tournamentPrizeFundingTypeId: {
-                        type: graphql.GraphQLInt
-                      },
-                      tournamentPrizeFundingType: {
-                        type: graphql.GraphQLString
-                      }
-                    }
-                  })
+                QualifierTieBreakerTypeId: { type: graphql.GraphQLInt },
+                QualifierTieBreakerType: { type: graphql.GraphQLString },
+                QualifierTieBreakerTypeDescription: {
+                  type: graphql.GraphQLString
                 }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsTournamentSeedingTypes: {
+  ApiLookupsTournamentPrizeFundingTypes: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.TournamentPrizeFundingTypes',
     method: 'GET',
-    url: 'api/Lookups/TournamentSeedingTypes',
+    url: '/api/Lookups/TournamentPrizeFundingTypes',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsTournamentSeedingTypesResponse',
+      name: 'controlLookupsApiLookupsTournamentPrizeFundingTypesResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsTournamentSeedingTypesresponseResponse',
+                'controlLookupsApiLookupsTournamentPrizeFundingTypesResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsTournamentSeedingTypesresponseitemResponse',
-                    fields: {
-                      tournamentSeedingTypeId: { type: graphql.GraphQLInt },
-                      tournamentSeedingTypeName: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                TournamentPrizeFundingTypeId: { type: graphql.GraphQLInt },
+                TournamentPrizeFundingType: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsTournamentPairingTypes: {
+  ApiLookupsTournamentSeedingTypes: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.TournamentSeedingTypes',
     method: 'GET',
-    url: 'api/Lookups/TournamentPairingTypes',
+    url: '/api/Lookups/TournamentSeedingTypes',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsTournamentPairingTypesResponse',
+      name: 'controlLookupsApiLookupsTournamentSeedingTypesResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsTournamentPairingTypesresponseResponse',
+                'controlLookupsApiLookupsTournamentSeedingTypesResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsTournamentPairingTypesresponseitemResponse',
-                    fields: {
-                      tournamentPairingTypeId: { type: graphql.GraphQLInt },
-                      tournamentPairingTypeName: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                TournamentSeedingTypeId: { type: graphql.GraphQLInt },
+                TournamentSeedingTypeName: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsStreamingServices: {
+  ApiLookupsTournamentPairingTypes: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.TournamentPairingTypes',
     method: 'GET',
-    url: 'api/Lookups/StreamingServices',
+    url: '/api/Lookups/TournamentPairingTypes',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsStreamingServicesResponse',
+      name: 'controlLookupsApiLookupsTournamentPairingTypesResponse',
       fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'controlLookupsapiLookupsStreamingServicesresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsStreamingServicesresponseitemResponse',
-                    fields: {
-                      streamingServiceId: { type: graphql.GraphQLInt },
-                      streamingService: { type: graphql.GraphQLString },
-                      sourceName: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiLookupsTournamentTypes: {
-    method: 'GET',
-    url: 'api/Lookups/TournamentTypes',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsTournamentTypesResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'controlLookupsapiLookupsTournamentTypesresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsTournamentTypesresponseitemResponse',
-                    fields: {
-                      tournamentTypeId: { type: graphql.GraphQLInt },
-                      tournamentTypeName: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiLookupsGamingServerRegions: {
-    method: 'GET',
-    url: 'api/Lookups/GamingServerRegions',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsGamingServerRegionsResponse',
-      fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsGamingServerRegionsresponseResponse',
+                'controlLookupsApiLookupsTournamentPairingTypesResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsGamingServerRegionsresponseitemResponse',
-                    fields: {
-                      gamingServerRegionId: { type: graphql.GraphQLInt },
-                      gamingServerRegionName: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                TournamentPairingTypeId: { type: graphql.GraphQLInt },
+                TournamentPairingTypeName: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiLookupsGameValidationTypes: {
+  ApiLookupsStreamingServices: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.StreamingServices',
     method: 'GET',
-    url: 'api/Lookups/gameValidationTypes',
+    url: '/api/Lookups/StreamingServices',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlLookupsapiLookupsGameValidationTypesResponse',
+      name: 'controlLookupsApiLookupsStreamingServicesResponse',
       fields: {
-        response: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name: 'controlLookupsApiLookupsStreamingServicesResponseResponse',
+              fields: {
+                StreamingServiceId: { type: graphql.GraphQLInt },
+                StreamingService: { type: graphql.GraphQLString },
+                SourceName: { type: graphql.GraphQLString }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiLookupsTournamentTypes: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.TournamentTypes',
+    method: 'GET',
+    url: '/api/Lookups/TournamentTypes',
+    args: {},
+    response: new graphql.GraphQLObjectType({
+      name: 'controlLookupsApiLookupsTournamentTypesResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name: 'controlLookupsApiLookupsTournamentTypesResponseResponse',
+              fields: {
+                TournamentTypeId: { type: graphql.GraphQLInt },
+                TournamentTypeName: { type: graphql.GraphQLString }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiLookupsGamingServerRegions: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.GamingServerRegions',
+    method: 'GET',
+    url: '/api/Lookups/GamingServerRegions',
+    args: {},
+    response: new graphql.GraphQLObjectType({
+      name: 'controlLookupsApiLookupsGamingServerRegionsResponse',
+      fields: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlLookupsapiLookupsGameValidationTypesresponseResponse',
+                'controlLookupsApiLookupsGamingServerRegionsResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlLookupsapiLookupsGameValidationTypesresponseitemResponse',
-                    fields: {
-                      gamePlatformFranchiseTitleValidationMethodTypeId: {
-                        type: graphql.GraphQLInt
-                      },
-                      gamePlatformFranchiseTitleValidationMethodType: {
-                        type: graphql.GraphQLString
-                      }
-                    }
-                  })
+                GamingServerRegionId: { type: graphql.GraphQLInt },
+                GamingServerRegionName: { type: graphql.GraphQLString }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiLookupsGameValidationTypes: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.LookupsController.GameTitleValidationMethodTypes',
+    method: 'GET',
+    url: '/api/Lookups/gameValidationTypes',
+    args: {},
+    response: new graphql.GraphQLObjectType({
+      name: 'controlLookupsApiLookupsGameValidationTypesResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name:
+                'controlLookupsApiLookupsGameValidationTypesResponseResponse',
+              fields: {
+                GamePlatformFranchiseTitleValidationMethodTypeId: {
+                  type: graphql.GraphQLInt
+                },
+                GamePlatformFranchiseTitleValidationMethodType: {
+                  type: graphql.GraphQLString
                 }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

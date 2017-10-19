@@ -1,18 +1,36 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiNotificationsBynotificationIdStatus: {
+  ApiNotificationsBynotificationIdStatus: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.NotificationController.UpdateStatus',
     method: 'PUT',
-    url: 'api/Notifications/{notificationId}/Status',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { stateName: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Notifications/{notificationId}/Status',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientNotificationApiNotificationsBynotificationIdStatusbody',
+            fields: { StateName: { type: graphql.GraphQLString } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientNotificationApiNotificationsBynotificationIdStatusurlParams',
+            fields: { notificationId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientNotificationapiNotificationsBynotificationIdStatusResponse',
+      name: 'clientNotificationApiNotificationsBynotificationIdStatusResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

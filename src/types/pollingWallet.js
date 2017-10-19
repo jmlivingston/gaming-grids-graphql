@@ -1,27 +1,33 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiWalletBalanceReal: {
+  ApiWalletBalanceReal: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.WalletController.GetPlayerRealBalance',
     method: 'GET',
-    url: 'api/Wallet/Balance/Real',
+    url: '/api/Wallet/Balance/Real',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'pollingWalletapiWalletBalanceRealResponse',
+      name: 'pollingWalletApiWalletBalanceRealResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiWalletBalanceVirtual: {
+  ApiWalletBalanceVirtual: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.WalletController.GetPlayerVirtualBalance',
     method: 'GET',
-    url: 'api/Wallet/Balance/virtual',
+    url: '/api/Wallet/Balance/virtual',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'pollingWalletapiWalletBalanceVirtualResponse',
+      name: 'pollingWalletApiWalletBalanceVirtualResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

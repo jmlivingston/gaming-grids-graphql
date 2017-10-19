@@ -23,12 +23,3 @@ fs.writeFile(path.join(basePath, 'index.js'), fileContents, error => {
     console.log(error)
   }
 })
-
-// const { combineQueryMutations } = require('../utility/createField')
-
-// const types = [
-//     require('./todo'),
-//     require('./blog'),
-//     require('./test')
-// ]
-// module.exports = combineQueryMutations(...types)

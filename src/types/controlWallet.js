@@ -1,407 +1,493 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiWalletBalanceRealByentityName: {
+  ApiWalletBalanceRealByentityName: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.GetPlayerRealBalance',
     method: 'GET',
-    url: 'api/Wallet/Balance/Real/{entityName}',
+    url: '/api/Wallet/Balance/Real/{entityName}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletBalanceRealByentityNameurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletBalanceRealByentityNameResponse',
+      name: 'controlWalletApiWalletBalanceRealByentityNameResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiWalletBalanceVirtualByentityName: {
+  ApiWalletBalanceVirtualByentityName: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.GetPlayerVirtualBalance',
     method: 'GET',
-    url: 'api/Wallet/Balance/virtual/{entityName}',
+    url: '/api/Wallet/Balance/virtual/{entityName}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletBalanceVirtualByentityNameurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletBalanceVirtualByentityNameResponse',
+      name: 'controlWalletApiWalletBalanceVirtualByentityNameResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiWalletTransactionByentityName: {
+  ApiWalletTransactionByentityName: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.CreateTransaction',
     method: 'POST',
-    url: 'api/Wallet/Transaction/{entityName}',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        isRealCurrency: { type: graphql.GraphQLBoolean },
-        walletTransactionTypeId: { type: graphql.GraphQLInt },
-        walletTransactionProviderId: { type: graphql.GraphQLInt },
-        entityPlayerTransactionAmount: { type: graphql.GraphQLInt },
-        entityPlayerTransactionFee: { type: graphql.GraphQLInt },
-        transactionDescription: { type: graphql.GraphQLString }
-      }
-    }),
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionByentityNameResponse',
-      fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiWalletTransactionBytransId: {
-    method: 'DELETE',
-    url: 'api/Wallet/Transaction/{transId}',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionBytransIdResponse',
-      fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiWalletTransactions: {
-    method: 'GET',
-    url: 'api/Wallet/Transactions',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionsResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'controlWalletapiWalletTransactionsresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlWalletapiWalletTransactionsresponseitemResponse',
-                    fields: {
-                      entityPlayerWalletTransactionId: {
-                        type: graphql.GraphQLInt
-                      },
-                      entityPlayerId: { type: graphql.GraphQLInt },
-                      tournamentId: { type: graphql.GraphQLInt },
-                      displayName: { type: graphql.GraphQLString },
-                      entityName: { type: graphql.GraphQLString },
-                      accountBalance: { type: graphql.GraphQLInt },
-                      currentAccountBalance: { type: graphql.GraphQLInt },
-                      walletTransactionType: { type: graphql.GraphQLString },
-                      walletTransactionTypeMultiplier: {
-                        type: graphql.GraphQLInt
-                      },
-                      walletTransactionProvider: {
-                        type: graphql.GraphQLString
-                      },
-                      entityPlayerTransactionTotal: {
-                        type: graphql.GraphQLInt
-                      },
-                      isGiftCertificate: { type: graphql.GraphQLBoolean },
-                      externalId: { type: graphql.GraphQLString },
-                      completionCallback: { type: graphql.GraphQLString },
-                      isTransacted: { type: graphql.GraphQLBoolean },
-                      entityPlayerTransactionDateTime: {
-                        type: graphql.GraphQLString
-                      },
-                      isRealCurrency: { type: graphql.GraphQLBoolean },
-                      walletTransactionTypeId: { type: graphql.GraphQLInt },
-                      walletTransactionProviderId: { type: graphql.GraphQLInt },
-                      entityPlayerTransactionAmount: {
-                        type: graphql.GraphQLInt
-                      },
-                      entityPlayerTransactionFee: { type: graphql.GraphQLInt },
-                      transactionDescription: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    }),
-    uriParam: {
-      search: {
-        entityName: String,
-        fromDate: String,
-        toDate: String,
-        isRealCurrency: Boolean
-      }
-    }
-  },
-  apiWalletTransactionsReportingDetails: {
-    method: 'GET',
-    url: 'api/Wallet/Transactions/reporting/details',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionsReportingDetailsResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name:
-                'controlWalletapiWalletTransactionsReportingDetailsresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlWalletapiWalletTransactionsReportingDetailsresponseitemResponse',
-                    fields: {
-                      transactionId: { type: graphql.GraphQLInt },
-                      transactionDateTime: { type: graphql.GraphQLString },
-                      firstName: { type: graphql.GraphQLString },
-                      lastName: { type: graphql.GraphQLString },
-                      emailAddress: { type: graphql.GraphQLString },
-                      transactionType: { type: graphql.GraphQLString },
-                      transactionProvider: { type: graphql.GraphQLString },
-                      transactionAmount: { type: graphql.GraphQLInt },
-                      transactionFee: { type: graphql.GraphQLInt },
-                      transactionTotal: { type: graphql.GraphQLInt },
-                      transactionDescription: { type: graphql.GraphQLString },
-                      addressCountryCode: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    }),
-    uriParam: {
-      search: {
-        entityName: String,
-        fromDate: String,
-        toDate: String,
-        isRealCurrency: Boolean
-      }
-    }
-  },
-  apiWalletTransactionsReportingFees: {
-    method: 'GET',
-    url: 'api/Wallet/Transactions/reporting/fees',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionsReportingFeesResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name:
-                'controlWalletapiWalletTransactionsReportingFeesresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlWalletapiWalletTransactionsReportingFeesresponseitemResponse',
-                    fields: {
-                      addressCountryCode: { type: graphql.GraphQLString },
-                      numberOfTransactions: { type: graphql.GraphQLInt },
-                      totalFees: { type: graphql.GraphQLInt }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    }),
-    uriParam: {
-      search: {
-        entityName: String,
-        fromDate: String,
-        toDate: String,
-        isRealCurrency: Boolean
-      }
-    }
-  },
-  apiWalletTransactionTypes: {
-    method: 'GET',
-    url: 'api/Wallet/TransactionTypes',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionTypesResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'controlWalletapiWalletTransactionTypesresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlWalletapiWalletTransactionTypesresponseitemResponse',
-                    fields: {
-                      walletTransactionTypeId: { type: graphql.GraphQLInt },
-                      isActive: { type: graphql.GraphQLBoolean },
-                      walletTransactionType: { type: graphql.GraphQLString },
-                      walletTransactionTypeMultiplier: {
-                        type: graphql.GraphQLInt
-                      }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiWalletTransactionType: {
-    method: 'POST',
-    url: 'api/Wallet/TransactionType',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        walletTransactionType: { type: graphql.GraphQLString },
-        walletTransactionTypeMultiplier: { type: graphql.GraphQLInt }
-      }
-    }),
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionTypeResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'controlWalletapiWalletTransactionTyperesponseResponse',
+    url: '/api/Wallet/Transaction/{entityName}',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionByentityNamebody',
             fields: {
-              walletTransactionTypeId: { type: graphql.GraphQLInt },
-              isActive: { type: graphql.GraphQLBoolean },
-              walletTransactionType: { type: graphql.GraphQLString },
-              walletTransactionTypeMultiplier: { type: graphql.GraphQLInt }
+              IsRealCurrency: { type: graphql.GraphQLBoolean },
+              WalletTransactionTypeId: { type: graphql.GraphQLInt },
+              WalletTransactionProviderId: { type: graphql.GraphQLInt },
+              EntityPlayerTransactionAmount: { type: graphql.GraphQLInt },
+              EntityPlayerTransactionFee: { type: graphql.GraphQLInt },
+              TransactionDescription: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionByentityNameurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionByentityNameResponse',
+      fields: {
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiWalletTransactionBytransId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.DeleteTransaction',
+    method: 'DELETE',
+    url: '/api/Wallet/Transaction/{transId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionBytransIdurlParams',
+            fields: { transId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionBytransIdResponse',
+      fields: {
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiWalletTransactions: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.GetTransactionList',
+    method: 'GET',
+    url: '/api/Wallet/Transactions',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionsuriParams',
+            fields: {
+              search: {
+                type: new graphql.GraphQLInputObjectType({
+                  name:
+                    'controlWalletApiWalletTransactionsuriParamssearchResponse',
+                  fields: {
+                    EntityName: { type: graphql.GraphQLString },
+                    FromDate: { type: graphql.GraphQLString },
+                    ToDate: { type: graphql.GraphQLString },
+                    IsRealCurrency: { type: graphql.GraphQLBoolean }
+                  }
+                })
+              }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionsResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name: 'controlWalletApiWalletTransactionsResponseResponse',
+              fields: {
+                EntityPlayerWalletTransactionId: { type: graphql.GraphQLInt },
+                EntityPlayerId: { type: graphql.GraphQLInt },
+                TournamentId: { type: graphql.GraphQLInt },
+                DisplayName: { type: graphql.GraphQLString },
+                EntityName: { type: graphql.GraphQLString },
+                AccountBalance: { type: graphql.GraphQLInt },
+                CurrentAccountBalance: { type: graphql.GraphQLInt },
+                WalletTransactionType: { type: graphql.GraphQLString },
+                WalletTransactionTypeMultiplier: { type: graphql.GraphQLInt },
+                WalletTransactionProvider: { type: graphql.GraphQLString },
+                EntityPlayerTransactionTotal: { type: graphql.GraphQLInt },
+                IsGiftCertificate: { type: graphql.GraphQLBoolean },
+                ExternalId: { type: graphql.GraphQLString },
+                CompletionCallback: { type: graphql.GraphQLString },
+                IsTransacted: { type: graphql.GraphQLBoolean },
+                EntityPlayerTransactionDateTime: {
+                  type: graphql.GraphQLString
+                },
+                IsRealCurrency: { type: graphql.GraphQLBoolean },
+                WalletTransactionTypeId: { type: graphql.GraphQLInt },
+                WalletTransactionProviderId: { type: graphql.GraphQLInt },
+                EntityPlayerTransactionAmount: { type: graphql.GraphQLInt },
+                EntityPlayerTransactionFee: { type: graphql.GraphQLInt },
+                TransactionDescription: { type: graphql.GraphQLString }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiWalletTransactionsReportingDetails: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.GetTransactionDetailReporting',
+    method: 'GET',
+    url: '/api/Wallet/Transactions/reporting/details',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionsReportingDetailsuriParams',
+            fields: {
+              search: {
+                type: new graphql.GraphQLInputObjectType({
+                  name:
+                    'controlWalletApiWalletTransactionsReportingDetailsuriParamssearchResponse',
+                  fields: {
+                    EntityName: { type: graphql.GraphQLString },
+                    FromDate: { type: graphql.GraphQLString },
+                    ToDate: { type: graphql.GraphQLString },
+                    IsRealCurrency: { type: graphql.GraphQLBoolean }
+                  }
+                })
+              }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionsReportingDetailsResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name:
+                'controlWalletApiWalletTransactionsReportingDetailsResponseResponse',
+              fields: {
+                TransactionId: { type: graphql.GraphQLInt },
+                TransactionDateTime: { type: graphql.GraphQLString },
+                FirstName: { type: graphql.GraphQLString },
+                LastName: { type: graphql.GraphQLString },
+                EmailAddress: { type: graphql.GraphQLString },
+                TransactionType: { type: graphql.GraphQLString },
+                TransactionProvider: { type: graphql.GraphQLString },
+                TransactionAmount: { type: graphql.GraphQLInt },
+                TransactionFee: { type: graphql.GraphQLInt },
+                TransactionTotal: { type: graphql.GraphQLInt },
+                TransactionDescription: { type: graphql.GraphQLString },
+                AddressCountryCode: { type: graphql.GraphQLString }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiWalletTransactionsReportingFees: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.GetTransactionFeesReporting',
+    method: 'GET',
+    url: '/api/Wallet/Transactions/reporting/fees',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionsReportingFeesuriParams',
+            fields: {
+              search: {
+                type: new graphql.GraphQLInputObjectType({
+                  name:
+                    'controlWalletApiWalletTransactionsReportingFeesuriParamssearchResponse',
+                  fields: {
+                    EntityName: { type: graphql.GraphQLString },
+                    FromDate: { type: graphql.GraphQLString },
+                    ToDate: { type: graphql.GraphQLString },
+                    IsRealCurrency: { type: graphql.GraphQLBoolean }
+                  }
+                })
+              }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionsReportingFeesResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name:
+                'controlWalletApiWalletTransactionsReportingFeesResponseResponse',
+              fields: {
+                AddressCountryCode: { type: graphql.GraphQLString },
+                NumberOfTransactions: { type: graphql.GraphQLInt },
+                TotalFees: { type: graphql.GraphQLInt }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiWalletTransactionTypes: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.GetTransactionTypeList',
+    method: 'GET',
+    url: '/api/Wallet/TransactionTypes',
+    args: {},
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionTypesResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name: 'controlWalletApiWalletTransactionTypesResponseResponse',
+              fields: {
+                WalletTransactionTypeId: { type: graphql.GraphQLInt },
+                IsActive: { type: graphql.GraphQLBoolean },
+                WalletTransactionType: { type: graphql.GraphQLString },
+                WalletTransactionTypeMultiplier: { type: graphql.GraphQLInt }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiWalletTransactionType: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.CreateTransactionType',
+    method: 'POST',
+    url: '/api/Wallet/TransactionType',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionTypebody',
+            fields: {
+              WalletTransactionType: { type: graphql.GraphQLString },
+              WalletTransactionTypeMultiplier: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionTypeResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLObjectType({
+            name: 'controlWalletApiWalletTransactionTypeResponseResponse',
+            fields: {
+              WalletTransactionTypeId: { type: graphql.GraphQLInt },
+              IsActive: { type: graphql.GraphQLBoolean },
+              WalletTransactionType: { type: graphql.GraphQLString },
+              WalletTransactionTypeMultiplier: { type: graphql.GraphQLInt }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiWalletTransactionTypeBytypeId: {
+  ApiWalletTransactionTypeBytypeId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.DeleteTransactionType',
     method: 'DELETE',
-    url: 'api/Wallet/TransactionType/{typeId}',
+    url: '/api/Wallet/TransactionType/{typeId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionTypeBytypeIdurlParams',
+            fields: { typeId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionTypeBytypeIdResponse',
+      name: 'controlWalletApiWalletTransactionTypeBytypeIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiWalletTransactionProviders: {
+  ApiWalletTransactionProviders: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.GetTransactionProviderList',
     method: 'GET',
-    url: 'api/Wallet/TransactionProviders',
+    url: '/api/Wallet/TransactionProviders',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionProvidersResponse',
+      name: 'controlWalletApiWalletTransactionProvidersResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlWalletapiWalletTransactionProvidersresponseResponse',
+                'controlWalletApiWalletTransactionProvidersResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlWalletapiWalletTransactionProvidersresponseitemResponse',
-                    fields: {
-                      walletTransactionProviderId: { type: graphql.GraphQLInt },
-                      isActive: { type: graphql.GraphQLBoolean },
-                      walletTransactionProviderGroupId: {
-                        type: graphql.GraphQLInt
-                      },
-                      walletTransactionProvider: {
-                        type: graphql.GraphQLString
-                      },
-                      walletTransactionProviderPaymentCode: {
-                        type: graphql.GraphQLString
-                      },
-                      transactionRate: { type: graphql.GraphQLInt },
-                      transactionFee: { type: graphql.GraphQLInt },
-                      brandImageUrl: { type: graphql.GraphQLString },
-                      isInternal: { type: graphql.GraphQLBoolean },
-                      displayInListing: { type: graphql.GraphQLBoolean },
-                      orderBy: { type: graphql.GraphQLInt }
-                    }
-                  })
-                }
+                WalletTransactionProviderId: { type: graphql.GraphQLInt },
+                IsActive: { type: graphql.GraphQLBoolean },
+                WalletTransactionProviderGroupId: { type: graphql.GraphQLInt },
+                WalletTransactionProvider: { type: graphql.GraphQLString },
+                WalletTransactionProviderPaymentCode: {
+                  type: graphql.GraphQLString
+                },
+                TransactionRate: { type: graphql.GraphQLInt },
+                TransactionFee: { type: graphql.GraphQLInt },
+                BrandImageUrl: { type: graphql.GraphQLString },
+                IsInternal: { type: graphql.GraphQLBoolean },
+                DisplayInListing: { type: graphql.GraphQLBoolean },
+                OrderBy: { type: graphql.GraphQLInt }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiWalletTransactionProvider: {
+  ApiWalletTransactionProvider: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.CreateTransactionProvider',
     method: 'POST',
-    url: 'api/Wallet/TransactionProvider',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        walletTransactionProviderGroupId: { type: graphql.GraphQLInt },
-        walletTransactionProvider: { type: graphql.GraphQLString },
-        walletTransactionProviderPaymentCode: { type: graphql.GraphQLString },
-        transactionRate: { type: graphql.GraphQLInt },
-        transactionFee: { type: graphql.GraphQLInt },
-        brandImageUrl: { type: graphql.GraphQLString },
-        isInternal: { type: graphql.GraphQLBoolean },
-        displayInListing: { type: graphql.GraphQLBoolean },
-        orderBy: { type: graphql.GraphQLInt }
-      }
-    }),
-    response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionProviderResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'controlWalletapiWalletTransactionProviderresponseResponse',
+    url: '/api/Wallet/TransactionProvider',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlWalletApiWalletTransactionProviderbody',
             fields: {
-              walletTransactionProviderId: { type: graphql.GraphQLInt },
-              isActive: { type: graphql.GraphQLBoolean },
-              walletTransactionProviderGroupId: { type: graphql.GraphQLInt },
-              walletTransactionProvider: { type: graphql.GraphQLString },
-              walletTransactionProviderPaymentCode: {
+              WalletTransactionProviderGroupId: { type: graphql.GraphQLInt },
+              WalletTransactionProvider: { type: graphql.GraphQLString },
+              WalletTransactionProviderPaymentCode: {
                 type: graphql.GraphQLString
               },
-              transactionRate: { type: graphql.GraphQLInt },
-              transactionFee: { type: graphql.GraphQLInt },
-              brandImageUrl: { type: graphql.GraphQLString },
-              isInternal: { type: graphql.GraphQLBoolean },
-              displayInListing: { type: graphql.GraphQLBoolean },
-              orderBy: { type: graphql.GraphQLInt }
+              TransactionRate: { type: graphql.GraphQLInt },
+              TransactionFee: { type: graphql.GraphQLInt },
+              BrandImageUrl: { type: graphql.GraphQLString },
+              IsInternal: { type: graphql.GraphQLBoolean },
+              DisplayInListing: { type: graphql.GraphQLBoolean },
+              OrderBy: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlWalletApiWalletTransactionProviderResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLObjectType({
+            name: 'controlWalletApiWalletTransactionProviderResponseResponse',
+            fields: {
+              WalletTransactionProviderId: { type: graphql.GraphQLInt },
+              IsActive: { type: graphql.GraphQLBoolean },
+              WalletTransactionProviderGroupId: { type: graphql.GraphQLInt },
+              WalletTransactionProvider: { type: graphql.GraphQLString },
+              WalletTransactionProviderPaymentCode: {
+                type: graphql.GraphQLString
+              },
+              TransactionRate: { type: graphql.GraphQLInt },
+              TransactionFee: { type: graphql.GraphQLInt },
+              BrandImageUrl: { type: graphql.GraphQLString },
+              IsInternal: { type: graphql.GraphQLBoolean },
+              DisplayInListing: { type: graphql.GraphQLBoolean },
+              OrderBy: { type: graphql.GraphQLInt }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiWalletTransactionProviderByproviderId: {
+  ApiWalletTransactionProviderByproviderId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.WalletController.DeleteTransactionProvider',
     method: 'DELETE',
-    url: 'api/Wallet/TransactionProvider/{providerId}',
+    url: '/api/Wallet/TransactionProvider/{providerId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlWalletApiWalletTransactionProviderByproviderIdurlParams',
+            fields: { providerId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlWalletapiWalletTransactionProviderByproviderIdResponse',
+      name: 'controlWalletApiWalletTransactionProviderByproviderIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

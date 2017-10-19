@@ -1,530 +1,480 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiTournamentSeries: {
+  ApiTournamentSeries: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TournamentSeriesController.GetSeriesList',
     method: 'GET',
-    url: 'api/Tournament/Series/',
+    url: '/api/Tournament/Series',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientTournamentSeriesapiTournamentSeriesResponse',
+      name: 'clientTournamentSeriesApiTournamentSeriesResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'clientTournamentSeriesapiTournamentSeriesresponseResponse',
+              name: 'clientTournamentSeriesApiTournamentSeriesResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
+                TournamentSeriesId: { type: graphql.GraphQLInt },
+                TournamentSeriesStateId: { type: graphql.GraphQLInt },
+                TournamentCount: { type: graphql.GraphQLInt },
+                OpenPlayerCount: { type: graphql.GraphQLInt },
+                PremiumlayerCount: { type: graphql.GraphQLInt },
+                PlatformGame: {
                   type: new graphql.GraphQLObjectType({
                     name:
-                      'clientTournamentSeriesapiTournamentSeriesresponseitemResponse',
+                      'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameResponse',
                     fields: {
-                      tournamentSeriesId: { type: graphql.GraphQLInt },
-                      tournamentSeriesStateId: { type: graphql.GraphQLInt },
-                      tournamentCount: { type: graphql.GraphQLInt },
-                      openPlayerCount: { type: graphql.GraphQLInt },
-                      premiumlayerCount: { type: graphql.GraphQLInt },
-                      platformGame: {
+                      GamePlatformFranchiseTitleId: {
+                        type: graphql.GraphQLInt
+                      },
+                      Platform: {
                         type: new graphql.GraphQLObjectType({
                           name:
-                            'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGameResponse',
+                            'clientTournamentSeriesApiTournamentSeriesResponsePlatformGamePlatformResponse',
                           fields: {
-                            gamePlatformFranchiseTitleId: {
-                              type: graphql.GraphQLInt
-                            },
-                            platform: {
+                            GamePlatformId: { type: graphql.GraphQLInt },
+                            GamePlatformCode: { type: graphql.GraphQLString },
+                            GamePlatform: { type: graphql.GraphQLString },
+                            ImageSmall: {
                               type: new graphql.GraphQLObjectType({
                                 name:
-                                  'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGameplatformResponse',
+                                  'clientTournamentSeriesApiTournamentSeriesResponsePlatformGamePlatformImageSmallResponse',
                                 fields: {
-                                  gamePlatformId: { type: graphql.GraphQLInt },
-                                  gamePlatformCode: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  gamePlatform: { type: graphql.GraphQLString },
-                                  imageSmall: {
-                                    type: new graphql.GraphQLObjectType({
-                                      name:
-                                        'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGameplatformimageSmallResponse',
-                                      fields: {
-                                        urlPath: {
-                                          type: graphql.GraphQLString
-                                        },
-                                        relativePath: {
-                                          type: graphql.GraphQLString
-                                        }
-                                      }
-                                    })
-                                  },
-                                  isActive: { type: graphql.GraphQLBoolean }
+                                  UrlPath: { type: graphql.GraphQLString },
+                                  RelativePath: { type: graphql.GraphQLString }
                                 }
                               })
                             },
-                            game: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegameResponse',
-                                fields: {
-                                  gameTitleId: { type: graphql.GraphQLInt },
-                                  gameName: { type: graphql.GraphQLString },
-                                  gameShortCode: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  gameDescription: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  gameWebsite: { type: graphql.GraphQLString },
-                                  imageLarge: {
-                                    type: new graphql.GraphQLObjectType({
-                                      name:
-                                        'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegameimageLargeResponse',
-                                      fields: {
-                                        urlPath: {
-                                          type: graphql.GraphQLString
-                                        },
-                                        relativePath: {
-                                          type: graphql.GraphQLString
-                                        }
-                                      }
-                                    })
-                                  },
-                                  imageSmall: {
-                                    type: new graphql.GraphQLObjectType({
-                                      name:
-                                        'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegameimageSmallResponse',
-                                      fields: {
-                                        urlPath: {
-                                          type: graphql.GraphQLString
-                                        },
-                                        relativePath: {
-                                          type: graphql.GraphQLString
-                                        }
-                                      }
-                                    })
-                                  },
-                                  imageBackground: {
-                                    type: new graphql.GraphQLObjectType({
-                                      name:
-                                        'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegameimageBackgroundResponse',
-                                      fields: {
-                                        urlPath: {
-                                          type: graphql.GraphQLString
-                                        },
-                                        relativePath: {
-                                          type: graphql.GraphQLString
-                                        }
-                                      }
-                                    })
-                                  },
-                                  maximumPlayersAllowed: {
-                                    type: graphql.GraphQLInt
-                                  },
-                                  minimumMinutesBetweenTournamentRounds: {
-                                    type: graphql.GraphQLInt
-                                  },
-                                  franchise: {
-                                    type: new graphql.GraphQLObjectType({
-                                      name:
-                                        'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegamefranchiseResponse',
-                                      fields: {
-                                        gameFranchiseId: {
-                                          type: graphql.GraphQLInt
-                                        },
-                                        gameFranchise: {
-                                          type: graphql.GraphQLString
-                                        },
-                                        imageLarge: {
-                                          type: new graphql.GraphQLObjectType({
-                                            name:
-                                              'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegamefranchiseimageLargeResponse',
-                                            fields: {
-                                              urlPath: {
-                                                type: graphql.GraphQLString
-                                              },
-                                              relativePath: {
-                                                type: graphql.GraphQLString
-                                              }
-                                            }
-                                          })
-                                        },
-                                        imageSmall: {
-                                          type: new graphql.GraphQLObjectType({
-                                            name:
-                                              'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegamefranchiseimageSmallResponse',
-                                            fields: {
-                                              urlPath: {
-                                                type: graphql.GraphQLString
-                                              },
-                                              relativePath: {
-                                                type: graphql.GraphQLString
-                                              }
-                                            }
-                                          })
-                                        },
-                                        imageBackground: {
-                                          type: new graphql.GraphQLObjectType({
-                                            name:
-                                              'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegamefranchiseimageBackgroundResponse',
-                                            fields: {
-                                              urlPath: {
-                                                type: graphql.GraphQLString
-                                              },
-                                              relativePath: {
-                                                type: graphql.GraphQLString
-                                              }
-                                            }
-                                          })
-                                        },
-                                        isActive: {
-                                          type: graphql.GraphQLBoolean
-                                        }
-                                      }
-                                    })
-                                  },
-                                  developer: {
-                                    type: new graphql.GraphQLObjectType({
-                                      name:
-                                        'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGamegamedeveloperResponse',
-                                      fields: {
-                                        gameDeveloperId: {
-                                          type: graphql.GraphQLInt
-                                        },
-                                        gameDeveloper: {
-                                          type: graphql.GraphQLString
-                                        },
-                                        website: {
-                                          type: graphql.GraphQLString
-                                        },
-                                        isActive: {
-                                          type: graphql.GraphQLBoolean
-                                        }
-                                      }
-                                    })
-                                  },
-                                  hasTeamSides: {
-                                    type: graphql.GraphQLBoolean
-                                  },
-                                  isHearthstone: {
-                                    type: graphql.GraphQLBoolean
-                                  },
-                                  hearthstoneManageDecks: {
-                                    type: graphql.GraphQLBoolean
-                                  },
-                                  isActive: { type: graphql.GraphQLBoolean }
-                                }
-                              })
-                            },
-                            gamePlatformFranchiseTitleStateId: {
-                              type: graphql.GraphQLInt
-                            },
-                            gameAddedDateTime: { type: graphql.GraphQLString },
-                            gameDownloadLink: { type: graphql.GraphQLString },
-                            chatPanelGuid: { type: graphql.GraphQLString },
-                            imageLarge: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGameimageLargeResponse',
-                                fields: {
-                                  urlPath: { type: graphql.GraphQLString },
-                                  relativePath: { type: graphql.GraphQLString }
-                                }
-                              })
-                            },
-                            imageSmall: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGameimageSmallResponse',
-                                fields: {
-                                  urlPath: { type: graphql.GraphQLString },
-                                  relativePath: { type: graphql.GraphQLString }
-                                }
-                              })
-                            },
-                            imageBackground: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'clientTournamentSeriesapiTournamentSeriesresponseitemplatformGameimageBackgroundResponse',
-                                fields: {
-                                  urlPath: { type: graphql.GraphQLString },
-                                  relativePath: { type: graphql.GraphQLString }
-                                }
-                              })
-                            },
-                            totalWinnings: { type: graphql.GraphQLInt },
-                            thirdPartyApplicationId: {
-                              type: graphql.GraphQLString
-                            },
-                            thirdPartyApiKey: { type: graphql.GraphQLString },
-                            gameReleaseVersion: { type: graphql.GraphQLString },
-                            gameRevisedDateTime: {
-                              type: graphql.GraphQLString
-                            },
-                            gameVersion: { type: graphql.GraphQLString },
-                            gameVersionNeedsVerification: {
-                              type: graphql.GraphQLBoolean
-                            },
-                            issueGamesServerToMatch: {
-                              type: graphql.GraphQLBoolean
-                            },
-                            tournamentCount: { type: graphql.GraphQLInt },
-                            validationMethodTypeId: {
-                              type: graphql.GraphQLInt
-                            },
-                            externalCallbackTemplateId: {
-                              type: graphql.GraphQLInt
-                            },
-                            internalCallbackTemplateId: {
-                              type: graphql.GraphQLInt
-                            },
-                            gameServerModVersion: { type: graphql.GraphQLFloat }
+                            IsActive: { type: graphql.GraphQLBoolean }
                           }
                         })
                       },
-                      tournamentSeriesName: { type: graphql.GraphQLString },
-                      gamePlatformFranchiseTitleId: {
+                      Game: {
+                        type: new graphql.GraphQLObjectType({
+                          name:
+                            'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameResponse',
+                          fields: {
+                            GameTitleId: { type: graphql.GraphQLInt },
+                            GameName: { type: graphql.GraphQLString },
+                            GameShortCode: { type: graphql.GraphQLString },
+                            GameDescription: { type: graphql.GraphQLString },
+                            GameWebsite: { type: graphql.GraphQLString },
+                            ImageLarge: {
+                              type: new graphql.GraphQLObjectType({
+                                name:
+                                  'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameImageLargeResponse',
+                                fields: {
+                                  UrlPath: { type: graphql.GraphQLString },
+                                  RelativePath: { type: graphql.GraphQLString }
+                                }
+                              })
+                            },
+                            ImageSmall: {
+                              type: new graphql.GraphQLObjectType({
+                                name:
+                                  'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameImageSmallResponse',
+                                fields: {
+                                  UrlPath: { type: graphql.GraphQLString },
+                                  RelativePath: { type: graphql.GraphQLString }
+                                }
+                              })
+                            },
+                            ImageBackground: {
+                              type: new graphql.GraphQLObjectType({
+                                name:
+                                  'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameImageBackgroundResponse',
+                                fields: {
+                                  UrlPath: { type: graphql.GraphQLString },
+                                  RelativePath: { type: graphql.GraphQLString }
+                                }
+                              })
+                            },
+                            MaximumPlayersAllowed: { type: graphql.GraphQLInt },
+                            MinimumMinutesBetweenTournamentRounds: {
+                              type: graphql.GraphQLInt
+                            },
+                            Franchise: {
+                              type: new graphql.GraphQLObjectType({
+                                name:
+                                  'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameFranchiseResponse',
+                                fields: {
+                                  GameFranchiseId: { type: graphql.GraphQLInt },
+                                  GameFranchise: {
+                                    type: graphql.GraphQLString
+                                  },
+                                  ImageLarge: {
+                                    type: new graphql.GraphQLObjectType({
+                                      name:
+                                        'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameFranchiseImageLargeResponse',
+                                      fields: {
+                                        UrlPath: {
+                                          type: graphql.GraphQLString
+                                        },
+                                        RelativePath: {
+                                          type: graphql.GraphQLString
+                                        }
+                                      }
+                                    })
+                                  },
+                                  ImageSmall: {
+                                    type: new graphql.GraphQLObjectType({
+                                      name:
+                                        'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameFranchiseImageSmallResponse',
+                                      fields: {
+                                        UrlPath: {
+                                          type: graphql.GraphQLString
+                                        },
+                                        RelativePath: {
+                                          type: graphql.GraphQLString
+                                        }
+                                      }
+                                    })
+                                  },
+                                  ImageBackground: {
+                                    type: new graphql.GraphQLObjectType({
+                                      name:
+                                        'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameFranchiseImageBackgroundResponse',
+                                      fields: {
+                                        UrlPath: {
+                                          type: graphql.GraphQLString
+                                        },
+                                        RelativePath: {
+                                          type: graphql.GraphQLString
+                                        }
+                                      }
+                                    })
+                                  },
+                                  IsActive: { type: graphql.GraphQLBoolean }
+                                }
+                              })
+                            },
+                            Developer: {
+                              type: new graphql.GraphQLObjectType({
+                                name:
+                                  'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameGameDeveloperResponse',
+                                fields: {
+                                  GameDeveloperId: { type: graphql.GraphQLInt },
+                                  GameDeveloper: {
+                                    type: graphql.GraphQLString
+                                  },
+                                  Website: { type: graphql.GraphQLString },
+                                  IsActive: { type: graphql.GraphQLBoolean }
+                                }
+                              })
+                            },
+                            HasTeamSides: { type: graphql.GraphQLBoolean },
+                            IsHearthstone: { type: graphql.GraphQLBoolean },
+                            HearthstoneManageDecks: {
+                              type: graphql.GraphQLBoolean
+                            },
+                            IsActive: { type: graphql.GraphQLBoolean }
+                          }
+                        })
+                      },
+                      GamePlatformFranchiseTitleStateId: {
                         type: graphql.GraphQLInt
                       },
-                      tournamentSubscriptionTypeId: {
-                        type: graphql.GraphQLInt
+                      GameAddedDateTime: { type: graphql.GraphQLString },
+                      GameDownloadLink: { type: graphql.GraphQLString },
+                      ChatPanelGuid: { type: graphql.GraphQLString },
+                      ImageLarge: {
+                        type: new graphql.GraphQLObjectType({
+                          name:
+                            'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameImageLargeResponse',
+                          fields: {
+                            UrlPath: { type: graphql.GraphQLString },
+                            RelativePath: { type: graphql.GraphQLString }
+                          }
+                        })
                       },
-                      registrationOpenDateTIme: { type: graphql.GraphQLString },
-                      tournamentStartDateTime: { type: graphql.GraphQLString },
-                      tournamentSerieseDoesCycle: {
+                      ImageSmall: {
+                        type: new graphql.GraphQLObjectType({
+                          name:
+                            'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameImageSmallResponse',
+                          fields: {
+                            UrlPath: { type: graphql.GraphQLString },
+                            RelativePath: { type: graphql.GraphQLString }
+                          }
+                        })
+                      },
+                      ImageBackground: {
+                        type: new graphql.GraphQLObjectType({
+                          name:
+                            'clientTournamentSeriesApiTournamentSeriesResponsePlatformGameImageBackgroundResponse',
+                          fields: {
+                            UrlPath: { type: graphql.GraphQLString },
+                            RelativePath: { type: graphql.GraphQLString }
+                          }
+                        })
+                      },
+                      TotalWinnings: { type: graphql.GraphQLInt },
+                      ThirdPartyApplicationId: { type: graphql.GraphQLString },
+                      ThirdPartyApiKey: { type: graphql.GraphQLString },
+                      GameReleaseVersion: { type: graphql.GraphQLString },
+                      GameRevisedDateTime: { type: graphql.GraphQLString },
+                      GameVersion: { type: graphql.GraphQLString },
+                      GameVersionNeedsVerification: {
                         type: graphql.GraphQLBoolean
-                      }
+                      },
+                      IssueGamesServerToMatch: { type: graphql.GraphQLBoolean },
+                      TournamentCount: { type: graphql.GraphQLInt },
+                      ValidationMethodTypeId: { type: graphql.GraphQLInt },
+                      ExternalCallbackTemplateId: { type: graphql.GraphQLInt },
+                      InternalCallbackTemplateId: { type: graphql.GraphQLInt },
+                      GameServerModVersion: { type: graphql.GraphQLFloat }
                     }
                   })
-                }
+                },
+                TournamentSeriesName: { type: graphql.GraphQLString },
+                GamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
+                TournamentSubscriptionTypeId: { type: graphql.GraphQLInt },
+                RegistrationOpenDateTIme: { type: graphql.GraphQLString },
+                TournamentStartDateTime: { type: graphql.GraphQLString },
+                TournamentSerieseDoesCycle: { type: graphql.GraphQLBoolean }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentSeriesByseriesId: {
+  ApiTournamentSeriesByseriesId: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TournamentSeriesController.GetTournamentSeries',
     method: 'GET',
-    url: 'api/Tournament/Series/{seriesId}',
+    url: '/api/Tournament/Series/{seriesId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientTournamentSeriesApiTournamentSeriesByseriesIdurlParams',
+            fields: { seriesId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientTournamentSeriesapiTournamentSeriesByseriesIdResponse',
+      name: 'clientTournamentSeriesApiTournamentSeriesByseriesIdResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseResponse',
+              'clientTournamentSeriesApiTournamentSeriesByseriesIdResponseResponse',
             fields: {
-              tournamentSeriesId: { type: graphql.GraphQLInt },
-              tournamentSeriesStateId: { type: graphql.GraphQLInt },
-              tournamentCount: { type: graphql.GraphQLInt },
-              openPlayerCount: { type: graphql.GraphQLInt },
-              premiumlayerCount: { type: graphql.GraphQLInt },
-              platformGame: {
+              TournamentSeriesId: { type: graphql.GraphQLInt },
+              TournamentSeriesStateId: { type: graphql.GraphQLInt },
+              TournamentCount: { type: graphql.GraphQLInt },
+              OpenPlayerCount: { type: graphql.GraphQLInt },
+              PremiumlayerCount: { type: graphql.GraphQLInt },
+              PlatformGame: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGameResponse',
+                    'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameResponse',
                   fields: {
-                    gamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
-                    platform: {
+                    GamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
+                    Platform: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGameplatformResponse',
+                          'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGamePlatformResponse',
                         fields: {
-                          gamePlatformId: { type: graphql.GraphQLInt },
-                          gamePlatformCode: { type: graphql.GraphQLString },
-                          gamePlatform: { type: graphql.GraphQLString },
-                          imageSmall: {
+                          GamePlatformId: { type: graphql.GraphQLInt },
+                          GamePlatformCode: { type: graphql.GraphQLString },
+                          GamePlatform: { type: graphql.GraphQLString },
+                          ImageSmall: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGameplatformimageSmallResponse',
+                                'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGamePlatformImageSmallResponse',
                               fields: {
-                                urlPath: { type: graphql.GraphQLString },
-                                relativePath: { type: graphql.GraphQLString }
+                                UrlPath: { type: graphql.GraphQLString },
+                                RelativePath: { type: graphql.GraphQLString }
                               }
                             })
                           },
-                          isActive: { type: graphql.GraphQLBoolean }
+                          IsActive: { type: graphql.GraphQLBoolean }
                         }
                       })
                     },
-                    game: {
+                    Game: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegameResponse',
+                          'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameResponse',
                         fields: {
-                          gameTitleId: { type: graphql.GraphQLInt },
-                          gameName: { type: graphql.GraphQLString },
-                          gameShortCode: { type: graphql.GraphQLString },
-                          gameDescription: { type: graphql.GraphQLString },
-                          gameWebsite: { type: graphql.GraphQLString },
-                          imageLarge: {
+                          GameTitleId: { type: graphql.GraphQLInt },
+                          GameName: { type: graphql.GraphQLString },
+                          GameShortCode: { type: graphql.GraphQLString },
+                          GameDescription: { type: graphql.GraphQLString },
+                          GameWebsite: { type: graphql.GraphQLString },
+                          ImageLarge: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegameimageLargeResponse',
+                                'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameImageLargeResponse',
                               fields: {
-                                urlPath: { type: graphql.GraphQLString },
-                                relativePath: { type: graphql.GraphQLString }
+                                UrlPath: { type: graphql.GraphQLString },
+                                RelativePath: { type: graphql.GraphQLString }
                               }
                             })
                           },
-                          imageSmall: {
+                          ImageSmall: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegameimageSmallResponse',
+                                'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameImageSmallResponse',
                               fields: {
-                                urlPath: { type: graphql.GraphQLString },
-                                relativePath: { type: graphql.GraphQLString }
+                                UrlPath: { type: graphql.GraphQLString },
+                                RelativePath: { type: graphql.GraphQLString }
                               }
                             })
                           },
-                          imageBackground: {
+                          ImageBackground: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegameimageBackgroundResponse',
+                                'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameImageBackgroundResponse',
                               fields: {
-                                urlPath: { type: graphql.GraphQLString },
-                                relativePath: { type: graphql.GraphQLString }
+                                UrlPath: { type: graphql.GraphQLString },
+                                RelativePath: { type: graphql.GraphQLString }
                               }
                             })
                           },
-                          maximumPlayersAllowed: { type: graphql.GraphQLInt },
-                          minimumMinutesBetweenTournamentRounds: {
+                          MaximumPlayersAllowed: { type: graphql.GraphQLInt },
+                          MinimumMinutesBetweenTournamentRounds: {
                             type: graphql.GraphQLInt
                           },
-                          franchise: {
+                          Franchise: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegamefranchiseResponse',
+                                'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameFranchiseResponse',
                               fields: {
-                                gameFranchiseId: { type: graphql.GraphQLInt },
-                                gameFranchise: { type: graphql.GraphQLString },
-                                imageLarge: {
+                                GameFranchiseId: { type: graphql.GraphQLInt },
+                                GameFranchise: { type: graphql.GraphQLString },
+                                ImageLarge: {
                                   type: new graphql.GraphQLObjectType({
                                     name:
-                                      'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegamefranchiseimageLargeResponse',
+                                      'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameFranchiseImageLargeResponse',
                                     fields: {
-                                      urlPath: { type: graphql.GraphQLString },
-                                      relativePath: {
+                                      UrlPath: { type: graphql.GraphQLString },
+                                      RelativePath: {
                                         type: graphql.GraphQLString
                                       }
                                     }
                                   })
                                 },
-                                imageSmall: {
+                                ImageSmall: {
                                   type: new graphql.GraphQLObjectType({
                                     name:
-                                      'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegamefranchiseimageSmallResponse',
+                                      'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameFranchiseImageSmallResponse',
                                     fields: {
-                                      urlPath: { type: graphql.GraphQLString },
-                                      relativePath: {
+                                      UrlPath: { type: graphql.GraphQLString },
+                                      RelativePath: {
                                         type: graphql.GraphQLString
                                       }
                                     }
                                   })
                                 },
-                                imageBackground: {
+                                ImageBackground: {
                                   type: new graphql.GraphQLObjectType({
                                     name:
-                                      'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegamefranchiseimageBackgroundResponse',
+                                      'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameFranchiseImageBackgroundResponse',
                                     fields: {
-                                      urlPath: { type: graphql.GraphQLString },
-                                      relativePath: {
+                                      UrlPath: { type: graphql.GraphQLString },
+                                      RelativePath: {
                                         type: graphql.GraphQLString
                                       }
                                     }
                                   })
                                 },
-                                isActive: { type: graphql.GraphQLBoolean }
+                                IsActive: { type: graphql.GraphQLBoolean }
                               }
                             })
                           },
-                          developer: {
+                          Developer: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGamegamedeveloperResponse',
+                                'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameGameDeveloperResponse',
                               fields: {
-                                gameDeveloperId: { type: graphql.GraphQLInt },
-                                gameDeveloper: { type: graphql.GraphQLString },
-                                website: { type: graphql.GraphQLString },
-                                isActive: { type: graphql.GraphQLBoolean }
+                                GameDeveloperId: { type: graphql.GraphQLInt },
+                                GameDeveloper: { type: graphql.GraphQLString },
+                                Website: { type: graphql.GraphQLString },
+                                IsActive: { type: graphql.GraphQLBoolean }
                               }
                             })
                           },
-                          hasTeamSides: { type: graphql.GraphQLBoolean },
-                          isHearthstone: { type: graphql.GraphQLBoolean },
-                          hearthstoneManageDecks: {
+                          HasTeamSides: { type: graphql.GraphQLBoolean },
+                          IsHearthstone: { type: graphql.GraphQLBoolean },
+                          HearthstoneManageDecks: {
                             type: graphql.GraphQLBoolean
                           },
-                          isActive: { type: graphql.GraphQLBoolean }
+                          IsActive: { type: graphql.GraphQLBoolean }
                         }
                       })
                     },
-                    gamePlatformFranchiseTitleStateId: {
+                    GamePlatformFranchiseTitleStateId: {
                       type: graphql.GraphQLInt
                     },
-                    gameAddedDateTime: { type: graphql.GraphQLString },
-                    gameDownloadLink: { type: graphql.GraphQLString },
-                    chatPanelGuid: { type: graphql.GraphQLString },
-                    imageLarge: {
+                    GameAddedDateTime: { type: graphql.GraphQLString },
+                    GameDownloadLink: { type: graphql.GraphQLString },
+                    ChatPanelGuid: { type: graphql.GraphQLString },
+                    ImageLarge: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGameimageLargeResponse',
+                          'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameImageLargeResponse',
                         fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
                         }
                       })
                     },
-                    imageSmall: {
+                    ImageSmall: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGameimageSmallResponse',
+                          'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameImageSmallResponse',
                         fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
                         }
                       })
                     },
-                    imageBackground: {
+                    ImageBackground: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'clientTournamentSeriesapiTournamentSeriesByseriesIdresponseplatformGameimageBackgroundResponse',
+                          'clientTournamentSeriesApiTournamentSeriesByseriesIdResponsePlatformGameImageBackgroundResponse',
                         fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
                         }
                       })
                     },
-                    totalWinnings: { type: graphql.GraphQLInt },
-                    thirdPartyApplicationId: { type: graphql.GraphQLString },
-                    thirdPartyApiKey: { type: graphql.GraphQLString },
-                    gameReleaseVersion: { type: graphql.GraphQLString },
-                    gameRevisedDateTime: { type: graphql.GraphQLString },
-                    gameVersion: { type: graphql.GraphQLString },
-                    gameVersionNeedsVerification: {
+                    TotalWinnings: { type: graphql.GraphQLInt },
+                    ThirdPartyApplicationId: { type: graphql.GraphQLString },
+                    ThirdPartyApiKey: { type: graphql.GraphQLString },
+                    GameReleaseVersion: { type: graphql.GraphQLString },
+                    GameRevisedDateTime: { type: graphql.GraphQLString },
+                    GameVersion: { type: graphql.GraphQLString },
+                    GameVersionNeedsVerification: {
                       type: graphql.GraphQLBoolean
                     },
-                    issueGamesServerToMatch: { type: graphql.GraphQLBoolean },
-                    tournamentCount: { type: graphql.GraphQLInt },
-                    validationMethodTypeId: { type: graphql.GraphQLInt },
-                    externalCallbackTemplateId: { type: graphql.GraphQLInt },
-                    internalCallbackTemplateId: { type: graphql.GraphQLInt },
-                    gameServerModVersion: { type: graphql.GraphQLFloat }
+                    IssueGamesServerToMatch: { type: graphql.GraphQLBoolean },
+                    TournamentCount: { type: graphql.GraphQLInt },
+                    ValidationMethodTypeId: { type: graphql.GraphQLInt },
+                    ExternalCallbackTemplateId: { type: graphql.GraphQLInt },
+                    InternalCallbackTemplateId: { type: graphql.GraphQLInt },
+                    GameServerModVersion: { type: graphql.GraphQLFloat }
                   }
                 })
               },
-              tournamentSeriesName: { type: graphql.GraphQLString },
-              gamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
-              tournamentSubscriptionTypeId: { type: graphql.GraphQLInt },
-              registrationOpenDateTIme: { type: graphql.GraphQLString },
-              tournamentStartDateTime: { type: graphql.GraphQLString },
-              tournamentSerieseDoesCycle: { type: graphql.GraphQLBoolean }
+              TournamentSeriesName: { type: graphql.GraphQLString },
+              GamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
+              TournamentSubscriptionTypeId: { type: graphql.GraphQLInt },
+              RegistrationOpenDateTIme: { type: graphql.GraphQLString },
+              TournamentStartDateTime: { type: graphql.GraphQLString },
+              TournamentSerieseDoesCycle: { type: graphql.GraphQLBoolean }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

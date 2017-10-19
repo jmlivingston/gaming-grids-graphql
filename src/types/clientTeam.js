@@ -1,171 +1,256 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiTeamByentityName: {
+  ApiTeamByentityName: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TeamController.DisbandTeam',
     method: 'DELETE',
-    url: 'api/Team/{entityName}',
+    url: '/api/Team/{entityName}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientTeamApiTeamByentityNameurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientTeamapiTeamByentityNameResponse',
+      name: 'clientTeamApiTeamByentityNameResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTeam: {
+  ApiTeam: {
+    fullName: 'GamingGrids.Api.Client.v2.Controllers.TeamController.CreateTeam',
     method: 'POST',
-    url: 'api/Team/',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        entityName: { type: graphql.GraphQLString },
-        displayName: { type: graphql.GraphQLString },
-        joinPassword: { type: graphql.GraphQLString }
+    url: '/api/Team',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientTeamApiTeambody',
+            fields: {
+              EntityName: { type: graphql.GraphQLString },
+              DisplayName: { type: graphql.GraphQLString },
+              JoinPassword: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientTeamapiTeamResponse',
+      name: 'clientTeamApiTeamResponse',
       fields: {
-        response: { type: graphql.GraphQLString },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLString },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTeamByteamEntityNameRosterRequested: {
+  ApiTeamByteamEntityNameRosterRequested: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TeamController.RequestJoinTeam',
     method: 'POST',
-    url: 'api/Team/{teamEntityName}/Roster/requested',
+    url: '/api/Team/{teamEntityName}/Roster/requested',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientTeamApiTeamByteamEntityNameRosterRequestedurlParams',
+            fields: { teamEntityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientTeamapiTeamByteamEntityNameRosterRequestedResponse',
+      name: 'clientTeamApiTeamByteamEntityNameRosterRequestedResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTeamByteamEntityNameRoster: {
+  ApiTeamByteamEntityNameRoster: {
+    fullName: 'GamingGrids.Api.Client.v2.Controllers.TeamController.LeaveTeam',
     method: 'DELETE',
-    url: 'api/Team/{teamEntityName}/Roster',
+    url: '/api/Team/{teamEntityName}/Roster',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientTeamApiTeamByteamEntityNameRosterurlParams',
+            fields: { teamEntityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientTeamapiTeamByteamEntityNameRosterResponse',
+      name: 'clientTeamApiTeamByteamEntityNameRosterResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTeamByteamEntityNameRosterByplayerEntityNameValidation: {
+  ApiTeamByteamEntityNameRosterByplayerEntityNameValidation: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TeamController.ValidateLeaveTeam',
     method: 'GET',
-    url: 'api/Team/{teamEntityName}/Roster/{playerEntityName}/Validation',
+    url: '/api/Team/{teamEntityName}/Roster/{playerEntityName}/Validation',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientTeamApiTeamByteamEntityNameRosterByplayerEntityNameValidationurlParams',
+            fields: {
+              teamEntityName: { type: graphql.GraphQLString },
+              playerEntityName: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'clientTeamapiTeamByteamEntityNameRosterByplayerEntityNameValidationResponse',
+        'clientTeamApiTeamByteamEntityNameRosterByplayerEntityNameValidationResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'clientTeamapiTeamByteamEntityNameRosterByplayerEntityNameValidationresponseResponse',
+              'clientTeamApiTeamByteamEntityNameRosterByplayerEntityNameValidationResponseResponse',
             fields: {
-              willDropTeam: { type: graphql.GraphQLBoolean },
-              tournaments: { type: graphql.GraphQLString }
+              WillDropTeam: { type: graphql.GraphQLBoolean },
+              Tournaments: { type: graphql.GraphQLString }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTeamOnline: {
+  ApiTeamOnline: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TeamController.GetOnlineTeams',
     method: 'GET',
-    url: 'api/Team/online',
+    url: '/api/Team/online',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientTeamapiTeamOnlineResponse',
+      name: 'clientTeamApiTeamOnlineResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'clientTeamapiTeamOnlineresponseResponse',
+              name: 'clientTeamApiTeamOnlineResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name: 'clientTeamapiTeamOnlineresponseitemResponse',
-                    fields: {
-                      ownerId: { type: graphql.GraphQLInt },
-                      joinPassword: { type: graphql.GraphQLString },
-                      foundedDate: { type: graphql.GraphQLString },
-                      teamDescriptionLong: { type: graphql.GraphQLString },
-                      teamColor: { type: graphql.GraphQLString },
-                      lastOpponentEmailDateTime: {
-                        type: graphql.GraphQLString
-                      },
-                      lastAdminEmailDateTime: { type: graphql.GraphQLString },
-                      isFriendsTeam: { type: graphql.GraphQLBoolean },
-                      canEditProfile: { type: graphql.GraphQLBoolean },
-                      entityTeamId: { type: graphql.GraphQLInt },
-                      teamDescription: { type: graphql.GraphQLString },
-                      numberOfPlayers: { type: graphql.GraphQLInt },
-                      entityId: { type: graphql.GraphQLInt },
-                      addressCountryId: { type: graphql.GraphQLInt },
-                      gamingServerRegionId: { type: graphql.GraphQLInt },
-                      isActive: { type: graphql.GraphQLBoolean },
-                      createdDateTime: { type: graphql.GraphQLString },
-                      matchPlayStatisticsId: { type: graphql.GraphQLInt },
-                      entityName: { type: graphql.GraphQLString },
-                      entityIsTeam: { type: graphql.GraphQLBoolean },
-                      displayName: { type: graphql.GraphQLString },
-                      entityImageUrl: { type: graphql.GraphQLString },
-                      entityImageUrlIsExternal: {
-                        type: graphql.GraphQLBoolean
-                      },
-                      entityBackgroundImageUrl: { type: graphql.GraphQLString },
-                      entityBackgroundImageUrlIsExternal: {
-                        type: graphql.GraphQLBoolean
-                      }
-                    }
-                  })
+                OwnerId: { type: graphql.GraphQLInt },
+                JoinPassword: { type: graphql.GraphQLString },
+                FoundedDate: { type: graphql.GraphQLString },
+                TeamDescriptionLong: { type: graphql.GraphQLString },
+                TeamColor: { type: graphql.GraphQLString },
+                LastOpponentEmailDateTime: { type: graphql.GraphQLString },
+                LastAdminEmailDateTime: { type: graphql.GraphQLString },
+                IsFriendsTeam: { type: graphql.GraphQLBoolean },
+                CanEditProfile: { type: graphql.GraphQLBoolean },
+                EntityTeamId: { type: graphql.GraphQLInt },
+                TeamDescription: { type: graphql.GraphQLString },
+                NumberOfPlayers: { type: graphql.GraphQLInt },
+                EntityId: { type: graphql.GraphQLInt },
+                AddressCountryId: { type: graphql.GraphQLInt },
+                GamingServerRegionId: { type: graphql.GraphQLInt },
+                IsActive: { type: graphql.GraphQLBoolean },
+                CreatedDateTime: { type: graphql.GraphQLString },
+                MatchPlayStatisticsId: { type: graphql.GraphQLInt },
+                EntityName: { type: graphql.GraphQLString },
+                EntityIsTeam: { type: graphql.GraphQLBoolean },
+                DisplayName: { type: graphql.GraphQLString },
+                EntityImageUrl: { type: graphql.GraphQLString },
+                EntityImageUrlIsExternal: { type: graphql.GraphQLBoolean },
+                EntityBackgroundImageUrl: { type: graphql.GraphQLString },
+                EntityBackgroundImageUrlIsExternal: {
+                  type: graphql.GraphQLBoolean
                 }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTeamByteamEntityNameRosterByplayerEntityName: {
+  ApiTeamByteamEntityNameRosterByplayerEntityName: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TeamController.PostSetRoleAndTitle',
     method: 'PUT',
-    url: 'api/Team/{teamEntityName}/Roster/{playerEntityName}',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        roleId: { type: graphql.GraphQLInt },
-        playerTitle: { type: graphql.GraphQLString }
+    url: '/api/Team/{teamEntityName}/Roster/{playerEntityName}',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientTeamApiTeamByteamEntityNameRosterByplayerEntityNamebody',
+            fields: {
+              RoleId: { type: graphql.GraphQLInt },
+              PlayerTitle: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientTeamApiTeamByteamEntityNameRosterByplayerEntityNameurlParams',
+            fields: {
+              teamEntityName: { type: graphql.GraphQLString },
+              playerEntityName: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientTeamapiTeamByteamEntityNameRosterByplayerEntityNameResponse',
+      name: 'clientTeamApiTeamByteamEntityNameRosterByplayerEntityNameResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTeamByteamEntityNameRosterInvite: {
+  ApiTeamByteamEntityNameRosterInvite: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.TeamController.RosterInvite',
     method: 'POST',
-    url: 'api/Team/{teamEntityName}/Roster/Invite',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { entityName: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Team/{teamEntityName}/Roster/Invite',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientTeamApiTeamByteamEntityNameRosterInvitebody',
+            fields: { EntityName: { type: graphql.GraphQLString } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientTeamApiTeamByteamEntityNameRosterInviteurlParams',
+            fields: { teamEntityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientTeamapiTeamByteamEntityNameRosterInviteResponse',
+      name: 'clientTeamApiTeamByteamEntityNameRosterInviteResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

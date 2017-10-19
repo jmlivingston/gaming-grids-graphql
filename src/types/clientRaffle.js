@@ -1,308 +1,305 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiRaffleMyPrizes: {
+  ApiRaffleMyPrizes: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.RaffleController.GetMyPrizes',
     method: 'GET',
-    url: 'api/Raffle/my/prizes',
+    url: '/api/Raffle/my/prizes',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientRaffleapiRaffleMyPrizesResponse',
+      name: 'clientRaffleApiRaffleMyPrizesResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'clientRaffleapiRaffleMyPrizesresponseResponse',
+              name: 'clientRaffleApiRaffleMyPrizesResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
+                RaffleWinnerId: { type: graphql.GraphQLInt },
+                RaffleDate: { type: graphql.GraphQLString },
+                RaffleTicket: { type: graphql.GraphQLString },
+                RaffleWinnerEntityId: { type: graphql.GraphQLInt },
+                RaffleWinnerProfile: {
                   type: new graphql.GraphQLObjectType({
-                    name: 'clientRaffleapiRaffleMyPrizesresponseitemResponse',
+                    name:
+                      'clientRaffleApiRaffleMyPrizesResponseRaffleWinnerProfileResponse',
                     fields: {
-                      raffleWinnerId: { type: graphql.GraphQLInt },
-                      raffleDate: { type: graphql.GraphQLString },
-                      raffleTicket: { type: graphql.GraphQLString },
-                      raffleWinnerEntityId: { type: graphql.GraphQLInt },
-                      raffleWinnerProfile: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'clientRaffleapiRaffleMyPrizesresponseitemraffleWinnerProfileResponse',
-                          fields: {
-                            entityId: { type: graphql.GraphQLInt },
-                            addressCountryId: { type: graphql.GraphQLInt },
-                            gamingServerRegionId: { type: graphql.GraphQLInt },
-                            isActive: { type: graphql.GraphQLBoolean },
-                            createdDateTime: { type: graphql.GraphQLString },
-                            matchPlayStatisticsId: { type: graphql.GraphQLInt },
-                            entityName: { type: graphql.GraphQLString },
-                            entityIsTeam: { type: graphql.GraphQLBoolean },
-                            displayName: { type: graphql.GraphQLString },
-                            entityImageUrl: { type: graphql.GraphQLString },
-                            entityImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            },
-                            entityBackgroundImageUrl: {
-                              type: graphql.GraphQLString
-                            },
-                            entityBackgroundImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            }
-                          }
-                        })
+                      EntityId: { type: graphql.GraphQLInt },
+                      AddressCountryId: { type: graphql.GraphQLInt },
+                      GamingServerRegionId: { type: graphql.GraphQLInt },
+                      IsActive: { type: graphql.GraphQLBoolean },
+                      CreatedDateTime: { type: graphql.GraphQLString },
+                      MatchPlayStatisticsId: { type: graphql.GraphQLInt },
+                      EntityName: { type: graphql.GraphQLString },
+                      EntityIsTeam: { type: graphql.GraphQLBoolean },
+                      DisplayName: { type: graphql.GraphQLString },
+                      EntityImageUrl: { type: graphql.GraphQLString },
+                      EntityImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
                       },
-                      rafflePrizeId: { type: graphql.GraphQLInt },
-                      rafflePrize: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'clientRaffleapiRaffleMyPrizesresponseitemrafflePrizeResponse',
-                          fields: {
-                            rafflePrizeId: { type: graphql.GraphQLInt },
-                            rafflePrizeDate: { type: graphql.GraphQLString },
-                            rafflePrizeTitle: { type: graphql.GraphQLString },
-                            rafflePrizeDescription: {
-                              type: graphql.GraphQLString
-                            },
-                            rafflePrizeUrl: { type: graphql.GraphQLString },
-                            rafflePrizeImage: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'clientRaffleapiRaffleMyPrizesresponseitemrafflePrizerafflePrizeImageResponse',
-                                fields: {
-                                  urlPath: { type: graphql.GraphQLString },
-                                  relativePath: { type: graphql.GraphQLString }
-                                }
-                              })
-                            }
-                          }
-                        })
-                      },
-                      prizeIsClaimed: { type: graphql.GraphQLBoolean },
-                      prizeClaimedDateTime: { type: graphql.GraphQLString },
-                      prizeIsAwarded: { type: graphql.GraphQLBoolean },
-                      prizeAwardedById: { type: graphql.GraphQLInt },
-                      prizeAwardedByProfile: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'clientRaffleapiRaffleMyPrizesresponseitemprizeAwardedByProfileResponse',
-                          fields: {
-                            entityId: { type: graphql.GraphQLInt },
-                            addressCountryId: { type: graphql.GraphQLInt },
-                            gamingServerRegionId: { type: graphql.GraphQLInt },
-                            isActive: { type: graphql.GraphQLBoolean },
-                            createdDateTime: { type: graphql.GraphQLString },
-                            matchPlayStatisticsId: { type: graphql.GraphQLInt },
-                            entityName: { type: graphql.GraphQLString },
-                            entityIsTeam: { type: graphql.GraphQLBoolean },
-                            displayName: { type: graphql.GraphQLString },
-                            entityImageUrl: { type: graphql.GraphQLString },
-                            entityImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            },
-                            entityBackgroundImageUrl: {
-                              type: graphql.GraphQLString
-                            },
-                            entityBackgroundImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            }
-                          }
-                        })
-                      },
-                      prizeAwardedDateTime: { type: graphql.GraphQLString },
-                      prizeHasExpired: { type: graphql.GraphQLBoolean }
+                      EntityBackgroundImageUrl: { type: graphql.GraphQLString },
+                      EntityBackgroundImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
+                      }
                     }
                   })
-                }
+                },
+                RafflePrizeId: { type: graphql.GraphQLInt },
+                RafflePrize: {
+                  type: new graphql.GraphQLObjectType({
+                    name:
+                      'clientRaffleApiRaffleMyPrizesResponseRafflePrizeResponse',
+                    fields: {
+                      RafflePrizeId: { type: graphql.GraphQLInt },
+                      RafflePrizeDate: { type: graphql.GraphQLString },
+                      RafflePrizeTitle: { type: graphql.GraphQLString },
+                      RafflePrizeDescription: { type: graphql.GraphQLString },
+                      RafflePrizeUrl: { type: graphql.GraphQLString },
+                      RafflePrizeImage: {
+                        type: new graphql.GraphQLObjectType({
+                          name:
+                            'clientRaffleApiRaffleMyPrizesResponseRafflePrizeRafflePrizeImageResponse',
+                          fields: {
+                            UrlPath: { type: graphql.GraphQLString },
+                            RelativePath: { type: graphql.GraphQLString }
+                          }
+                        })
+                      }
+                    }
+                  })
+                },
+                PrizeIsClaimed: { type: graphql.GraphQLBoolean },
+                PrizeClaimedDateTime: { type: graphql.GraphQLString },
+                PrizeIsAwarded: { type: graphql.GraphQLBoolean },
+                PrizeAwardedById: { type: graphql.GraphQLInt },
+                PrizeAwardedByProfile: {
+                  type: new graphql.GraphQLObjectType({
+                    name:
+                      'clientRaffleApiRaffleMyPrizesResponsePrizeAwardedByProfileResponse',
+                    fields: {
+                      EntityId: { type: graphql.GraphQLInt },
+                      AddressCountryId: { type: graphql.GraphQLInt },
+                      GamingServerRegionId: { type: graphql.GraphQLInt },
+                      IsActive: { type: graphql.GraphQLBoolean },
+                      CreatedDateTime: { type: graphql.GraphQLString },
+                      MatchPlayStatisticsId: { type: graphql.GraphQLInt },
+                      EntityName: { type: graphql.GraphQLString },
+                      EntityIsTeam: { type: graphql.GraphQLBoolean },
+                      DisplayName: { type: graphql.GraphQLString },
+                      EntityImageUrl: { type: graphql.GraphQLString },
+                      EntityImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
+                      },
+                      EntityBackgroundImageUrl: { type: graphql.GraphQLString },
+                      EntityBackgroundImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
+                      }
+                    }
+                  })
+                },
+                PrizeAwardedDateTime: { type: graphql.GraphQLString },
+                PrizeHasExpired: { type: graphql.GraphQLBoolean }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiRaffleTicketDailyReceived: {
+  ApiRaffleTicketDailyReceived: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.RaffleController.GetTodaysTicketReceived',
     method: 'GET',
-    url: 'api/Raffle/ticket/daily/received',
+    url: '/api/Raffle/ticket/daily/received',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientRaffleapiRaffleTicketDailyReceivedResponse',
+      name: 'clientRaffleApiRaffleTicketDailyReceivedResponse',
       fields: {
-        response: { type: graphql.GraphQLBoolean },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLBoolean },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiRaffleTicketDaily: {
+  ApiRaffleTicketDaily: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.RaffleController.GetTodaysTicket',
     method: 'POST',
-    url: 'api/Raffle/ticket/daily',
+    url: '/api/Raffle/ticket/daily',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientRaffleapiRaffleTicketDailyResponse',
+      name: 'clientRaffleApiRaffleTicketDailyResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiRaffleWinners: {
+  ApiRaffleWinners: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.RaffleController.GetWinnerList',
     method: 'GET',
-    url: 'api/Raffle/winners',
+    url: '/api/Raffle/winners',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientRaffleapiRaffleWinnersResponse',
+      name: 'clientRaffleApiRaffleWinnersResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'clientRaffleapiRaffleWinnersresponseResponse',
+              name: 'clientRaffleApiRaffleWinnersResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
+                RaffleWinnerId: { type: graphql.GraphQLInt },
+                RaffleDate: { type: graphql.GraphQLString },
+                RaffleTicket: { type: graphql.GraphQLString },
+                RaffleWinnerEntityId: { type: graphql.GraphQLInt },
+                RaffleWinnerProfile: {
                   type: new graphql.GraphQLObjectType({
-                    name: 'clientRaffleapiRaffleWinnersresponseitemResponse',
+                    name:
+                      'clientRaffleApiRaffleWinnersResponseRaffleWinnerProfileResponse',
                     fields: {
-                      raffleWinnerId: { type: graphql.GraphQLInt },
-                      raffleDate: { type: graphql.GraphQLString },
-                      raffleTicket: { type: graphql.GraphQLString },
-                      raffleWinnerEntityId: { type: graphql.GraphQLInt },
-                      raffleWinnerProfile: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'clientRaffleapiRaffleWinnersresponseitemraffleWinnerProfileResponse',
-                          fields: {
-                            entityId: { type: graphql.GraphQLInt },
-                            addressCountryId: { type: graphql.GraphQLInt },
-                            gamingServerRegionId: { type: graphql.GraphQLInt },
-                            isActive: { type: graphql.GraphQLBoolean },
-                            createdDateTime: { type: graphql.GraphQLString },
-                            matchPlayStatisticsId: { type: graphql.GraphQLInt },
-                            entityName: { type: graphql.GraphQLString },
-                            entityIsTeam: { type: graphql.GraphQLBoolean },
-                            displayName: { type: graphql.GraphQLString },
-                            entityImageUrl: { type: graphql.GraphQLString },
-                            entityImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            },
-                            entityBackgroundImageUrl: {
-                              type: graphql.GraphQLString
-                            },
-                            entityBackgroundImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            }
-                          }
-                        })
+                      EntityId: { type: graphql.GraphQLInt },
+                      AddressCountryId: { type: graphql.GraphQLInt },
+                      GamingServerRegionId: { type: graphql.GraphQLInt },
+                      IsActive: { type: graphql.GraphQLBoolean },
+                      CreatedDateTime: { type: graphql.GraphQLString },
+                      MatchPlayStatisticsId: { type: graphql.GraphQLInt },
+                      EntityName: { type: graphql.GraphQLString },
+                      EntityIsTeam: { type: graphql.GraphQLBoolean },
+                      DisplayName: { type: graphql.GraphQLString },
+                      EntityImageUrl: { type: graphql.GraphQLString },
+                      EntityImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
                       },
-                      rafflePrizeId: { type: graphql.GraphQLInt },
-                      rafflePrize: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'clientRaffleapiRaffleWinnersresponseitemrafflePrizeResponse',
-                          fields: {
-                            rafflePrizeId: { type: graphql.GraphQLInt },
-                            rafflePrizeDate: { type: graphql.GraphQLString },
-                            rafflePrizeTitle: { type: graphql.GraphQLString },
-                            rafflePrizeDescription: {
-                              type: graphql.GraphQLString
-                            },
-                            rafflePrizeUrl: { type: graphql.GraphQLString },
-                            rafflePrizeImage: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'clientRaffleapiRaffleWinnersresponseitemrafflePrizerafflePrizeImageResponse',
-                                fields: {
-                                  urlPath: { type: graphql.GraphQLString },
-                                  relativePath: { type: graphql.GraphQLString }
-                                }
-                              })
-                            }
-                          }
-                        })
-                      },
-                      prizeIsClaimed: { type: graphql.GraphQLBoolean },
-                      prizeClaimedDateTime: { type: graphql.GraphQLString },
-                      prizeIsAwarded: { type: graphql.GraphQLBoolean },
-                      prizeAwardedById: { type: graphql.GraphQLInt },
-                      prizeAwardedByProfile: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'clientRaffleapiRaffleWinnersresponseitemprizeAwardedByProfileResponse',
-                          fields: {
-                            entityId: { type: graphql.GraphQLInt },
-                            addressCountryId: { type: graphql.GraphQLInt },
-                            gamingServerRegionId: { type: graphql.GraphQLInt },
-                            isActive: { type: graphql.GraphQLBoolean },
-                            createdDateTime: { type: graphql.GraphQLString },
-                            matchPlayStatisticsId: { type: graphql.GraphQLInt },
-                            entityName: { type: graphql.GraphQLString },
-                            entityIsTeam: { type: graphql.GraphQLBoolean },
-                            displayName: { type: graphql.GraphQLString },
-                            entityImageUrl: { type: graphql.GraphQLString },
-                            entityImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            },
-                            entityBackgroundImageUrl: {
-                              type: graphql.GraphQLString
-                            },
-                            entityBackgroundImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            }
-                          }
-                        })
-                      },
-                      prizeAwardedDateTime: { type: graphql.GraphQLString },
-                      prizeHasExpired: { type: graphql.GraphQLBoolean }
+                      EntityBackgroundImageUrl: { type: graphql.GraphQLString },
+                      EntityBackgroundImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
+                      }
                     }
                   })
-                }
+                },
+                RafflePrizeId: { type: graphql.GraphQLInt },
+                RafflePrize: {
+                  type: new graphql.GraphQLObjectType({
+                    name:
+                      'clientRaffleApiRaffleWinnersResponseRafflePrizeResponse',
+                    fields: {
+                      RafflePrizeId: { type: graphql.GraphQLInt },
+                      RafflePrizeDate: { type: graphql.GraphQLString },
+                      RafflePrizeTitle: { type: graphql.GraphQLString },
+                      RafflePrizeDescription: { type: graphql.GraphQLString },
+                      RafflePrizeUrl: { type: graphql.GraphQLString },
+                      RafflePrizeImage: {
+                        type: new graphql.GraphQLObjectType({
+                          name:
+                            'clientRaffleApiRaffleWinnersResponseRafflePrizeRafflePrizeImageResponse',
+                          fields: {
+                            UrlPath: { type: graphql.GraphQLString },
+                            RelativePath: { type: graphql.GraphQLString }
+                          }
+                        })
+                      }
+                    }
+                  })
+                },
+                PrizeIsClaimed: { type: graphql.GraphQLBoolean },
+                PrizeClaimedDateTime: { type: graphql.GraphQLString },
+                PrizeIsAwarded: { type: graphql.GraphQLBoolean },
+                PrizeAwardedById: { type: graphql.GraphQLInt },
+                PrizeAwardedByProfile: {
+                  type: new graphql.GraphQLObjectType({
+                    name:
+                      'clientRaffleApiRaffleWinnersResponsePrizeAwardedByProfileResponse',
+                    fields: {
+                      EntityId: { type: graphql.GraphQLInt },
+                      AddressCountryId: { type: graphql.GraphQLInt },
+                      GamingServerRegionId: { type: graphql.GraphQLInt },
+                      IsActive: { type: graphql.GraphQLBoolean },
+                      CreatedDateTime: { type: graphql.GraphQLString },
+                      MatchPlayStatisticsId: { type: graphql.GraphQLInt },
+                      EntityName: { type: graphql.GraphQLString },
+                      EntityIsTeam: { type: graphql.GraphQLBoolean },
+                      DisplayName: { type: graphql.GraphQLString },
+                      EntityImageUrl: { type: graphql.GraphQLString },
+                      EntityImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
+                      },
+                      EntityBackgroundImageUrl: { type: graphql.GraphQLString },
+                      EntityBackgroundImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
+                      }
+                    }
+                  })
+                },
+                PrizeAwardedDateTime: { type: graphql.GraphQLString },
+                PrizeHasExpired: { type: graphql.GraphQLBoolean }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiRaffleWinnerBywinnerIdClaimed: {
+  ApiRaffleWinnerBywinnerIdClaimed: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.RaffleController.ClaimPrize',
     method: 'POST',
-    url: 'api/Raffle/winner/{winnerId}/claimed',
+    url: '/api/Raffle/winner/{winnerId}/claimed',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientRaffleApiRaffleWinnerBywinnerIdClaimedurlParams',
+            fields: { winnerId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientRaffleapiRaffleWinnerBywinnerIdClaimedResponse',
+      name: 'clientRaffleApiRaffleWinnerBywinnerIdClaimedResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiRafflePrize: {
+  ApiRafflePrize: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.RaffleController.GetCurrentRafflePrize',
     method: 'GET',
-    url: 'api/Raffle/prize',
+    url: '/api/Raffle/prize',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientRaffleapiRafflePrizeResponse',
+      name: 'clientRaffleApiRafflePrizeResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
-            name: 'clientRaffleapiRafflePrizeresponseResponse',
+            name: 'clientRaffleApiRafflePrizeResponseResponse',
             fields: {
-              rafflePrizeId: { type: graphql.GraphQLInt },
-              rafflePrizeDate: { type: graphql.GraphQLString },
-              rafflePrizeTitle: { type: graphql.GraphQLString },
-              rafflePrizeDescription: { type: graphql.GraphQLString },
-              rafflePrizeUrl: { type: graphql.GraphQLString },
-              rafflePrizeImage: {
+              RafflePrizeId: { type: graphql.GraphQLInt },
+              RafflePrizeDate: { type: graphql.GraphQLString },
+              RafflePrizeTitle: { type: graphql.GraphQLString },
+              RafflePrizeDescription: { type: graphql.GraphQLString },
+              RafflePrizeUrl: { type: graphql.GraphQLString },
+              RafflePrizeImage: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'clientRaffleapiRafflePrizeresponserafflePrizeImageResponse',
+                    'clientRaffleApiRafflePrizeResponseRafflePrizeImageResponse',
                   fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

@@ -1,14 +1,16 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiCacheBuildAll: {
+  ApiCacheBuildAll: {
+    fullName: 'GamingGrids.Api.Control.v2.Controllers.CacheController.BuildAll',
     method: 'GET',
-    url: 'api/Cache/Build/All',
+    url: '/api/Cache/Build/All',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlCacheapiCacheBuildAllResponse',
+      name: 'controlCacheApiCacheBuildAllResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

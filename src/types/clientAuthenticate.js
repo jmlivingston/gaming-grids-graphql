@@ -1,261 +1,315 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiAuthenticateGOWSSO: {
+  ApiAuthenticateGOWSSO: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.BySingleSignInGow',
     method: 'POST',
-    url: 'api/Authenticate/GOW/SSO',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { token: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Authenticate/GOW/SSO',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientAuthenticateApiAuthenticateGOWSSObody',
+            fields: { Token: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientAuthenticateapiAuthenticateGOWSSOResponse',
+      name: 'clientAuthenticateApiAuthenticateGOWSSOResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
-            name: 'clientAuthenticateapiAuthenticateGOWSSOresponseResponse',
+            name: 'clientAuthenticateApiAuthenticateGOWSSOResponseResponse',
             fields: {
-              entityId: { type: graphql.GraphQLInt },
-              userLoginToken: { type: graphql.GraphQLString },
-              entityMembershipId: { type: graphql.GraphQLString },
-              entityMembershipToken: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              entityName: { type: graphql.GraphQLString },
-              displayName: { type: graphql.GraphQLString },
-              isAdministrator: { type: graphql.GraphQLBoolean },
-              registrationDateTime: { type: graphql.GraphQLString },
-              lastLoginDateTime: { type: graphql.GraphQLString },
-              entityImageUrl: { type: graphql.GraphQLString },
-              playerSubscriptionTypeId: { type: graphql.GraphQLInt },
-              muut: {
+              EntityId: { type: graphql.GraphQLInt },
+              UserLoginToken: { type: graphql.GraphQLString },
+              EntityMembershipId: { type: graphql.GraphQLString },
+              EntityMembershipToken: { type: graphql.GraphQLString },
+              EmailAddress: { type: graphql.GraphQLString },
+              FirstName: { type: graphql.GraphQLString },
+              LastName: { type: graphql.GraphQLString },
+              EntityName: { type: graphql.GraphQLString },
+              DisplayName: { type: graphql.GraphQLString },
+              IsAdministrator: { type: graphql.GraphQLBoolean },
+              RegistrationDateTime: { type: graphql.GraphQLString },
+              LastLoginDateTime: { type: graphql.GraphQLString },
+              EntityImageUrl: { type: graphql.GraphQLString },
+              PlayerSubscriptionTypeId: { type: graphql.GraphQLInt },
+              Muut: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'clientAuthenticateapiAuthenticateGOWSSOresponsemuutResponse',
+                    'clientAuthenticateApiAuthenticateGOWSSOResponseMuutResponse',
                   fields: {
-                    timestamp: { type: graphql.GraphQLInt },
-                    message: { type: graphql.GraphQLString },
-                    signature: { type: graphql.GraphQLString }
+                    Timestamp: { type: graphql.GraphQLInt },
+                    Message: { type: graphql.GraphQLString },
+                    Signature: { type: graphql.GraphQLString }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiAuthenticateGOWToken: {
+  ApiAuthenticateGOWToken: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.GetUserToken',
     method: 'POST',
-    url: 'api/Authenticate/GOW/Token',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { token: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Authenticate/GOW/Token',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientAuthenticateApiAuthenticateGOWTokenbody',
+            fields: { Token: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientAuthenticateapiAuthenticateGOWTokenResponse',
+      name: 'clientAuthenticateApiAuthenticateGOWTokenResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
-            name: 'clientAuthenticateapiAuthenticateGOWTokenresponseResponse',
+            name: 'clientAuthenticateApiAuthenticateGOWTokenResponseResponse',
             fields: {
-              iss: { type: graphql.GraphQLString },
-              aud: { type: graphql.GraphQLString },
-              userId: { type: graphql.GraphQLString },
-              usereMail: { type: graphql.GraphQLString },
-              userFirstName: { type: graphql.GraphQLString },
-              userLastName: { type: graphql.GraphQLString },
-              userStore: { type: graphql.GraphQLString },
-              userGamerTag: { type: graphql.GraphQLString },
-              userCountry: { type: graphql.GraphQLString },
-              userLanguage: { type: graphql.GraphQLString }
+              Iss: { type: graphql.GraphQLString },
+              Aud: { type: graphql.GraphQLString },
+              UserId: { type: graphql.GraphQLString },
+              UsereMail: { type: graphql.GraphQLString },
+              UserFirstName: { type: graphql.GraphQLString },
+              UserLastName: { type: graphql.GraphQLString },
+              UserStore: { type: graphql.GraphQLString },
+              UserGamerTag: { type: graphql.GraphQLString },
+              UserCountry: { type: graphql.GraphQLString },
+              UserLanguage: { type: graphql.GraphQLString }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiAuthenticatePLayer: {
+  ApiAuthenticatePLayer: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.PlayerLogin',
     method: 'POST',
-    url: 'api/Authenticate/PLayer',
+    url: '/api/Authenticate/PLayer',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientAuthenticateapiAuthenticatePLayerResponse',
+      name: 'clientAuthenticateApiAuthenticatePLayerResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
-            name: 'clientAuthenticateapiAuthenticatePLayerresponseResponse',
+            name: 'clientAuthenticateApiAuthenticatePLayerResponseResponse',
             fields: {
-              entityId: { type: graphql.GraphQLInt },
-              userLoginToken: { type: graphql.GraphQLString },
-              entityMembershipId: { type: graphql.GraphQLString },
-              entityMembershipToken: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              entityName: { type: graphql.GraphQLString },
-              displayName: { type: graphql.GraphQLString },
-              isAdministrator: { type: graphql.GraphQLBoolean },
-              registrationDateTime: { type: graphql.GraphQLString },
-              lastLoginDateTime: { type: graphql.GraphQLString },
-              entityImageUrl: { type: graphql.GraphQLString },
-              playerSubscriptionTypeId: { type: graphql.GraphQLInt },
-              muut: {
+              EntityId: { type: graphql.GraphQLInt },
+              UserLoginToken: { type: graphql.GraphQLString },
+              EntityMembershipId: { type: graphql.GraphQLString },
+              EntityMembershipToken: { type: graphql.GraphQLString },
+              EmailAddress: { type: graphql.GraphQLString },
+              FirstName: { type: graphql.GraphQLString },
+              LastName: { type: graphql.GraphQLString },
+              EntityName: { type: graphql.GraphQLString },
+              DisplayName: { type: graphql.GraphQLString },
+              IsAdministrator: { type: graphql.GraphQLBoolean },
+              RegistrationDateTime: { type: graphql.GraphQLString },
+              LastLoginDateTime: { type: graphql.GraphQLString },
+              EntityImageUrl: { type: graphql.GraphQLString },
+              PlayerSubscriptionTypeId: { type: graphql.GraphQLInt },
+              Muut: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'clientAuthenticateapiAuthenticatePLayerresponsemuutResponse',
+                    'clientAuthenticateApiAuthenticatePLayerResponseMuutResponse',
                   fields: {
-                    timestamp: { type: graphql.GraphQLInt },
-                    message: { type: graphql.GraphQLString },
-                    signature: { type: graphql.GraphQLString }
+                    Timestamp: { type: graphql.GraphQLInt },
+                    Message: { type: graphql.GraphQLString },
+                    Signature: { type: graphql.GraphQLString }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiAuthenticateOrganization: {
+  ApiAuthenticateOrganization: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.OrganizationLogin',
     method: 'POST',
-    url: 'api/Authenticate/Organization',
+    url: '/api/Authenticate/Organization',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientAuthenticateapiAuthenticateOrganizationResponse',
+      name: 'clientAuthenticateApiAuthenticateOrganizationResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'clientAuthenticateapiAuthenticateOrganizationresponseResponse',
+              'clientAuthenticateApiAuthenticateOrganizationResponseResponse',
             fields: {
-              entityId: { type: graphql.GraphQLInt },
-              userLoginToken: { type: graphql.GraphQLString },
-              entityMembershipId: { type: graphql.GraphQLString },
-              entityMembershipToken: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              entityName: { type: graphql.GraphQLString },
-              displayName: { type: graphql.GraphQLString },
-              isAdministrator: { type: graphql.GraphQLBoolean },
-              registrationDateTime: { type: graphql.GraphQLString },
-              lastLoginDateTime: { type: graphql.GraphQLString },
-              entityImageUrl: { type: graphql.GraphQLString },
-              playerSubscriptionTypeId: { type: graphql.GraphQLInt },
-              muut: {
+              EntityId: { type: graphql.GraphQLInt },
+              UserLoginToken: { type: graphql.GraphQLString },
+              EntityMembershipId: { type: graphql.GraphQLString },
+              EntityMembershipToken: { type: graphql.GraphQLString },
+              EmailAddress: { type: graphql.GraphQLString },
+              FirstName: { type: graphql.GraphQLString },
+              LastName: { type: graphql.GraphQLString },
+              EntityName: { type: graphql.GraphQLString },
+              DisplayName: { type: graphql.GraphQLString },
+              IsAdministrator: { type: graphql.GraphQLBoolean },
+              RegistrationDateTime: { type: graphql.GraphQLString },
+              LastLoginDateTime: { type: graphql.GraphQLString },
+              EntityImageUrl: { type: graphql.GraphQLString },
+              PlayerSubscriptionTypeId: { type: graphql.GraphQLInt },
+              Muut: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'clientAuthenticateapiAuthenticateOrganizationresponsemuutResponse',
+                    'clientAuthenticateApiAuthenticateOrganizationResponseMuutResponse',
                   fields: {
-                    timestamp: { type: graphql.GraphQLInt },
-                    message: { type: graphql.GraphQLString },
-                    signature: { type: graphql.GraphQLString }
+                    Timestamp: { type: graphql.GraphQLInt },
+                    Message: { type: graphql.GraphQLString },
+                    Signature: { type: graphql.GraphQLString }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiAuthenticateTokenValidate: {
+  ApiAuthenticateTokenValidate: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.GetValidateLoginToken',
     method: 'GET',
-    url: 'api/Authenticate/Token/Validate',
+    url: '/api/Authenticate/Token/Validate',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'clientAuthenticateapiAuthenticateTokenValidateResponse',
+      name: 'clientAuthenticateApiAuthenticateTokenValidateResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiAuthenticatePasswordForgot: {
+  ApiAuthenticatePasswordForgot: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.RequestPasswordChange',
     method: 'POST',
-    url: 'api/Authenticate/Password/Forgot',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { emailAddress: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Authenticate/Password/Forgot',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientAuthenticateApiAuthenticatePasswordForgotbody',
+            fields: { EmailAddress: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientAuthenticateapiAuthenticatePasswordForgotResponse',
+      name: 'clientAuthenticateApiAuthenticatePasswordForgotResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiAuthenticatePasswordChange: {
+  ApiAuthenticatePasswordChange: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.PasswordChange',
     method: 'POST',
-    url: 'api/Authenticate/Password/Change',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        token: { type: graphql.GraphQLString },
-        oldPwd: { type: graphql.GraphQLString },
-        pwd: { type: graphql.GraphQLString },
-        confirmPwd: { type: graphql.GraphQLString },
-        emailAddress: { type: graphql.GraphQLString }
+    url: '/api/Authenticate/Password/Change',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientAuthenticateApiAuthenticatePasswordChangebody',
+            fields: {
+              Token: { type: graphql.GraphQLString },
+              OldPwd: { type: graphql.GraphQLString },
+              Pwd: { type: graphql.GraphQLString },
+              ConfirmPwd: { type: graphql.GraphQLString },
+              EmailAddress: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientAuthenticateapiAuthenticatePasswordChangeResponse',
+      name: 'clientAuthenticateApiAuthenticatePasswordChangeResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiAuthenticateAdminImpersonateByentityName: {
+  ApiAuthenticateAdminImpersonateByentityName: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.AuthenticateController.AdminAuthenticateAsEntity',
     method: 'GET',
-    url: 'api/Authenticate/Admin/Impersonate/{entityName}',
+    url: '/api/Authenticate/Admin/Impersonate/{entityName}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientAuthenticateApiAuthenticateAdminImpersonateByentityNameurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'clientAuthenticateapiAuthenticateAdminImpersonateByentityNameResponse',
+        'clientAuthenticateApiAuthenticateAdminImpersonateByentityNameResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'clientAuthenticateapiAuthenticateAdminImpersonateByentityNameresponseResponse',
+              'clientAuthenticateApiAuthenticateAdminImpersonateByentityNameResponseResponse',
             fields: {
-              entityId: { type: graphql.GraphQLInt },
-              userLoginToken: { type: graphql.GraphQLString },
-              entityMembershipId: { type: graphql.GraphQLString },
-              entityMembershipToken: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              entityName: { type: graphql.GraphQLString },
-              displayName: { type: graphql.GraphQLString },
-              isAdministrator: { type: graphql.GraphQLBoolean },
-              registrationDateTime: { type: graphql.GraphQLString },
-              lastLoginDateTime: { type: graphql.GraphQLString },
-              entityImageUrl: { type: graphql.GraphQLString },
-              playerSubscriptionTypeId: { type: graphql.GraphQLInt },
-              muut: {
+              EntityId: { type: graphql.GraphQLInt },
+              UserLoginToken: { type: graphql.GraphQLString },
+              EntityMembershipId: { type: graphql.GraphQLString },
+              EntityMembershipToken: { type: graphql.GraphQLString },
+              EmailAddress: { type: graphql.GraphQLString },
+              FirstName: { type: graphql.GraphQLString },
+              LastName: { type: graphql.GraphQLString },
+              EntityName: { type: graphql.GraphQLString },
+              DisplayName: { type: graphql.GraphQLString },
+              IsAdministrator: { type: graphql.GraphQLBoolean },
+              RegistrationDateTime: { type: graphql.GraphQLString },
+              LastLoginDateTime: { type: graphql.GraphQLString },
+              EntityImageUrl: { type: graphql.GraphQLString },
+              PlayerSubscriptionTypeId: { type: graphql.GraphQLInt },
+              Muut: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'clientAuthenticateapiAuthenticateAdminImpersonateByentityNameresponsemuutResponse',
+                    'clientAuthenticateApiAuthenticateAdminImpersonateByentityNameResponseMuutResponse',
                   fields: {
-                    timestamp: { type: graphql.GraphQLInt },
-                    message: { type: graphql.GraphQLString },
-                    signature: { type: graphql.GraphQLString }
+                    Timestamp: { type: graphql.GraphQLInt },
+                    Message: { type: graphql.GraphQLString },
+                    Signature: { type: graphql.GraphQLString }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

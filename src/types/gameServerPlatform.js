@@ -1,35 +1,38 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiPlatformEndpointConfiguration: {
+  ApiPlatformEndpointConfiguration: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.PlatformController.EndpointConfiguration',
     method: 'GET',
-    url: 'api/Platform/EndpointConfiguration',
+    url: '/api/Platform/EndpointConfiguration',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'gameServerPlatformapiPlatformEndpointConfigurationResponse',
+      name: 'gameServerPlatformApiPlatformEndpointConfigurationResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'gameServerPlatformapiPlatformEndpointConfigurationresponseResponse',
+              'gameServerPlatformApiPlatformEndpointConfigurationResponseResponse',
             fields: {
-              clientApiId: { type: graphql.GraphQLInt },
-              clientApiKey: { type: graphql.GraphQLString },
-              clientApiIssuedDateTime: { type: graphql.GraphQLString },
-              hasServerPermission: { type: graphql.GraphQLBoolean },
-              clientApiKeyDescription: { type: graphql.GraphQLString },
-              gameServerApiEndPoint: { type: graphql.GraphQLString },
-              clientApiEndPoint: { type: graphql.GraphQLString },
-              ftpHost: { type: graphql.GraphQLString },
-              ftpPath: { type: graphql.GraphQLString },
-              ftpUserName: { type: graphql.GraphQLString },
-              ftpPassword: { type: graphql.GraphQLString },
-              sslAvailable: { type: graphql.GraphQLBoolean },
-              playbackPath: { type: graphql.GraphQLString }
+              ClientApiId: { type: graphql.GraphQLInt },
+              ClientApiKey: { type: graphql.GraphQLString },
+              ClientApiIssuedDateTime: { type: graphql.GraphQLString },
+              HasServerPermission: { type: graphql.GraphQLBoolean },
+              ClientApiKeyDescription: { type: graphql.GraphQLString },
+              GameServerApiEndPoint: { type: graphql.GraphQLString },
+              ClientApiEndPoint: { type: graphql.GraphQLString },
+              FtpHost: { type: graphql.GraphQLString },
+              FtpPath: { type: graphql.GraphQLString },
+              FtpUserName: { type: graphql.GraphQLString },
+              FtpPassword: { type: graphql.GraphQLString },
+              SslAvailable: { type: graphql.GraphQLBoolean },
+              PlaybackPath: { type: graphql.GraphQLString }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

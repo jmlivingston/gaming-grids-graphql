@@ -1,106 +1,198 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiChallengeBytournamentId: {
+  ApiChallengeBytournamentId: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.ChallengeController.CancelChallenge',
     method: 'DELETE',
-    url: 'api/Challenge/{tournamentId}',
+    url: '/api/Challenge/{tournamentId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientChallengeApiChallengeBytournamentIdurlParams',
+            fields: { tournamentId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientChallengeapiChallengeBytournamentIdResponse',
+      name: 'clientChallengeApiChallengeBytournamentIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiChallengeBytournamentIdOffer: {
+  ApiChallengeBytournamentIdOffer: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.ChallengeController.CreateOffer',
     method: 'POST',
-    url: 'api/Challenge/{tournamentId}/Offer',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { entryFee: { type: graphql.GraphQLInt } }
-    }),
+    url: '/api/Challenge/{tournamentId}/Offer',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientChallengeApiChallengeBytournamentIdOfferbody',
+            fields: { EntryFee: { type: graphql.GraphQLInt } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'clientChallengeApiChallengeBytournamentIdOfferurlParams',
+            fields: { tournamentId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'clientChallengeapiChallengeBytournamentIdOfferResponse',
+      name: 'clientChallengeApiChallengeBytournamentIdOfferResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'clientChallengeapiChallengeBytournamentIdOfferresponseResponse',
+              'clientChallengeApiChallengeBytournamentIdOfferResponseResponse',
             fields: {
-              challengeOfferId: { type: graphql.GraphQLInt },
-              entryFee: { type: graphql.GraphQLInt },
-              serviceFee: { type: graphql.GraphQLInt },
-              totalFee: { type: graphql.GraphQLInt },
-              tournamentId: { type: graphql.GraphQLInt },
-              tournamentDescription: { type: graphql.GraphQLString },
-              tournamentTitle: { type: graphql.GraphQLString },
-              creatorEntityId: { type: graphql.GraphQLInt },
-              challengerEntityId: { type: graphql.GraphQLInt },
-              offerDateTime: { type: graphql.GraphQLString },
-              creatorStateId: { type: graphql.GraphQLInt },
-              creatorStateDateTime: { type: graphql.GraphQLString },
-              challengerStateId: { type: graphql.GraphQLInt },
-              challengerStateDateTime: { type: graphql.GraphQLString },
-              hasPendingRegistration: { type: graphql.GraphQLBoolean },
-              tournamentMatchId: { type: graphql.GraphQLInt },
-              challengeComplete: { type: graphql.GraphQLBoolean },
-              challengeCompleteDateTime: { type: graphql.GraphQLString },
-              challengerNeedsRegistration: { type: graphql.GraphQLBoolean },
-              creatorNeedsRegistration: { type: graphql.GraphQLBoolean },
-              challengeCancelled: { type: graphql.GraphQLBoolean }
+              ChallengeOfferId: { type: graphql.GraphQLInt },
+              EntryFee: { type: graphql.GraphQLInt },
+              ServiceFee: { type: graphql.GraphQLInt },
+              TotalFee: { type: graphql.GraphQLInt },
+              TournamentId: { type: graphql.GraphQLInt },
+              TournamentDescription: { type: graphql.GraphQLString },
+              TournamentTitle: { type: graphql.GraphQLString },
+              CreatorEntityId: { type: graphql.GraphQLInt },
+              ChallengerEntityId: { type: graphql.GraphQLInt },
+              OfferDateTime: { type: graphql.GraphQLString },
+              CreatorStateId: { type: graphql.GraphQLInt },
+              CreatorStateDateTime: { type: graphql.GraphQLString },
+              ChallengerStateId: { type: graphql.GraphQLInt },
+              ChallengerStateDateTime: { type: graphql.GraphQLString },
+              HasPendingRegistration: { type: graphql.GraphQLBoolean },
+              TournamentMatchId: { type: graphql.GraphQLInt },
+              ChallengeComplete: { type: graphql.GraphQLBoolean },
+              ChallengeCompleteDateTime: { type: graphql.GraphQLString },
+              ChallengerNeedsRegistration: { type: graphql.GraphQLBoolean },
+              CreatorNeedsRegistration: { type: graphql.GraphQLBoolean },
+              ChallengeCancelled: { type: graphql.GraphQLBoolean }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiChallengeBytournamentIdMyOfferByOfferIdAccept: {
+  ApiChallengeBytournamentIdMyOfferByOfferIdAccept: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.ChallengeController.AcceptOffer',
     method: 'PUT',
-    url: 'api/Challenge/{tournamentId}/My/Offer/{OfferId}/Accept',
+    url: '/api/Challenge/{tournamentId}/My/Offer/{OfferId}/Accept',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientChallengeApiChallengeBytournamentIdMyOfferByOfferIdAccepturlParams',
+            fields: {
+              tournamentId: { type: graphql.GraphQLInt },
+              offerId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'clientChallengeapiChallengeBytournamentIdMyOfferByOfferIdAcceptResponse',
+        'clientChallengeApiChallengeBytournamentIdMyOfferByOfferIdAcceptResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiChallengeBytournamentIdMyOfferByOfferIdReject: {
+  ApiChallengeBytournamentIdMyOfferByOfferIdReject: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.ChallengeController.RejectOffer',
     method: 'PUT',
-    url: 'api/Challenge/{tournamentId}/My/Offer/{OfferId}/Reject',
+    url: '/api/Challenge/{tournamentId}/My/Offer/{OfferId}/Reject',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientChallengeApiChallengeBytournamentIdMyOfferByOfferIdRejecturlParams',
+            fields: {
+              tournamentId: { type: graphql.GraphQLInt },
+              offerId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'clientChallengeapiChallengeBytournamentIdMyOfferByOfferIdRejectResponse',
+        'clientChallengeApiChallengeBytournamentIdMyOfferByOfferIdRejectResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiChallengeBytournamentIdMyOfferAcceptedByOfferIdAccept: {
+  ApiChallengeBytournamentIdMyOfferAcceptedByOfferIdAccept: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.ChallengeController.AcceptAcceptedOffer',
     method: 'PUT',
-    url: 'api/Challenge/{tournamentId}/My/Offer/Accepted/{OfferId}/Accept',
+    url: '/api/Challenge/{tournamentId}/My/Offer/Accepted/{OfferId}/Accept',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientChallengeApiChallengeBytournamentIdMyOfferAcceptedByOfferIdAccepturlParams',
+            fields: {
+              tournamentId: { type: graphql.GraphQLInt },
+              offerId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'clientChallengeapiChallengeBytournamentIdMyOfferAcceptedByOfferIdAcceptResponse',
+        'clientChallengeApiChallengeBytournamentIdMyOfferAcceptedByOfferIdAcceptResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiChallengeBytournamentIdMyOfferAcceptedByOfferIdReject: {
+  ApiChallengeBytournamentIdMyOfferAcceptedByOfferIdReject: {
+    fullName:
+      'GamingGrids.Api.Client.v2.Controllers.ChallengeController.RejectAcceptedOffer',
     method: 'PUT',
-    url: 'api/Challenge/{tournamentId}/My/Offer/Accepted/{OfferId}/Reject',
+    url: '/api/Challenge/{tournamentId}/My/Offer/Accepted/{OfferId}/Reject',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'clientChallengeApiChallengeBytournamentIdMyOfferAcceptedByOfferIdRejecturlParams',
+            fields: {
+              tournamentId: { type: graphql.GraphQLInt },
+              offerId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'clientChallengeapiChallengeBytournamentIdMyOfferAcceptedByOfferIdRejectResponse',
+        'clientChallengeApiChallengeBytournamentIdMyOfferAcceptedByOfferIdRejectResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

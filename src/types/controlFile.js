@@ -1,40 +1,33 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiFileUpload: {
+  ApiFileUpload: {
+    fullName: 'GamingGrids.Api.Control.v2.Controllers.FileController.Upload',
     method: 'POST',
-    url: 'api/File/Upload',
+    url: '/api/File/Upload',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'controlFileapiFileUploadResponse',
+      name: 'controlFileApiFileUploadResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'controlFileapiFileUploadresponseResponse',
+              name: 'controlFileApiFileUploadResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name: 'controlFileapiFileUploadresponseitemResponse',
-                    fields: {
-                      name: { type: graphql.GraphQLString },
-                      size: { type: graphql.GraphQLInt },
-                      shortUrl: { type: graphql.GraphQLString },
-                      url: { type: graphql.GraphQLString },
-                      thumbnailUrl: { type: graphql.GraphQLString },
-                      deleteUrl: { type: graphql.GraphQLString },
-                      deleteType: { type: graphql.GraphQLString },
-                      error: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                name: { type: graphql.GraphQLString },
+                size: { type: graphql.GraphQLInt },
+                shortUrl: { type: graphql.GraphQLString },
+                url: { type: graphql.GraphQLString },
+                thumbnailUrl: { type: graphql.GraphQLString },
+                deleteUrl: { type: graphql.GraphQLString },
+                deleteType: { type: graphql.GraphQLString },
+                error: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

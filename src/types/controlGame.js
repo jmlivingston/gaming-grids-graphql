@@ -1,654 +1,941 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiGame: {
+  ApiGame: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreateGame',
     method: 'POST',
-    url: 'api/Game/',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        gameShortCode: { type: graphql.GraphQLString },
-        gameFranchiseId: { type: graphql.GraphQLInt },
-        gameDeveloperId: { type: graphql.GraphQLInt },
-        gameName: { type: graphql.GraphQLString },
-        gameDescription: { type: graphql.GraphQLString },
-        gameWebsite: { type: graphql.GraphQLString },
-        minimumMinutesBetweenTournamentRounds: { type: graphql.GraphQLInt },
-        maximumPlayersAllowed: { type: graphql.GraphQLInt },
-        imageLargeUrl: { type: graphql.GraphQLString },
-        imageSmallUrl: { type: graphql.GraphQLString },
-        imageBackgroundUrl: { type: graphql.GraphQLString },
-        hasTeamSides: { type: graphql.GraphQLBoolean },
-        isActive: { type: graphql.GraphQLBoolean }
-      }
-    }),
-    response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'controlGameapiGameresponseResponse',
+    url: '/api/Game',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGamebody',
             fields: {
-              gameTitleId: { type: graphql.GraphQLInt },
-              gameName: { type: graphql.GraphQLString },
-              gameShortCode: { type: graphql.GraphQLString },
-              gameDescription: { type: graphql.GraphQLString },
-              gameWebsite: { type: graphql.GraphQLString },
-              imageLarge: {
-                type: new graphql.GraphQLObjectType({
-                  name: 'controlGameapiGameresponseimageLargeResponse',
-                  fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
-                  }
-                })
-              },
-              imageSmall: {
-                type: new graphql.GraphQLObjectType({
-                  name: 'controlGameapiGameresponseimageSmallResponse',
-                  fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
-                  }
-                })
-              },
-              imageBackground: {
-                type: new graphql.GraphQLObjectType({
-                  name: 'controlGameapiGameresponseimageBackgroundResponse',
-                  fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
-                  }
-                })
-              },
-              maximumPlayersAllowed: { type: graphql.GraphQLInt },
-              minimumMinutesBetweenTournamentRounds: {
+              GameShortCode: { type: graphql.GraphQLString },
+              GameFranchiseId: { type: graphql.GraphQLInt },
+              GameDeveloperId: { type: graphql.GraphQLInt },
+              GameName: { type: graphql.GraphQLString },
+              GameDescription: { type: graphql.GraphQLString },
+              GameWebsite: { type: graphql.GraphQLString },
+              MinimumMinutesBetweenTournamentRounds: {
                 type: graphql.GraphQLInt
               },
-              franchise: {
+              MaximumPlayersAllowed: { type: graphql.GraphQLInt },
+              ImageLargeUrl: { type: graphql.GraphQLString },
+              ImageSmallUrl: { type: graphql.GraphQLString },
+              ImageBackgroundUrl: { type: graphql.GraphQLString },
+              HasTeamSides: { type: graphql.GraphQLBoolean },
+              IsActive: { type: graphql.GraphQLBoolean }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlGameApiGameResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLObjectType({
+            name: 'controlGameApiGameResponseResponse',
+            fields: {
+              GameTitleId: { type: graphql.GraphQLInt },
+              GameName: { type: graphql.GraphQLString },
+              GameShortCode: { type: graphql.GraphQLString },
+              GameDescription: { type: graphql.GraphQLString },
+              GameWebsite: { type: graphql.GraphQLString },
+              ImageLarge: {
                 type: new graphql.GraphQLObjectType({
-                  name: 'controlGameapiGameresponsefranchiseResponse',
+                  name: 'controlGameApiGameResponseImageLargeResponse',
                   fields: {
-                    gameFranchiseId: { type: graphql.GraphQLInt },
-                    gameFranchise: { type: graphql.GraphQLString },
-                    imageLarge: {
-                      type: new graphql.GraphQLObjectType({
-                        name:
-                          'controlGameapiGameresponsefranchiseimageLargeResponse',
-                        fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
-                        }
-                      })
-                    },
-                    imageSmall: {
-                      type: new graphql.GraphQLObjectType({
-                        name:
-                          'controlGameapiGameresponsefranchiseimageSmallResponse',
-                        fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
-                        }
-                      })
-                    },
-                    imageBackground: {
-                      type: new graphql.GraphQLObjectType({
-                        name:
-                          'controlGameapiGameresponsefranchiseimageBackgroundResponse',
-                        fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
-                        }
-                      })
-                    },
-                    isActive: { type: graphql.GraphQLBoolean }
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
                   }
                 })
               },
-              developer: {
+              ImageSmall: {
                 type: new graphql.GraphQLObjectType({
-                  name: 'controlGameapiGameresponsedeveloperResponse',
+                  name: 'controlGameApiGameResponseImageSmallResponse',
                   fields: {
-                    gameDeveloperId: { type: graphql.GraphQLInt },
-                    gameDeveloper: { type: graphql.GraphQLString },
-                    website: { type: graphql.GraphQLString },
-                    isActive: { type: graphql.GraphQLBoolean }
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
                   }
                 })
               },
-              hasTeamSides: { type: graphql.GraphQLBoolean },
-              isHearthstone: { type: graphql.GraphQLBoolean },
-              hearthstoneManageDecks: { type: graphql.GraphQLBoolean },
-              isActive: { type: graphql.GraphQLBoolean }
+              ImageBackground: {
+                type: new graphql.GraphQLObjectType({
+                  name: 'controlGameApiGameResponseImageBackgroundResponse',
+                  fields: {
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
+                  }
+                })
+              },
+              MaximumPlayersAllowed: { type: graphql.GraphQLInt },
+              MinimumMinutesBetweenTournamentRounds: {
+                type: graphql.GraphQLInt
+              },
+              Franchise: {
+                type: new graphql.GraphQLObjectType({
+                  name: 'controlGameApiGameResponseFranchiseResponse',
+                  fields: {
+                    GameFranchiseId: { type: graphql.GraphQLInt },
+                    GameFranchise: { type: graphql.GraphQLString },
+                    ImageLarge: {
+                      type: new graphql.GraphQLObjectType({
+                        name:
+                          'controlGameApiGameResponseFranchiseImageLargeResponse',
+                        fields: {
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
+                        }
+                      })
+                    },
+                    ImageSmall: {
+                      type: new graphql.GraphQLObjectType({
+                        name:
+                          'controlGameApiGameResponseFranchiseImageSmallResponse',
+                        fields: {
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
+                        }
+                      })
+                    },
+                    ImageBackground: {
+                      type: new graphql.GraphQLObjectType({
+                        name:
+                          'controlGameApiGameResponseFranchiseImageBackgroundResponse',
+                        fields: {
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
+                        }
+                      })
+                    },
+                    IsActive: { type: graphql.GraphQLBoolean }
+                  }
+                })
+              },
+              Developer: {
+                type: new graphql.GraphQLObjectType({
+                  name: 'controlGameApiGameResponseDeveloperResponse',
+                  fields: {
+                    GameDeveloperId: { type: graphql.GraphQLInt },
+                    GameDeveloper: { type: graphql.GraphQLString },
+                    Website: { type: graphql.GraphQLString },
+                    IsActive: { type: graphql.GraphQLBoolean }
+                  }
+                })
+              },
+              HasTeamSides: { type: graphql.GraphQLBoolean },
+              IsHearthstone: { type: graphql.GraphQLBoolean },
+              HearthstoneManageDecks: { type: graphql.GraphQLBoolean },
+              IsActive: { type: graphql.GraphQLBoolean }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCode: {
+  ApiGameBygameShortCode: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteGame',
     method: 'DELETE',
-    url: 'api/Game/{gameShortCode}',
+    url: '/api/Game/{gameShortCode}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeurlParams',
+            fields: { gameShortCode: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameBygameShortCodeResponse',
+      name: 'controlGameApiGameBygameShortCodeResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCodePlatformByplatformCodeStatus: {
+  ApiGameBygameShortCodePlatformByplatformCodeStatus: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.UpdateGamePlatformFranchiseTitleState',
     method: 'PUT',
-    url: 'api/Game/{gameShortCode}/platform/{platformCode}/Status',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { stateId: { type: graphql.GraphQLInt } }
-    }),
+    url: '/api/Game/{gameShortCode}/platform/{platformCode}/Status',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlGameApiGameBygameShortCodePlatformByplatformCodeStatusbody',
+            fields: { StateId: { type: graphql.GraphQLInt } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlGameApiGameBygameShortCodePlatformByplatformCodeStatusurlParams',
+            fields: {
+              platformCode: { type: graphql.GraphQLString },
+              gameShortCode: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'controlGameapiGameBygameShortCodePlatformByplatformCodeStatusResponse',
+        'controlGameApiGameBygameShortCodePlatformByplatformCodeStatusResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameModeBygameTitleModeIdHearthstoneDeck: {
+  ApiGameModeBygameTitleModeIdHearthstoneDeck: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreateModeHearthstoneDeck',
     method: 'POST',
-    url: 'api/Game/mode/{gameTitleModeId}/HearthstoneDeck',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        hearthstoneDeck: { type: graphql.GraphQLString },
-        hearthstoneDeckImage: { type: graphql.GraphQLString }
+    url: '/api/Game/mode/{gameTitleModeId}/HearthstoneDeck',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameModeBygameTitleModeIdHearthstoneDeckbody',
+            fields: {
+              HearthstoneDeck: { type: graphql.GraphQLString },
+              HearthstoneDeckImage: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlGameApiGameModeBygameTitleModeIdHearthstoneDeckurlParams',
+            fields: { gameTitleModeId: { type: graphql.GraphQLInt } }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameModeBygameTitleModeIdHearthstoneDeckResponse',
+      name: 'controlGameApiGameModeBygameTitleModeIdHearthstoneDeckResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameModeBygameTitleModeIdHearthstoneDeckBydeckId: {
+  ApiGameModeBygameTitleModeIdHearthstoneDeckBydeckId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteHearthstoneDeck',
     method: 'DELETE',
-    url: 'api/Game/mode/{gameTitleModeId}/HearthstoneDeck/{deckId}/',
+    url: '/api/Game/mode/{gameTitleModeId}/HearthstoneDeck/{deckId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlGameApiGameModeBygameTitleModeIdHearthstoneDeckBydeckIdurlParams',
+            fields: {
+              gameTitleModeId: { type: graphql.GraphQLInt },
+              deckId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'controlGameapiGameModeBygameTitleModeIdHearthstoneDeckBydeckIdResponse',
+        'controlGameApiGameModeBygameTitleModeIdHearthstoneDeckBydeckIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameModeBygameTitleModeIdMap: {
+  ApiGameModeBygameTitleModeIdMap: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreateModeMap',
     method: 'POST',
-    url: 'api/Game/mode/{gameTitleModeId}/Map',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        mapFileName: { type: graphql.GraphQLString },
-        mapDisplayName: { type: graphql.GraphQLString }
+    url: '/api/Game/mode/{gameTitleModeId}/Map',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameModeBygameTitleModeIdMapbody',
+            fields: {
+              MapFileName: { type: graphql.GraphQLString },
+              MapDisplayName: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameModeBygameTitleModeIdMapurlParams',
+            fields: { gameTitleModeId: { type: graphql.GraphQLInt } }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameModeBygameTitleModeIdMapResponse',
+      name: 'controlGameApiGameModeBygameTitleModeIdMapResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameModeBygameTitleModeIdMapBymapId: {
+  ApiGameModeBygameTitleModeIdMapBymapId: {
+    fullName: 'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteMap',
     method: 'DELETE',
-    url: 'api/Game/mode/{gameTitleModeId}/Map/{mapId}',
+    url: '/api/Game/mode/{gameTitleModeId}/Map/{mapId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameModeBygameTitleModeIdMapBymapIdurlParams',
+            fields: {
+              gameTitleModeId: { type: graphql.GraphQLInt },
+              mapId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameModeBygameTitleModeIdMapBymapIdResponse',
+      name: 'controlGameApiGameModeBygameTitleModeIdMapBymapIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCodeRules: {
+  ApiGameBygameShortCodeRules: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.PostCreate',
     method: 'POST',
-    url: 'api/Game/{gameShortCode}/Rules',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        ruleTitle: { type: graphql.GraphQLString },
-        rule: { type: graphql.GraphQLString },
-        isOfficial: { type: graphql.GraphQLBoolean }
+    url: '/api/Game/{gameShortCode}/Rules',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeRulesbody',
+            fields: {
+              RuleTitle: { type: graphql.GraphQLString },
+              Rule: { type: graphql.GraphQLString },
+              IsOfficial: { type: graphql.GraphQLBoolean }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeRulesurlParams',
+            fields: { gameShortCode: { type: graphql.GraphQLString } }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameBygameShortCodeRulesResponse',
+      name: 'controlGameApiGameBygameShortCodeRulesResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCodeRulesByruleId: {
+  ApiGameBygameShortCodeRulesByruleId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteRule',
     method: 'DELETE',
-    url: 'api/Game/{gameShortCode}/Rules/{ruleId}',
+    url: '/api/Game/{gameShortCode}/Rules/{ruleId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeRulesByruleIdurlParams',
+            fields: {
+              gameShortCode: { type: graphql.GraphQLString },
+              ruleId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameBygameShortCodeRulesByruleIdResponse',
+      name: 'controlGameApiGameBygameShortCodeRulesByruleIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGamePlatform: {
+  ApiGamePlatform: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreatePlatform',
     method: 'POST',
-    url: 'api/Game/Platform',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        platformCode: { type: graphql.GraphQLString },
-        platformName: { type: graphql.GraphQLString },
-        imageUrl: { type: graphql.GraphQLString }
+    url: '/api/Game/Platform',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGamePlatformbody',
+            fields: {
+              PlatformCode: { type: graphql.GraphQLString },
+              PlatformName: { type: graphql.GraphQLString },
+              ImageUrl: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGamePlatformResponse',
+      name: 'controlGameApiGamePlatformResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGamePlatformByplatformCode: {
+  ApiGamePlatformByplatformCode: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeletePlatform',
     method: 'DELETE',
-    url: 'api/Game/Platform/{platformCode}',
+    url: '/api/Game/Platform/{platformCode}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGamePlatformByplatformCodeurlParams',
+            fields: { platformCode: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGamePlatformByplatformCodeResponse',
+      name: 'controlGameApiGamePlatformByplatformCodeResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameFranchise: {
+  ApiGameFranchise: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreateFranchise',
     method: 'POST',
-    url: 'api/Game/Franchise',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        gameFranchise: { type: graphql.GraphQLString },
-        imageLargeUrl: { type: graphql.GraphQLString },
-        imageSmallUrl: { type: graphql.GraphQLString },
-        imageBackgroundUrl: { type: graphql.GraphQLString }
+    url: '/api/Game/Franchise',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameFranchisebody',
+            fields: {
+              GameFranchise: { type: graphql.GraphQLString },
+              ImageLargeUrl: { type: graphql.GraphQLString },
+              ImageSmallUrl: { type: graphql.GraphQLString },
+              ImageBackgroundUrl: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameFranchiseResponse',
+      name: 'controlGameApiGameFranchiseResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameFranchiseByfranchiseId: {
+  ApiGameFranchiseByfranchiseId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteFranchise',
     method: 'DELETE',
-    url: 'api/Game/Franchise/{franchiseId}',
+    url: '/api/Game/Franchise/{franchiseId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameFranchiseByfranchiseIdurlParams',
+            fields: { franchiseId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameFranchiseByfranchiseIdResponse',
+      name: 'controlGameApiGameFranchiseByfranchiseIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCodeSide: {
+  ApiGameBygameShortCodeSide: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreateTeamSide',
     method: 'POST',
-    url: 'api/Game/{gameShortCode}/Side',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { teamSideName: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Game/{gameShortCode}/Side',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeSidebody',
+            fields: { TeamSideName: { type: graphql.GraphQLString } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeSideurlParams',
+            fields: { gameShortCode: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameBygameShortCodeSideResponse',
+      name: 'controlGameApiGameBygameShortCodeSideResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameSideByteamSideId: {
+  ApiGameSideByteamSideId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteTeamSide',
     method: 'DELETE',
-    url: 'api/Game/Side/{teamSideId}',
+    url: '/api/Game/Side/{teamSideId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameSideByteamSideIdurlParams',
+            fields: { teamSideId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameSideByteamSideIdResponse',
+      name: 'controlGameApiGameSideByteamSideIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameDeveloper: {
+  ApiGameDeveloper: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreateDeveloper',
     method: 'POST',
-    url: 'api/Game/Developer',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        gameDeveloper: { type: graphql.GraphQLString },
-        website: { type: graphql.GraphQLString }
+    url: '/api/Game/Developer',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameDeveloperbody',
+            fields: {
+              GameDeveloper: { type: graphql.GraphQLString },
+              Website: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameDeveloperResponse',
+      name: 'controlGameApiGameDeveloperResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameDeveloperBydeveloperId: {
+  ApiGameDeveloperBydeveloperId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteDeveloper',
     method: 'DELETE',
-    url: 'api/Game/Developer/{developerId}',
+    url: '/api/Game/Developer/{developerId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameDeveloperBydeveloperIdurlParams',
+            fields: { developerId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameDeveloperBydeveloperIdResponse',
+      name: 'controlGameApiGameDeveloperBydeveloperIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCodeMode: {
+  ApiGameBygameShortCodeMode: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.CreateMode',
     method: 'POST',
-    url: 'api/Game/{gameShortCode}/Mode',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { gameMode: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Game/{gameShortCode}/Mode',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeModebody',
+            fields: { GameMode: { type: graphql.GraphQLString } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodeModeurlParams',
+            fields: { gameShortCode: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameBygameShortCodeModeResponse',
+      name: 'controlGameApiGameBygameShortCodeModeResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameModeBygameTitleModeId: {
+  ApiGameModeBygameTitleModeId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.DeleteMode',
     method: 'DELETE',
-    url: 'api/Game/Mode/{gameTitleModeId}',
+    url: '/api/Game/Mode/{gameTitleModeId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameModeBygameTitleModeIdurlParams',
+            fields: { gameTitleModeId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameModeBygameTitleModeIdResponse',
+      name: 'controlGameApiGameModeBygameTitleModeIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCodePlatformByplatformCode: {
+  ApiGameBygameShortCodePlatformByplatformCode: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.GameController.UpdatePlatformTitle',
     method: 'PUT',
-    url: 'api/Game/{gameShortCode}/platform/{platformCode}',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        gamePlatformFranchiseTitleStateId: { type: graphql.GraphQLInt },
-        gameDownloadLink: { type: graphql.GraphQLString },
-        validationMethodTypeId: { type: graphql.GraphQLInt },
-        imageLargeUrl: { type: graphql.GraphQLString },
-        imageSmallUrl: { type: graphql.GraphQLString },
-        imageBackgroundUrl: { type: graphql.GraphQLString }
+    url: '/api/Game/{gameShortCode}/platform/{platformCode}',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlGameApiGameBygameShortCodePlatformByplatformCodebody',
+            fields: {
+              GamePlatformFranchiseTitleStateId: { type: graphql.GraphQLInt },
+              GameDownloadLink: { type: graphql.GraphQLString },
+              ValidationMethodTypeId: { type: graphql.GraphQLInt },
+              ImageLargeUrl: { type: graphql.GraphQLString },
+              ImageSmallUrl: { type: graphql.GraphQLString },
+              ImageBackgroundUrl: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlGameApiGameBygameShortCodePlatformByplatformCodeurlParams',
+            fields: {
+              gameShortCode: { type: graphql.GraphQLString },
+              platformCode: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlGameapiGameBygameShortCodePlatformByplatformCodeResponse',
+      name: 'controlGameApiGameBygameShortCodePlatformByplatformCodeResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'controlGameapiGameBygameShortCodePlatformByplatformCoderesponseResponse',
+              'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseResponse',
             fields: {
-              gamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
-              platform: {
+              GamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
+              Platform: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'controlGameapiGameBygameShortCodePlatformByplatformCoderesponseplatformResponse',
+                    'controlGameApiGameBygameShortCodePlatformByplatformCodeResponsePlatformResponse',
                   fields: {
-                    gamePlatformId: { type: graphql.GraphQLInt },
-                    gamePlatformCode: { type: graphql.GraphQLString },
-                    gamePlatform: { type: graphql.GraphQLString },
-                    imageSmall: {
+                    GamePlatformId: { type: graphql.GraphQLInt },
+                    GamePlatformCode: { type: graphql.GraphQLString },
+                    GamePlatform: { type: graphql.GraphQLString },
+                    ImageSmall: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'controlGameapiGameBygameShortCodePlatformByplatformCoderesponseplatformimageSmallResponse',
+                          'controlGameApiGameBygameShortCodePlatformByplatformCodeResponsePlatformImageSmallResponse',
                         fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
                         }
                       })
                     },
-                    isActive: { type: graphql.GraphQLBoolean }
+                    IsActive: { type: graphql.GraphQLBoolean }
                   }
                 })
               },
-              game: {
+              Game: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegameResponse',
+                    'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameResponse',
                   fields: {
-                    gameTitleId: { type: graphql.GraphQLInt },
-                    gameName: { type: graphql.GraphQLString },
-                    gameShortCode: { type: graphql.GraphQLString },
-                    gameDescription: { type: graphql.GraphQLString },
-                    gameWebsite: { type: graphql.GraphQLString },
-                    imageLarge: {
+                    GameTitleId: { type: graphql.GraphQLInt },
+                    GameName: { type: graphql.GraphQLString },
+                    GameShortCode: { type: graphql.GraphQLString },
+                    GameDescription: { type: graphql.GraphQLString },
+                    GameWebsite: { type: graphql.GraphQLString },
+                    ImageLarge: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegameimageLargeResponse',
+                          'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameImageLargeResponse',
                         fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
                         }
                       })
                     },
-                    imageSmall: {
+                    ImageSmall: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegameimageSmallResponse',
+                          'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameImageSmallResponse',
                         fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
                         }
                       })
                     },
-                    imageBackground: {
+                    ImageBackground: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegameimageBackgroundResponse',
+                          'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameImageBackgroundResponse',
                         fields: {
-                          urlPath: { type: graphql.GraphQLString },
-                          relativePath: { type: graphql.GraphQLString }
+                          UrlPath: { type: graphql.GraphQLString },
+                          RelativePath: { type: graphql.GraphQLString }
                         }
                       })
                     },
-                    maximumPlayersAllowed: { type: graphql.GraphQLInt },
-                    minimumMinutesBetweenTournamentRounds: {
+                    MaximumPlayersAllowed: { type: graphql.GraphQLInt },
+                    MinimumMinutesBetweenTournamentRounds: {
                       type: graphql.GraphQLInt
                     },
-                    franchise: {
+                    Franchise: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegamefranchiseResponse',
+                          'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameFranchiseResponse',
                         fields: {
-                          gameFranchiseId: { type: graphql.GraphQLInt },
-                          gameFranchise: { type: graphql.GraphQLString },
-                          imageLarge: {
+                          GameFranchiseId: { type: graphql.GraphQLInt },
+                          GameFranchise: { type: graphql.GraphQLString },
+                          ImageLarge: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegamefranchiseimageLargeResponse',
+                                'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameFranchiseImageLargeResponse',
                               fields: {
-                                urlPath: { type: graphql.GraphQLString },
-                                relativePath: { type: graphql.GraphQLString }
+                                UrlPath: { type: graphql.GraphQLString },
+                                RelativePath: { type: graphql.GraphQLString }
                               }
                             })
                           },
-                          imageSmall: {
+                          ImageSmall: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegamefranchiseimageSmallResponse',
+                                'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameFranchiseImageSmallResponse',
                               fields: {
-                                urlPath: { type: graphql.GraphQLString },
-                                relativePath: { type: graphql.GraphQLString }
+                                UrlPath: { type: graphql.GraphQLString },
+                                RelativePath: { type: graphql.GraphQLString }
                               }
                             })
                           },
-                          imageBackground: {
+                          ImageBackground: {
                             type: new graphql.GraphQLObjectType({
                               name:
-                                'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegamefranchiseimageBackgroundResponse',
+                                'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameFranchiseImageBackgroundResponse',
                               fields: {
-                                urlPath: { type: graphql.GraphQLString },
-                                relativePath: { type: graphql.GraphQLString }
+                                UrlPath: { type: graphql.GraphQLString },
+                                RelativePath: { type: graphql.GraphQLString }
                               }
                             })
                           },
-                          isActive: { type: graphql.GraphQLBoolean }
+                          IsActive: { type: graphql.GraphQLBoolean }
                         }
                       })
                     },
-                    developer: {
+                    Developer: {
                       type: new graphql.GraphQLObjectType({
                         name:
-                          'controlGameapiGameBygameShortCodePlatformByplatformCoderesponsegamedeveloperResponse',
+                          'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseGameDeveloperResponse',
                         fields: {
-                          gameDeveloperId: { type: graphql.GraphQLInt },
-                          gameDeveloper: { type: graphql.GraphQLString },
-                          website: { type: graphql.GraphQLString },
-                          isActive: { type: graphql.GraphQLBoolean }
+                          GameDeveloperId: { type: graphql.GraphQLInt },
+                          GameDeveloper: { type: graphql.GraphQLString },
+                          Website: { type: graphql.GraphQLString },
+                          IsActive: { type: graphql.GraphQLBoolean }
                         }
                       })
                     },
-                    hasTeamSides: { type: graphql.GraphQLBoolean },
-                    isHearthstone: { type: graphql.GraphQLBoolean },
-                    hearthstoneManageDecks: { type: graphql.GraphQLBoolean },
-                    isActive: { type: graphql.GraphQLBoolean }
+                    HasTeamSides: { type: graphql.GraphQLBoolean },
+                    IsHearthstone: { type: graphql.GraphQLBoolean },
+                    HearthstoneManageDecks: { type: graphql.GraphQLBoolean },
+                    IsActive: { type: graphql.GraphQLBoolean }
                   }
                 })
               },
-              gamePlatformFranchiseTitleStateId: { type: graphql.GraphQLInt },
-              gameAddedDateTime: { type: graphql.GraphQLString },
-              gameDownloadLink: { type: graphql.GraphQLString },
-              chatPanelGuid: { type: graphql.GraphQLString },
-              imageLarge: {
+              GamePlatformFranchiseTitleStateId: { type: graphql.GraphQLInt },
+              GameAddedDateTime: { type: graphql.GraphQLString },
+              GameDownloadLink: { type: graphql.GraphQLString },
+              ChatPanelGuid: { type: graphql.GraphQLString },
+              ImageLarge: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'controlGameapiGameBygameShortCodePlatformByplatformCoderesponseimageLargeResponse',
+                    'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseImageLargeResponse',
                   fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
                   }
                 })
               },
-              imageSmall: {
+              ImageSmall: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'controlGameapiGameBygameShortCodePlatformByplatformCoderesponseimageSmallResponse',
+                    'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseImageSmallResponse',
                   fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
                   }
                 })
               },
-              imageBackground: {
+              ImageBackground: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'controlGameapiGameBygameShortCodePlatformByplatformCoderesponseimageBackgroundResponse',
+                    'controlGameApiGameBygameShortCodePlatformByplatformCodeResponseImageBackgroundResponse',
                   fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
                   }
                 })
               },
-              totalWinnings: { type: graphql.GraphQLInt },
-              thirdPartyApplicationId: { type: graphql.GraphQLString },
-              thirdPartyApiKey: { type: graphql.GraphQLString },
-              gameReleaseVersion: { type: graphql.GraphQLString },
-              gameRevisedDateTime: { type: graphql.GraphQLString },
-              gameVersion: { type: graphql.GraphQLString },
-              gameVersionNeedsVerification: { type: graphql.GraphQLBoolean },
-              issueGamesServerToMatch: { type: graphql.GraphQLBoolean },
-              tournamentCount: { type: graphql.GraphQLInt },
-              validationMethodTypeId: { type: graphql.GraphQLInt },
-              externalCallbackTemplateId: { type: graphql.GraphQLInt },
-              internalCallbackTemplateId: { type: graphql.GraphQLInt },
-              gameServerModVersion: { type: graphql.GraphQLFloat }
+              TotalWinnings: { type: graphql.GraphQLInt },
+              ThirdPartyApplicationId: { type: graphql.GraphQLString },
+              ThirdPartyApiKey: { type: graphql.GraphQLString },
+              GameReleaseVersion: { type: graphql.GraphQLString },
+              GameRevisedDateTime: { type: graphql.GraphQLString },
+              GameVersion: { type: graphql.GraphQLString },
+              GameVersionNeedsVerification: { type: graphql.GraphQLBoolean },
+              IssueGamesServerToMatch: { type: graphql.GraphQLBoolean },
+              TournamentCount: { type: graphql.GraphQLInt },
+              ValidationMethodTypeId: { type: graphql.GraphQLInt },
+              ExternalCallbackTemplateId: { type: graphql.GraphQLInt },
+              InternalCallbackTemplateId: { type: graphql.GraphQLInt },
+              GameServerModVersion: { type: graphql.GraphQLFloat }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiGameBygameShortCodePlatformByplatformCodeMetrics: {
+  ApiGameBygameShortCodePlatformByplatformCodeMetrics: {
+    fullName: 'GamingGrids.Api.Control.v2.Controllers.GameController.Snapshots',
     method: 'GET',
-    url: 'api/Game/{gameShortCode}/Platform/{platformCode}/Metrics',
+    url: '/api/Game/{gameShortCode}/Platform/{platformCode}/Metrics',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlGameApiGameBygameShortCodePlatformByplatformCodeMetricsuriParams',
+            fields: {
+              startDate: { type: graphql.GraphQLString },
+              endDate: { type: graphql.GraphQLString },
+              granularity: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlGameApiGameBygameShortCodePlatformByplatformCodeMetricsurlParams',
+            fields: {
+              platformCode: { type: graphql.GraphQLString },
+              gameShortCode: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'controlGameapiGameBygameShortCodePlatformByplatformCodeMetricsResponse',
+        'controlGameApiGameBygameShortCodePlatformByplatformCodeMetricsResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlGameapiGameBygameShortCodePlatformByplatformCodeMetricsresponseResponse',
+                'controlGameApiGameBygameShortCodePlatformByplatformCodeMetricsResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlGameapiGameBygameShortCodePlatformByplatformCodeMetricsresponseitemResponse',
-                    fields: {
-                      gamePlatformFranchiseTitleMetricSnapshotId: {
-                        type: graphql.GraphQLInt
-                      },
-                      gamePlatformFranchiseTitleId: {
-                        type: graphql.GraphQLInt
-                      },
-                      snapshotDateTime: { type: graphql.GraphQLString },
-                      unconfirmedPlayerCount: { type: graphql.GraphQLInt },
-                      confirmedPlayerCount: { type: graphql.GraphQLInt },
-                      activeTeamCount: { type: graphql.GraphQLInt },
-                      disbanedTeamCount: { type: graphql.GraphQLInt },
-                      fivePlayersOrMoreTeamCount: { type: graphql.GraphQLInt },
-                      onlineGamingServerCount: { type: graphql.GraphQLInt },
-                      offlineGamingServerCount: { type: graphql.GraphQLInt },
-                      liveTournamentCount: { type: graphql.GraphQLInt },
-                      completedTournamentCount: { type: graphql.GraphQLInt },
-                      upcomingTournamentCount: { type: graphql.GraphQLInt },
-                      tournamentMatchCount: { type: graphql.GraphQLInt },
-                      disputedTournamentMatchCount: {
-                        type: graphql.GraphQLInt
-                      },
-                      forfeitTournamentMatchCount: { type: graphql.GraphQLInt }
-                    }
-                  })
-                }
+                GamePlatformFranchiseTitleMetricSnapshotId: {
+                  type: graphql.GraphQLInt
+                },
+                GamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
+                SnapshotDateTime: { type: graphql.GraphQLString },
+                UnconfirmedPlayerCount: { type: graphql.GraphQLInt },
+                ConfirmedPlayerCount: { type: graphql.GraphQLInt },
+                ActiveTeamCount: { type: graphql.GraphQLInt },
+                DisbanedTeamCount: { type: graphql.GraphQLInt },
+                FivePlayersOrMoreTeamCount: { type: graphql.GraphQLInt },
+                OnlineGamingServerCount: { type: graphql.GraphQLInt },
+                OfflineGamingServerCount: { type: graphql.GraphQLInt },
+                LiveTournamentCount: { type: graphql.GraphQLInt },
+                CompletedTournamentCount: { type: graphql.GraphQLInt },
+                UpcomingTournamentCount: { type: graphql.GraphQLInt },
+                TournamentMatchCount: { type: graphql.GraphQLInt },
+                DisputedTournamentMatchCount: { type: graphql.GraphQLInt },
+                ForfeitTournamentMatchCount: { type: graphql.GraphQLInt }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

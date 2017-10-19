@@ -1,26 +1,38 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiPlatformMaintenanceStatus: {
+  ApiPlatformMaintenanceStatus: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.PlatformController.MaintenanceStatus',
     method: 'GET',
-    url: 'api/Platform/Maintenance/Status',
+    url: '/api/Platform/Maintenance/Status',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'pollingPlatformApiPlatformMaintenanceStatusuriParams',
+            fields: { lastUpdatedDateTime: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'pollingPlatformapiPlatformMaintenanceStatusResponse',
+      name: 'pollingPlatformApiPlatformMaintenanceStatusResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
-            name: 'pollingPlatformapiPlatformMaintenanceStatusresponseResponse',
+            name: 'pollingPlatformApiPlatformMaintenanceStatusResponseResponse',
             fields: {
-              maintenanceMode: { type: graphql.GraphQLBoolean },
-              administratorOnlyAccess: { type: graphql.GraphQLBoolean },
-              statusNoticeText: { type: graphql.GraphQLString },
-              lastUpdatedByAdministratorId: { type: graphql.GraphQLInt },
-              lastUpdatedDateTime: { type: graphql.GraphQLString }
+              MaintenanceMode: { type: graphql.GraphQLBoolean },
+              AdministratorOnlyAccess: { type: graphql.GraphQLBoolean },
+              StatusNoticeText: { type: graphql.GraphQLString },
+              LastUpdatedByAdministratorId: { type: graphql.GraphQLInt },
+              LastUpdatedDateTime: { type: graphql.GraphQLString }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

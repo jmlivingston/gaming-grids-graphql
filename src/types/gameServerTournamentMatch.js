@@ -1,507 +1,678 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiTournamentMatchByTournamentMatchIdLiveScore: {
+  ApiTournamentMatchByTournamentMatchIdLiveScore: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.UpdateLiveScore',
     method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Live/Score',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        currentInGameScoreA: { type: graphql.GraphQLFloat },
-        currentInGameScoreB: { type: graphql.GraphQLFloat }
-      }
-    }),
-    response: new graphql.GraphQLObjectType({
-      name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdLiveScoreResponse',
-      fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiTournamentMatchByTournamentMatchIdMessagePendingList: {
-    method: 'GET',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Message/Pending/List',
-    response: new graphql.GraphQLObjectType({
-      name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdMessagePendingListResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name:
-                'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdMessagePendingListresponseResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdMessagePendingListresponseitemResponse',
-                    fields: {
-                      messageId: { type: graphql.GraphQLInt },
-                      tournamentMatchId: { type: graphql.GraphQLInt },
-                      messageDirection: { type: graphql.GraphQLInt },
-                      message: { type: graphql.GraphQLString },
-                      pendingServerProcessing: { type: graphql.GraphQLBoolean },
-                      messageDateTime: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
-              }
-            })
-          )
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiTournamentMatchByTournamentMatchIdMessageSend: {
-    method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Message/Send',
-    urlParams: {
-      message: {
-        type: graphql.GraphQLString
+    url: '/api/Tournament/Match/{TournamentMatchId}/Live/Score',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdLiveScorebody',
+            fields: {
+              CurrentInGameScoreA: { type: graphql.GraphQLFloat },
+              CurrentInGameScoreB: { type: graphql.GraphQLFloat }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdLiveScoreurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
       }
     },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdMessageSendResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdLiveScoreResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdPlayerListActive: {
+  ApiTournamentMatchByTournamentMatchIdMessagePendingList: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.MessageQueueList',
     method: 'GET',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Player/List/Active',
+    url: '/api/Tournament/Match/{TournamentMatchId}/Message/Pending/List',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdMessagePendingListurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdMessagePendingListResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveresponseResponse',
+                'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdMessagePendingListResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
+                MessageId: { type: graphql.GraphQLInt },
+                TournamentMatchId: { type: graphql.GraphQLInt },
+                MessageDirection: { type: graphql.GraphQLInt },
+                Message: { type: graphql.GraphQLString },
+                PendingServerProcessing: { type: graphql.GraphQLBoolean },
+                MessageDateTime: { type: graphql.GraphQLString }
+              }
+            })
+          )
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiTournamentMatchByTournamentMatchIdMessageSend: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.SendMessage',
+    method: 'POST',
+    url: '/api/Tournament/Match/{TournamentMatchId}/Message/Send',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdMessageSendbody',
+            fields: { Message: { type: graphql.GraphQLString } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdMessageSendurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name:
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdMessageSendResponse',
+      fields: {
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiTournamentMatchByTournamentMatchIdPlayerListActive: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.GetActivePlayers',
+    method: 'GET',
+    url: '/api/Tournament/Match/{TournamentMatchId}/Player/List/Active',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name:
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLList(
+            new graphql.GraphQLObjectType({
+              name:
+                'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveResponseResponse',
+              fields: {
+                TournamentMatchId: { type: graphql.GraphQLInt },
+                TournamentId: { type: graphql.GraphQLInt },
+                EntityPlayerId: { type: graphql.GraphQLInt },
+                IsTeamCaptain: { type: graphql.GraphQLBoolean },
+                IsOnTeamA: { type: graphql.GraphQLBoolean },
+                Nickname: { type: graphql.GraphQLString },
+                VoteDidMyTeamWin: { type: graphql.GraphQLBoolean },
+                IsReady: { type: graphql.GraphQLBoolean },
+                WasRemoved: { type: graphql.GraphQLBoolean },
+                HasPenalty: { type: graphql.GraphQLBoolean },
+                IsActive: { type: graphql.GraphQLBoolean },
+                GamePlayerIdentifier: { type: graphql.GraphQLString },
+                SteamId32: { type: graphql.GraphQLString },
+                SteamId64: { type: graphql.GraphQLString },
+                Profile: {
                   type: new graphql.GraphQLObjectType({
                     name:
-                      'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveresponseitemResponse',
+                      'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveResponseProfileResponse',
                     fields: {
-                      tournamentMatchId: { type: graphql.GraphQLInt },
-                      tournamentId: { type: graphql.GraphQLInt },
-                      entityPlayerId: { type: graphql.GraphQLInt },
-                      isTeamCaptain: { type: graphql.GraphQLBoolean },
-                      isOnTeamA: { type: graphql.GraphQLBoolean },
-                      nickname: { type: graphql.GraphQLString },
-                      voteDidMyTeamWin: { type: graphql.GraphQLBoolean },
-                      isReady: { type: graphql.GraphQLBoolean },
-                      wasRemoved: { type: graphql.GraphQLBoolean },
-                      hasPenalty: { type: graphql.GraphQLBoolean },
-                      isActive: { type: graphql.GraphQLBoolean },
-                      gamePlayerIdentifier: { type: graphql.GraphQLString },
-                      steamId32: { type: graphql.GraphQLString },
-                      steamId64: { type: graphql.GraphQLString },
-                      profile: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveresponseitemprofileResponse',
-                          fields: {
-                            nickname: { type: graphql.GraphQLString },
-                            lanModeEnabled: { type: graphql.GraphQLBoolean },
-                            lanSeatLocation: { type: graphql.GraphQLString },
-                            entityName: { type: graphql.GraphQLString },
-                            entityIsTeam: { type: graphql.GraphQLBoolean },
-                            displayName: { type: graphql.GraphQLString },
-                            entityImageUrl: { type: graphql.GraphQLString },
-                            entityImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            },
-                            entityBackgroundImageUrl: {
-                              type: graphql.GraphQLString
-                            },
-                            entityBackgroundImageUrlIsExternal: {
-                              type: graphql.GraphQLBoolean
-                            }
-                          }
-                        })
+                      Nickname: { type: graphql.GraphQLString },
+                      LanModeEnabled: { type: graphql.GraphQLBoolean },
+                      LanSeatLocation: { type: graphql.GraphQLString },
+                      EntityName: { type: graphql.GraphQLString },
+                      EntityIsTeam: { type: graphql.GraphQLBoolean },
+                      DisplayName: { type: graphql.GraphQLString },
+                      EntityImageUrl: { type: graphql.GraphQLString },
+                      EntityImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
                       },
-                      firstName: { type: graphql.GraphQLString },
-                      lastName: { type: graphql.GraphQLString },
-                      addressCountry: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveresponseitemaddressCountryResponse',
-                          fields: {
-                            addressCountryId: { type: graphql.GraphQLInt },
-                            addressCountryCode: { type: graphql.GraphQLString },
-                            addressCountry3LetterCode: {
-                              type: graphql.GraphQLString
-                            },
-                            addressCountry: { type: graphql.GraphQLString },
-                            allowsRealMoney: { type: graphql.GraphQLBoolean },
-                            flagSmallImageUrl: { type: graphql.GraphQLString },
-                            flagLargeImageUrl: { type: graphql.GraphQLString },
-                            showInList: { type: graphql.GraphQLBoolean },
-                            orderBy: { type: graphql.GraphQLInt }
-                          }
-                        })
-                      },
-                      streamingServices: {
-                        type: new graphql.GraphQLList(
-                          new graphql.GraphQLObjectType({
-                            name:
-                              'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveresponseitemstreamingServicesResponse',
-                            fields: {
-                              capacity: { type: graphql.GraphQLInt },
-                              count: { type: graphql.GraphQLInt },
-                              item: {
-                                type: new graphql.GraphQLObjectType({
-                                  name:
-                                    'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveresponseitemstreamingServicesitemResponse',
-                                  fields: {
-                                    entityId: { type: graphql.GraphQLInt },
-                                    streamName: { type: graphql.GraphQLString },
-                                    streamLink: { type: graphql.GraphQLString },
-                                    streamCurrentlyActive: {
-                                      type: graphql.GraphQLBoolean
-                                    },
-                                    streamActiveViewers: {
-                                      type: graphql.GraphQLInt
-                                    },
-                                    lastUpdatedDateTime: {
-                                      type: graphql.GraphQLString
-                                    },
-                                    streamingServiceId: {
-                                      type: graphql.GraphQLInt
-                                    },
-                                    streamingService: {
-                                      type: graphql.GraphQLString
-                                    },
-                                    sourceName: { type: graphql.GraphQLString }
-                                  }
-                                })
-                              }
-                            }
-                          })
-                        )
+                      EntityBackgroundImageUrl: { type: graphql.GraphQLString },
+                      EntityBackgroundImageUrlIsExternal: {
+                        type: graphql.GraphQLBoolean
                       }
                     }
                   })
+                },
+                FirstName: { type: graphql.GraphQLString },
+                LastName: { type: graphql.GraphQLString },
+                AddressCountry: {
+                  type: new graphql.GraphQLObjectType({
+                    name:
+                      'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveResponseAddressCountryResponse',
+                    fields: {
+                      AddressCountryId: { type: graphql.GraphQLInt },
+                      AddressCountryCode: { type: graphql.GraphQLString },
+                      AddressCountry3LetterCode: {
+                        type: graphql.GraphQLString
+                      },
+                      AddressCountry: { type: graphql.GraphQLString },
+                      AllowsRealMoney: { type: graphql.GraphQLBoolean },
+                      FlagSmallImageUrl: { type: graphql.GraphQLString },
+                      FlagLargeImageUrl: { type: graphql.GraphQLString },
+                      ShowInList: { type: graphql.GraphQLBoolean },
+                      OrderBy: { type: graphql.GraphQLInt }
+                    }
+                  })
+                },
+                StreamingServices: {
+                  type: new graphql.GraphQLList(
+                    new graphql.GraphQLObjectType({
+                      name:
+                        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveResponseStreamingServicesResponse',
+                      fields: {
+                        EntityId: { type: graphql.GraphQLInt },
+                        StreamName: { type: graphql.GraphQLString },
+                        StreamLink: { type: graphql.GraphQLString },
+                        StreamCurrentlyActive: { type: graphql.GraphQLBoolean },
+                        StreamActiveViewers: { type: graphql.GraphQLInt },
+                        LastUpdatedDateTime: { type: graphql.GraphQLString },
+                        StreamingServiceId: { type: graphql.GraphQLInt },
+                        StreamingService: { type: graphql.GraphQLString },
+                        SourceName: { type: graphql.GraphQLString }
+                      }
+                    })
+                  )
                 }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdPlayerListActiveMinified: {
+  ApiTournamentMatchByTournamentMatchIdPlayerListActiveMinified: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.ActivePlayersMini',
     method: 'GET',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Player/List/Active/Minified',
+    url:
+      '/api/Tournament/Match/{TournamentMatchId}/Player/List/Active/Minified',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveMinifiedurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveMinifiedResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveMinifiedResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveMinifiedresponseResponse',
+                'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerListActiveMinifiedResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerListActiveMinifiedresponseitemResponse',
-                    fields: {
-                      tournamentMatchId: { type: graphql.GraphQLInt },
-                      tournamentId: { type: graphql.GraphQLInt },
-                      entityPlayerId: { type: graphql.GraphQLInt },
-                      isTeamCaptain: { type: graphql.GraphQLBoolean },
-                      isOnTeamA: { type: graphql.GraphQLBoolean },
-                      nickname: { type: graphql.GraphQLString },
-                      voteDidMyTeamWin: { type: graphql.GraphQLBoolean },
-                      isReady: { type: graphql.GraphQLBoolean },
-                      wasRemoved: { type: graphql.GraphQLBoolean },
-                      hasPenalty: { type: graphql.GraphQLBoolean },
-                      isActive: { type: graphql.GraphQLBoolean },
-                      gamePlayerIdentifier: { type: graphql.GraphQLString },
-                      steamId32: { type: graphql.GraphQLString },
-                      steamId64: { type: graphql.GraphQLString },
-                      addressCountry: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                TournamentMatchId: { type: graphql.GraphQLInt },
+                TournamentId: { type: graphql.GraphQLInt },
+                EntityPlayerId: { type: graphql.GraphQLInt },
+                IsTeamCaptain: { type: graphql.GraphQLBoolean },
+                IsOnTeamA: { type: graphql.GraphQLBoolean },
+                Nickname: { type: graphql.GraphQLString },
+                VoteDidMyTeamWin: { type: graphql.GraphQLBoolean },
+                IsReady: { type: graphql.GraphQLBoolean },
+                WasRemoved: { type: graphql.GraphQLBoolean },
+                HasPenalty: { type: graphql.GraphQLBoolean },
+                IsActive: { type: graphql.GraphQLBoolean },
+                GamePlayerIdentifier: { type: graphql.GraphQLString },
+                SteamId32: { type: graphql.GraphQLString },
+                SteamId64: { type: graphql.GraphQLString },
+                AddressCountry: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdPlayerByentityName: {
+  ApiTournamentMatchByTournamentMatchIdPlayerByentityName: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.RemovePlayer',
     method: 'DELETE',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Player/{entityName}',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { hasPenalty: { type: graphql.GraphQLBoolean } }
-    }),
-    response: new graphql.GraphQLObjectType({
-      name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerByentityNameResponse',
-      fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiTournamentMatchByTournamentMatchIdPlayerFeedbackReport: {
-    method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Player/Feedback/Report',
-    urlParams: {
-      entityId: {
-        type: graphql.GraphQLInt
+    url: '/api/Tournament/Match/{TournamentMatchId}/Player/{entityName}',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerByentityNamebody',
+            fields: { HasPenalty: { type: graphql.GraphQLBoolean } }
+          })
+        )
       },
-      tournamentMatchId: {
-        type: graphql.GraphQLInt
-      },
-      gameShortCode: {
-        type: graphql.GraphQLString
-      },
-      feedbackReportedById: {
-        type: graphql.GraphQLInt
-      },
-      feedbackRating: {
-        type: graphql.GraphQLInt
-      },
-      feedbackMessage: {
-        type: graphql.GraphQLString
-      },
-      inappropriateFlags: {
-        type: graphql.GraphQLBoolean
-      },
-      reportToAdministrator: {
-        type: graphql.GraphQLBoolean
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerByentityNameurlParams',
+            fields: {
+              entityName: { type: graphql.GraphQLString },
+              TournamentMatchId: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
     },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlayerFeedbackReportResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerByentityNameResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdFinalize: {
+  ApiTournamentMatchByTournamentMatchIdPlayerFeedbackReport: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.ReportFeedback',
     method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Finalize',
-    urlParams: {
-      participantAResults: {
-        type: new graphql.GraphQLObjectType({
-          name: 'urlParamparticipantAResultsResponse',
-          fields: {
-            isNoShow: { type: graphql.GraphQLBoolean },
-            didForfeit: { type: graphql.GraphQLBoolean },
-            finalScore: { type: graphql.GraphQLFloat }
-          }
-        })
+    url: '/api/Tournament/Match/{TournamentMatchId}/Player/Feedback/Report',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerFeedbackReportbody',
+            fields: {
+              EntityId: { type: graphql.GraphQLInt },
+              TournamentMatchId: { type: graphql.GraphQLInt },
+              GameShortCode: { type: graphql.GraphQLString },
+              FeedbackReportedById: { type: graphql.GraphQLInt },
+              FeedbackRating: { type: graphql.GraphQLInt },
+              FeedbackMessage: { type: graphql.GraphQLString },
+              InappropriateFlags: { type: graphql.GraphQLBoolean },
+              ReportToAdministrator: { type: graphql.GraphQLBoolean }
+            }
+          })
+        )
       },
-      participantBResults: {
-        type: new graphql.GraphQLObjectType({
-          name: 'urlParamparticipantBResultsResponse',
-          fields: {
-            isNoShow: { type: graphql.GraphQLBoolean },
-            didForfeit: { type: graphql.GraphQLBoolean },
-            finalScore: { type: graphql.GraphQLFloat }
-          }
-        })
-      },
-      serverSentPlayerSummaryStatistics: {
-        type: graphql.GraphQLBoolean
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerFeedbackReporturlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
       }
     },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdFinalizeResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlayerFeedbackReportResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdAssistanceRequest: {
+  ApiTournamentMatchByTournamentMatchIdFinalize: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.Finalize',
     method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Assistance/Request',
-    urlParams: {
-      entityId: {
-        type: graphql.GraphQLInt
+    url: '/api/Tournament/Match/{TournamentMatchId}/Finalize',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdFinalizebody',
+            fields: {
+              ParticipantAResults: {
+                type: new graphql.GraphQLInputObjectType({
+                  name:
+                    'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdFinalizebodyParticipantAResultsResponse',
+                  fields: {
+                    IsNoShow: { type: graphql.GraphQLBoolean },
+                    DidForfeit: { type: graphql.GraphQLBoolean },
+                    FinalScore: { type: graphql.GraphQLFloat }
+                  }
+                })
+              },
+              ParticipantBResults: {
+                type: new graphql.GraphQLInputObjectType({
+                  name:
+                    'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdFinalizebodyParticipantBResultsResponse',
+                  fields: {
+                    IsNoShow: { type: graphql.GraphQLBoolean },
+                    DidForfeit: { type: graphql.GraphQLBoolean },
+                    FinalScore: { type: graphql.GraphQLFloat }
+                  }
+                })
+              },
+              ServerSentPlayerSummaryStatistics: {
+                type: graphql.GraphQLBoolean
+              }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdFinalizeurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
       }
     },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdAssistanceRequestResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdFinalizeResponse',
       fields: {
-        response: {
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiTournamentMatchByTournamentMatchIdAssistanceRequest: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.PostRequestAssistance',
+    method: 'POST',
+    url: '/api/Tournament/Match/{TournamentMatchId}/Assistance/Request',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdAssistanceRequestbody',
+            fields: { EntityId: { type: graphql.GraphQLInt } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdAssistanceRequesturlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name:
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdAssistanceRequestResponse',
+      fields: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdAssistanceRequestresponseResponse',
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdAssistanceRequestResponseResponse',
             fields: {
-              assistanceRequestedById: { type: graphql.GraphQLInt },
-              tournamentMatchAssistanceId: { type: graphql.GraphQLInt }
+              AssistanceRequestedById: { type: graphql.GraphQLInt },
+              TournamentMatchAssistanceId: { type: graphql.GraphQLInt }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdSnapshotListByroundNumber: {
+  ApiTournamentMatchByTournamentMatchIdSnapshotListByroundNumber: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.List',
     method: 'GET',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Snapshot/List/{roundNumber}',
-    response: new graphql.GraphQLObjectType({
-      name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdSnapshotListByroundNumberResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
+    url:
+      '/api/Tournament/Match/{TournamentMatchId}/Snapshot/List/{roundNumber}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
             name:
-              'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdSnapshotListByroundNumberresponseResponse',
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotListByroundNumberurlParams',
             fields: {
-              tournamentMatchId: { type: graphql.GraphQLInt },
               roundNumber: { type: graphql.GraphQLInt },
-              snapshot: { type: graphql.GraphQLString },
-              snapshotDateTime: { type: graphql.GraphQLString }
+              TournamentMatchId: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name:
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotListByroundNumberResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotListByroundNumberResponseResponse',
+            fields: {
+              TournamentMatchId: { type: graphql.GraphQLInt },
+              RoundNumber: { type: graphql.GraphQLInt },
+              Snapshot: { type: graphql.GraphQLString },
+              SnapshotDateTime: { type: graphql.GraphQLString }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdSnapshotList: {
+  ApiTournamentMatchByTournamentMatchIdSnapshotList: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.List',
     method: 'GET',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Snapshot/List',
+    url: '/api/Tournament/Match/{TournamentMatchId}/Snapshot/List',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotListurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdSnapshotListResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotListResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdSnapshotListresponseResponse',
+                'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotListResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdSnapshotListresponseitemResponse',
-                    fields: {
-                      tournamentMatchId: { type: graphql.GraphQLInt },
-                      roundNumber: { type: graphql.GraphQLInt },
-                      snapshot: { type: graphql.GraphQLString },
-                      snapshotDateTime: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                TournamentMatchId: { type: graphql.GraphQLInt },
+                RoundNumber: { type: graphql.GraphQLInt },
+                Snapshot: { type: graphql.GraphQLString },
+                SnapshotDateTime: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdSnapshotCount: {
+  ApiTournamentMatchByTournamentMatchIdSnapshotCount: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.Count',
     method: 'GET',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Snapshot/Count',
+    url: '/api/Tournament/Match/{TournamentMatchId}/Snapshot/Count',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotCounturlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdSnapshotCountResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotCountResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdSnapshotCreate: {
+  ApiTournamentMatchByTournamentMatchIdSnapshotCreate: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.Create',
     method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Snapshot/Create',
-    urlParams: {
-      roundNumber: {
-        type: graphql.GraphQLInt
+    url: '/api/Tournament/Match/{TournamentMatchId}/Snapshot/Create',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotCreatebody',
+            fields: {
+              RoundNumber: { type: graphql.GraphQLInt },
+              Snapshot: { type: graphql.GraphQLString }
+            }
+          })
+        )
       },
-      snapshot: {
-        type: graphql.GraphQLString
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotCreateurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
       }
     },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdSnapshotCreateResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdSnapshotCreateResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdPlayback: {
+  ApiTournamentMatchByTournamentMatchIdPlayback: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.SendUrl',
     method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/Playback',
-    urlParams: {
-      playbackUrl: {
-        type: graphql.GraphQLString
+    url: '/api/Tournament/Match/{TournamentMatchId}/Playback',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlaybackbody',
+            fields: { PlaybackUrl: { type: graphql.GraphQLString } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlaybackurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
       }
     },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdPlaybackResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdPlaybackResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchByTournamentMatchIdWorldOfTanksCallback: {
+  ApiTournamentMatchByTournamentMatchIdWorldOfTanksCallback: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.WargamingMatchCallback',
     method: 'POST',
-    url: 'api/Tournament/Match/{TournamentMatchId}/WorldOfTanksCallback',
+    url: '/api/Tournament/Match/{TournamentMatchId}/WorldOfTanksCallback',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdWorldOfTanksCallbackurlParams',
+            fields: { TournamentMatchId: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchByTournamentMatchIdWorldOfTanksCallbackResponse',
+        'gameServerTournamentMatchApiTournamentMatchByTournamentMatchIdWorldOfTanksCallbackResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentMatchLeagueOfLegendsCallback: {
+  ApiTournamentMatchLeagueOfLegendsCallback: {
+    fullName:
+      'GamingGrids.Api.GameServer.v1.Controllers.TournamentMatchController.LeagueOfLegendsCallback',
     method: 'POST',
-    url: 'api/Tournament/Match/LeagueOfLegendsCallback',
-    body: graphql.GraphQLString,
+    url: '/api/Tournament/Match/LeagueOfLegendsCallback',
+    args: {},
     response: new graphql.GraphQLObjectType({
       name:
-        'gameServerTournamentMatchapiTournamentMatchLeagueOfLegendsCallbackResponse',
+        'gameServerTournamentMatchApiTournamentMatchLeagueOfLegendsCallbackResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

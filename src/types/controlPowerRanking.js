@@ -1,191 +1,188 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiPowerRankingProfile: {
+  ApiPowerRankingProfile: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PowerRankingController.CreatePowerRankingProfile',
     method: 'POST',
-    url: 'api/PowerRanking/Profile',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        powerRankingProfile: { type: graphql.GraphQLString },
-        joiningTournamentPoints: { type: graphql.GraphQLInt },
-        joiningTournamentSizeMultiplier: { type: graphql.GraphQLBoolean },
-        pointsForWin: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'bodypointsForWinResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: { type: graphql.GraphQLInt }
-              }
-            })
-          )
-        },
-        pointsForLoss: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'bodypointsForLossResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: { type: graphql.GraphQLInt }
-              }
-            })
-          )
-        }
+    url: '/api/PowerRanking/Profile',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPowerRankingApiPowerRankingProfilebody',
+            fields: {
+              PowerRankingProfile: { type: graphql.GraphQLString },
+              JoiningTournamentPoints: { type: graphql.GraphQLInt },
+              JoiningTournamentSizeMultiplier: { type: graphql.GraphQLBoolean },
+              PointsForWin: { type: graphql.GraphQLInt },
+              PointsForLoss: { type: graphql.GraphQLInt }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPowerRankingapiPowerRankingProfileResponse',
+      name: 'controlPowerRankingApiPowerRankingProfileResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPowerRankingProfileBypowerRankingProfileId: {
+  ApiPowerRankingProfileBypowerRankingProfileId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PowerRankingController.DeletePowerRankingProfile',
     method: 'DELETE',
-    url: 'api/PowerRanking/Profile/{powerRankingProfileId}',
+    url: '/api/PowerRanking/Profile/{powerRankingProfileId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlPowerRankingApiPowerRankingProfileBypowerRankingProfileIdurlParams',
+            fields: { powerRankingProfileId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'controlPowerRankingapiPowerRankingProfileBypowerRankingProfileIdResponse',
+        'controlPowerRankingApiPowerRankingProfileBypowerRankingProfileIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPowerRankingDivision: {
+  ApiPowerRankingDivision: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PowerRankingController.CreatePowerRankingDivision',
     method: 'POST',
-    url: 'api/PowerRanking/Division',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        powerRankingDivision: { type: graphql.GraphQLString },
-        topPoints: { type: graphql.GraphQLInt },
-        bottomPoints: { type: graphql.GraphQLInt },
-        powerRankingImageLogoUrl: { type: graphql.GraphQLString },
-        powerRankingLevels: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'bodypowerRankingLevelsResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name: 'bodypowerRankingLevelsitemResponse',
+    url: '/api/PowerRanking/Division',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPowerRankingApiPowerRankingDivisionbody',
+            fields: {
+              PowerRankingDivision: { type: graphql.GraphQLString },
+              TopPoints: { type: graphql.GraphQLInt },
+              BottomPoints: { type: graphql.GraphQLInt },
+              PowerRankingImageLogoUrl: { type: graphql.GraphQLString },
+              PowerRankingLevels: {
+                type: new graphql.GraphQLList(
+                  new graphql.GraphQLInputObjectType({
+                    name:
+                      'controlPowerRankingApiPowerRankingDivisionbodyPowerRankingLevelsResponse',
                     fields: {
-                      powerRankingLevelNumber: { type: graphql.GraphQLInt },
-                      topPoints: { type: graphql.GraphQLInt },
-                      bottomPoints: { type: graphql.GraphQLInt }
+                      PowerRankingLevelNumber: { type: graphql.GraphQLInt },
+                      TopPoints: { type: graphql.GraphQLInt },
+                      BottomPoints: { type: graphql.GraphQLInt }
                     }
                   })
-                }
+                )
               }
-            })
-          )
-        }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPowerRankingapiPowerRankingDivisionResponse',
+      name: 'controlPowerRankingApiPowerRankingDivisionResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPowerRankingDivisionBypowerRankingDivisionId: {
+  ApiPowerRankingDivisionBypowerRankingDivisionId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PowerRankingController.UpdatePowerRankingDivision',
     method: 'PUT',
-    url: 'api/PowerRanking/Division/{powerRankingDivisionId}',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        powerRankingDivision: { type: graphql.GraphQLString },
-        topPoints: { type: graphql.GraphQLInt },
-        bottomPoints: { type: graphql.GraphQLInt },
-        powerRankingImageLogoUrl: { type: graphql.GraphQLString },
-        powerRankingLevels: {
-          type: new graphql.GraphQLList(
-            new graphql.GraphQLObjectType({
-              name: 'bodypowerRankingLevelsResponse',
-              fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name: 'bodypowerRankingLevelsitemResponse',
+    url: '/api/PowerRanking/Division/{powerRankingDivisionId}',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlPowerRankingApiPowerRankingDivisionBypowerRankingDivisionIdbody',
+            fields: {
+              PowerRankingDivision: { type: graphql.GraphQLString },
+              TopPoints: { type: graphql.GraphQLInt },
+              BottomPoints: { type: graphql.GraphQLInt },
+              PowerRankingImageLogoUrl: { type: graphql.GraphQLString },
+              PowerRankingLevels: {
+                type: new graphql.GraphQLList(
+                  new graphql.GraphQLInputObjectType({
+                    name:
+                      'controlPowerRankingApiPowerRankingDivisionBypowerRankingDivisionIdbodyPowerRankingLevelsResponse',
                     fields: {
-                      powerRankingLevelNumber: { type: graphql.GraphQLInt },
-                      topPoints: { type: graphql.GraphQLInt },
-                      bottomPoints: { type: graphql.GraphQLInt }
+                      PowerRankingLevelNumber: { type: graphql.GraphQLInt },
+                      TopPoints: { type: graphql.GraphQLInt },
+                      BottomPoints: { type: graphql.GraphQLInt }
                     }
                   })
-                }
+                )
               }
-            })
-          )
-        }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlPowerRankingApiPowerRankingDivisionBypowerRankingDivisionIdurlParams',
+            fields: { powerRankingDivisionId: { type: graphql.GraphQLInt } }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'controlPowerRankingapiPowerRankingDivisionBypowerRankingDivisionIdResponse',
+        'controlPowerRankingApiPowerRankingDivisionBypowerRankingDivisionIdResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'controlPowerRankingapiPowerRankingDivisionBypowerRankingDivisionIdresponseResponse',
+              'controlPowerRankingApiPowerRankingDivisionBypowerRankingDivisionIdResponseResponse',
             fields: {
-              powerRankingDivisionId: { type: graphql.GraphQLInt },
-              powerRankingDivision: { type: graphql.GraphQLString },
-              topPoints: { type: graphql.GraphQLInt },
-              bottomPoints: { type: graphql.GraphQLInt },
-              numberOfLevels: { type: graphql.GraphQLInt },
-              powerRankingLevels: {
+              PowerRankingDivisionId: { type: graphql.GraphQLInt },
+              PowerRankingDivision: { type: graphql.GraphQLString },
+              TopPoints: { type: graphql.GraphQLInt },
+              BottomPoints: { type: graphql.GraphQLInt },
+              NumberOfLevels: { type: graphql.GraphQLInt },
+              PowerRankingLevels: {
                 type: new graphql.GraphQLList(
                   new graphql.GraphQLObjectType({
                     name:
-                      'controlPowerRankingapiPowerRankingDivisionBypowerRankingDivisionIdresponsepowerRankingLevelsResponse',
+                      'controlPowerRankingApiPowerRankingDivisionBypowerRankingDivisionIdResponsePowerRankingLevelsResponse',
                     fields: {
-                      capacity: { type: graphql.GraphQLInt },
-                      count: { type: graphql.GraphQLInt },
-                      item: {
-                        type: new graphql.GraphQLObjectType({
-                          name:
-                            'controlPowerRankingapiPowerRankingDivisionBypowerRankingDivisionIdresponsepowerRankingLevelsitemResponse',
-                          fields: {
-                            powerRankingLevelNumber: {
-                              type: graphql.GraphQLInt
-                            },
-                            topPoints: { type: graphql.GraphQLInt },
-                            bottomPoints: { type: graphql.GraphQLInt }
-                          }
-                        })
-                      }
+                      PowerRankingLevelNumber: { type: graphql.GraphQLInt },
+                      TopPoints: { type: graphql.GraphQLInt },
+                      BottomPoints: { type: graphql.GraphQLInt }
                     }
                   })
                 )
               },
-              powerRankingImageLogo: {
+              PowerRankingImageLogo: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'controlPowerRankingapiPowerRankingDivisionBypowerRankingDivisionIdresponsepowerRankingImageLogoResponse',
+                    'controlPowerRankingApiPowerRankingDivisionBypowerRankingDivisionIdResponsePowerRankingImageLogoResponse',
                   fields: {
-                    urlPath: { type: graphql.GraphQLString },
-                    relativePath: { type: graphql.GraphQLString }
+                    UrlPath: { type: graphql.GraphQLString },
+                    RelativePath: { type: graphql.GraphQLString }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

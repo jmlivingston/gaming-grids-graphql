@@ -1,100 +1,113 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiPlayerMuut: {
+  ApiPlayerMuut: {
+    fullName: 'GamingGrids.Api.Polling.v2.Controllers.PlayerController.Muut',
     method: 'GET',
-    url: 'api/Player/Muut',
+    url: '/api/Player/Muut',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'pollingPlayerapiPlayerMuutResponse',
+      name: 'pollingPlayerApiPlayerMuutResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
-            name: 'pollingPlayerapiPlayerMuutresponseResponse',
+            name: 'pollingPlayerApiPlayerMuutResponseResponse',
             fields: {
-              timestamp: { type: graphql.GraphQLInt },
-              message: { type: graphql.GraphQLString },
-              signature: { type: graphql.GraphQLString }
+              Timestamp: { type: graphql.GraphQLInt },
+              Message: { type: graphql.GraphQLString },
+              Signature: { type: graphql.GraphQLString }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlayerMyPermissionsAdmin: {
+  ApiPlayerMyPermissionsAdmin: {
+    fullName: 'GamingGrids.Api.Polling.v2.Controllers.PlayerController.IsAdmin',
     method: 'GET',
-    url: 'api/Player/My/Permissions/Admin',
+    url: '/api/Player/My/Permissions/Admin',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'pollingPlayerapiPlayerMyPermissionsAdminResponse',
+      name: 'pollingPlayerApiPlayerMyPermissionsAdminResponse',
       fields: {
-        response: { type: graphql.GraphQLBoolean },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLBoolean },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlayerMyTournamentsMatchLastId: {
+  ApiPlayerMyTournamentsMatchLastId: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.PlayerController.LastMatchId',
     method: 'GET',
-    url: 'api/Player/My/Tournaments/Match/LastId',
+    url: '/api/Player/My/Tournaments/Match/LastId',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'pollingPlayerapiPlayerMyTournamentsMatchLastIdResponse',
+      name: 'pollingPlayerApiPlayerMyTournamentsMatchLastIdResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlayerMyTournamentsMatchActive: {
+  ApiPlayerMyTournamentsMatchActive: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.PlayerController.MyActiveMatch',
     method: 'GET',
-    url: 'api/Player/My/Tournaments/Match/Active',
+    url: '/api/Player/My/Tournaments/Match/Active',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'pollingPlayerapiPlayerMyTournamentsMatchActiveResponse',
+      name: 'pollingPlayerApiPlayerMyTournamentsMatchActiveResponse',
       fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name:
-              'pollingPlayerapiPlayerMyTournamentsMatchActiveresponseResponse',
-            fields: {
-              tournamentMatchId: { type: graphql.GraphQLInt },
-              gameName: { type: graphql.GraphQLString },
-              gameImageLargeUrl: { type: graphql.GraphQLString },
-              tournamentMatchIsTeam: { type: graphql.GraphQLBoolean },
-              participantAEntityName: { type: graphql.GraphQLString },
-              participantANickname: { type: graphql.GraphQLString },
-              participantBEntityName: { type: graphql.GraphQLString },
-              participantBNickname: { type: graphql.GraphQLString },
-              scheduledStartDateTime: { type: graphql.GraphQLString },
-              currentServerDateTime: { type: graphql.GraphQLString }
-            }
-          })
-        },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiPlayerMyTournamentsCheckinNeeded: {
-    method: 'GET',
-    url: 'api/Player/My/Tournaments/checkin/needed',
-    response: new graphql.GraphQLObjectType({
-      name: 'pollingPlayerapiPlayerMyTournamentsCheckinNeededResponse',
-      fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLObjectType({
             name:
-              'pollingPlayerapiPlayerMyTournamentsCheckinNeededresponseResponse',
+              'pollingPlayerApiPlayerMyTournamentsMatchActiveResponseResponse',
             fields: {
-              tournamentId: { type: graphql.GraphQLInt },
-              tournamentName: { type: graphql.GraphQLString },
-              gameImageLargeUrl: { type: graphql.GraphQLString },
-              scheduledStartDateTime: { type: graphql.GraphQLString }
+              TournamentMatchId: { type: graphql.GraphQLInt },
+              GameName: { type: graphql.GraphQLString },
+              GameImageLargeUrl: { type: graphql.GraphQLString },
+              TournamentMatchIsTeam: { type: graphql.GraphQLBoolean },
+              ParticipantAEntityName: { type: graphql.GraphQLString },
+              ParticipantANickname: { type: graphql.GraphQLString },
+              ParticipantBEntityName: { type: graphql.GraphQLString },
+              ParticipantBNickname: { type: graphql.GraphQLString },
+              ScheduledStartDateTime: { type: graphql.GraphQLString },
+              CurrentServerDateTime: { type: graphql.GraphQLString }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiPlayerMyTournamentsCheckinNeeded: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.PlayerController.MyTournamentNeedsCheckin',
+    method: 'GET',
+    url: '/api/Player/My/Tournaments/checkin/needed',
+    args: {},
+    response: new graphql.GraphQLObjectType({
+      name: 'pollingPlayerApiPlayerMyTournamentsCheckinNeededResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLObjectType({
+            name:
+              'pollingPlayerApiPlayerMyTournamentsCheckinNeededResponseResponse',
+            fields: {
+              TournamentId: { type: graphql.GraphQLInt },
+              TournamentName: { type: graphql.GraphQLString },
+              GameImageLargeUrl: { type: graphql.GraphQLString },
+              ScheduledStartDateTime: { type: graphql.GraphQLString }
+            }
+          })
+        },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

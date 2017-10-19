@@ -1,267 +1,174 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiNotifications: {
+  ApiNotifications: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.NotificationsController.List',
     method: 'GET',
-    url: 'api/Notifications/',
-    response: new graphql.GraphQLObjectType({
-      name: 'pollingNotificationsapiNotificationsResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'pollingNotificationsapiNotificationsresponseResponse',
+    url: '/api/Notifications',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'pollingNotificationsApiNotificationsuriParams',
             fields: {
-              dismissedNotifications: {
+              lastDateTime: { type: graphql.GraphQLString },
+              topCount: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'pollingNotificationsApiNotificationsResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLObjectType({
+            name: 'pollingNotificationsApiNotificationsResponseResponse',
+            fields: {
+              DismissedNotifications: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'pollingNotificationsapiNotificationsresponsedismissedNotificationsResponse',
+                    'pollingNotificationsApiNotificationsResponseDismissedNotificationsResponse',
                   fields: {
-                    notifications: {
+                    Notifications: {
                       type: new graphql.GraphQLList(
                         new graphql.GraphQLObjectType({
                           name:
-                            'pollingNotificationsapiNotificationsresponsedismissedNotificationsnotificationsResponse',
+                            'pollingNotificationsApiNotificationsResponseDismissedNotificationsNotificationsResponse',
                           fields: {
-                            capacity: { type: graphql.GraphQLInt },
-                            count: { type: graphql.GraphQLInt },
-                            item: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'pollingNotificationsapiNotificationsresponsedismissedNotificationsnotificationsitemResponse',
-                                fields: {
-                                  notificationStateName: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  displayName: { type: graphql.GraphQLString },
-                                  linkAttribute: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  linkType: { type: graphql.GraphQLString },
-                                  logoUrl: { type: graphql.GraphQLString },
-                                  message: { type: graphql.GraphQLString },
-                                  messageAttributes: {
-                                    type: new graphql.GraphQLList(
-                                      new graphql.GraphQLObjectType({
-                                        name:
-                                          'pollingNotificationsapiNotificationsresponsedismissedNotificationsnotificationsitemmessageAttributesResponse',
-                                        fields: {
-                                          capacity: {
-                                            type: graphql.GraphQLInt
-                                          },
-                                          count: { type: graphql.GraphQLInt },
-                                          item: {
-                                            type: new graphql.GraphQLObjectType(
-                                              {
-                                                name:
-                                                  'pollingNotificationsapiNotificationsresponsedismissedNotificationsnotificationsitemmessageAttributesitemResponse',
-                                                fields: {
-                                                  attributeId: {
-                                                    type: graphql.GraphQLInt
-                                                  },
-                                                  displayName: {
-                                                    type: graphql.GraphQLString
-                                                  },
-                                                  linkType: {
-                                                    type: graphql.GraphQLString
-                                                  },
-                                                  linkAttribute: {
-                                                    type: graphql.GraphQLString
-                                                  }
-                                                }
-                                              }
-                                            )
-                                          }
-                                        }
-                                      })
-                                    )
-                                  },
-                                  actions: {
-                                    type: new graphql.GraphQLList(
-                                      new graphql.GraphQLObjectType({
-                                        name:
-                                          'pollingNotificationsapiNotificationsresponsedismissedNotificationsnotificationsitemactionsResponse',
-                                        fields: {
-                                          capacity: {
-                                            type: graphql.GraphQLInt
-                                          },
-                                          count: { type: graphql.GraphQLInt },
-                                          item: {
-                                            type: new graphql.GraphQLObjectType(
-                                              {
-                                                name:
-                                                  'pollingNotificationsapiNotificationsresponsedismissedNotificationsnotificationsitemactionsitemResponse',
-                                                fields: {
-                                                  action: {
-                                                    type: graphql.GraphQLString
-                                                  },
-                                                  isPreferredAction: {
-                                                    type: graphql.GraphQLBoolean
-                                                  },
-                                                  actionAttribute: {
-                                                    type: graphql.GraphQLString
-                                                  }
-                                                }
-                                              }
-                                            )
-                                          }
-                                        }
-                                      })
-                                    )
-                                  },
-                                  notificationId: { type: graphql.GraphQLInt },
-                                  userNotifiedEntityId: {
-                                    type: graphql.GraphQLInt
-                                  },
-                                  messageId: { type: graphql.GraphQLInt },
-                                  createdDateTime: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  notificationStateId: {
-                                    type: graphql.GraphQLInt
-                                  },
-                                  actionDateTime: {
-                                    type: graphql.GraphQLString
+                            NotificationStateName: {
+                              type: graphql.GraphQLString
+                            },
+                            DisplayName: { type: graphql.GraphQLString },
+                            LinkAttribute: { type: graphql.GraphQLString },
+                            LinkType: { type: graphql.GraphQLString },
+                            LogoUrl: { type: graphql.GraphQLString },
+                            Message: { type: graphql.GraphQLString },
+                            MessageAttributes: {
+                              type: new graphql.GraphQLList(
+                                new graphql.GraphQLObjectType({
+                                  name:
+                                    'pollingNotificationsApiNotificationsResponseDismissedNotificationsNotificationsMessageAttributesResponse',
+                                  fields: {
+                                    AttributeId: { type: graphql.GraphQLInt },
+                                    DisplayName: {
+                                      type: graphql.GraphQLString
+                                    },
+                                    LinkType: { type: graphql.GraphQLString },
+                                    LinkAttribute: {
+                                      type: graphql.GraphQLString
+                                    }
                                   }
-                                }
-                              })
-                            }
+                                })
+                              )
+                            },
+                            Actions: {
+                              type: new graphql.GraphQLList(
+                                new graphql.GraphQLObjectType({
+                                  name:
+                                    'pollingNotificationsApiNotificationsResponseDismissedNotificationsNotificationsActionsResponse',
+                                  fields: {
+                                    Action: { type: graphql.GraphQLString },
+                                    IsPreferredAction: {
+                                      type: graphql.GraphQLBoolean
+                                    },
+                                    ActionAttribute: {
+                                      type: graphql.GraphQLString
+                                    }
+                                  }
+                                })
+                              )
+                            },
+                            NotificationId: { type: graphql.GraphQLInt },
+                            UserNotifiedEntityId: { type: graphql.GraphQLInt },
+                            MessageId: { type: graphql.GraphQLInt },
+                            CreatedDateTime: { type: graphql.GraphQLString },
+                            NotificationStateId: { type: graphql.GraphQLInt },
+                            ActionDateTime: { type: graphql.GraphQLString }
                           }
                         })
                       )
                     },
-                    returnedNoticationsCount: { type: graphql.GraphQLInt },
-                    totalNoticationsCount: { type: graphql.GraphQLInt }
+                    ReturnedNoticationsCount: { type: graphql.GraphQLInt },
+                    TotalNoticationsCount: { type: graphql.GraphQLInt }
                   }
                 })
               },
-              pendingNotifications: {
+              PendingNotifications: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'pollingNotificationsapiNotificationsresponsependingNotificationsResponse',
+                    'pollingNotificationsApiNotificationsResponsePendingNotificationsResponse',
                   fields: {
-                    notifications: {
+                    Notifications: {
                       type: new graphql.GraphQLList(
                         new graphql.GraphQLObjectType({
                           name:
-                            'pollingNotificationsapiNotificationsresponsependingNotificationsnotificationsResponse',
+                            'pollingNotificationsApiNotificationsResponsePendingNotificationsNotificationsResponse',
                           fields: {
-                            capacity: { type: graphql.GraphQLInt },
-                            count: { type: graphql.GraphQLInt },
-                            item: {
-                              type: new graphql.GraphQLObjectType({
-                                name:
-                                  'pollingNotificationsapiNotificationsresponsependingNotificationsnotificationsitemResponse',
-                                fields: {
-                                  notificationStateName: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  displayName: { type: graphql.GraphQLString },
-                                  linkAttribute: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  linkType: { type: graphql.GraphQLString },
-                                  logoUrl: { type: graphql.GraphQLString },
-                                  message: { type: graphql.GraphQLString },
-                                  messageAttributes: {
-                                    type: new graphql.GraphQLList(
-                                      new graphql.GraphQLObjectType({
-                                        name:
-                                          'pollingNotificationsapiNotificationsresponsependingNotificationsnotificationsitemmessageAttributesResponse',
-                                        fields: {
-                                          capacity: {
-                                            type: graphql.GraphQLInt
-                                          },
-                                          count: { type: graphql.GraphQLInt },
-                                          item: {
-                                            type: new graphql.GraphQLObjectType(
-                                              {
-                                                name:
-                                                  'pollingNotificationsapiNotificationsresponsependingNotificationsnotificationsitemmessageAttributesitemResponse',
-                                                fields: {
-                                                  attributeId: {
-                                                    type: graphql.GraphQLInt
-                                                  },
-                                                  displayName: {
-                                                    type: graphql.GraphQLString
-                                                  },
-                                                  linkType: {
-                                                    type: graphql.GraphQLString
-                                                  },
-                                                  linkAttribute: {
-                                                    type: graphql.GraphQLString
-                                                  }
-                                                }
-                                              }
-                                            )
-                                          }
-                                        }
-                                      })
-                                    )
-                                  },
-                                  actions: {
-                                    type: new graphql.GraphQLList(
-                                      new graphql.GraphQLObjectType({
-                                        name:
-                                          'pollingNotificationsapiNotificationsresponsependingNotificationsnotificationsitemactionsResponse',
-                                        fields: {
-                                          capacity: {
-                                            type: graphql.GraphQLInt
-                                          },
-                                          count: { type: graphql.GraphQLInt },
-                                          item: {
-                                            type: new graphql.GraphQLObjectType(
-                                              {
-                                                name:
-                                                  'pollingNotificationsapiNotificationsresponsependingNotificationsnotificationsitemactionsitemResponse',
-                                                fields: {
-                                                  action: {
-                                                    type: graphql.GraphQLString
-                                                  },
-                                                  isPreferredAction: {
-                                                    type: graphql.GraphQLBoolean
-                                                  },
-                                                  actionAttribute: {
-                                                    type: graphql.GraphQLString
-                                                  }
-                                                }
-                                              }
-                                            )
-                                          }
-                                        }
-                                      })
-                                    )
-                                  },
-                                  notificationId: { type: graphql.GraphQLInt },
-                                  userNotifiedEntityId: {
-                                    type: graphql.GraphQLInt
-                                  },
-                                  messageId: { type: graphql.GraphQLInt },
-                                  createdDateTime: {
-                                    type: graphql.GraphQLString
-                                  },
-                                  notificationStateId: {
-                                    type: graphql.GraphQLInt
-                                  },
-                                  actionDateTime: {
-                                    type: graphql.GraphQLString
+                            NotificationStateName: {
+                              type: graphql.GraphQLString
+                            },
+                            DisplayName: { type: graphql.GraphQLString },
+                            LinkAttribute: { type: graphql.GraphQLString },
+                            LinkType: { type: graphql.GraphQLString },
+                            LogoUrl: { type: graphql.GraphQLString },
+                            Message: { type: graphql.GraphQLString },
+                            MessageAttributes: {
+                              type: new graphql.GraphQLList(
+                                new graphql.GraphQLObjectType({
+                                  name:
+                                    'pollingNotificationsApiNotificationsResponsePendingNotificationsNotificationsMessageAttributesResponse',
+                                  fields: {
+                                    AttributeId: { type: graphql.GraphQLInt },
+                                    DisplayName: {
+                                      type: graphql.GraphQLString
+                                    },
+                                    LinkType: { type: graphql.GraphQLString },
+                                    LinkAttribute: {
+                                      type: graphql.GraphQLString
+                                    }
                                   }
-                                }
-                              })
-                            }
+                                })
+                              )
+                            },
+                            Actions: {
+                              type: new graphql.GraphQLList(
+                                new graphql.GraphQLObjectType({
+                                  name:
+                                    'pollingNotificationsApiNotificationsResponsePendingNotificationsNotificationsActionsResponse',
+                                  fields: {
+                                    Action: { type: graphql.GraphQLString },
+                                    IsPreferredAction: {
+                                      type: graphql.GraphQLBoolean
+                                    },
+                                    ActionAttribute: {
+                                      type: graphql.GraphQLString
+                                    }
+                                  }
+                                })
+                              )
+                            },
+                            NotificationId: { type: graphql.GraphQLInt },
+                            UserNotifiedEntityId: { type: graphql.GraphQLInt },
+                            MessageId: { type: graphql.GraphQLInt },
+                            CreatedDateTime: { type: graphql.GraphQLString },
+                            NotificationStateId: { type: graphql.GraphQLInt },
+                            ActionDateTime: { type: graphql.GraphQLString }
                           }
                         })
                       )
                     },
-                    returnedNoticationsCount: { type: graphql.GraphQLInt },
-                    totalNoticationsCount: { type: graphql.GraphQLInt }
+                    ReturnedNoticationsCount: { type: graphql.GraphQLInt },
+                    TotalNoticationsCount: { type: graphql.GraphQLInt }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

@@ -1,60 +1,101 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiTournamentSeries: {
+  ApiTournamentSeries: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.TournamentSeriesController.CreateSeries',
     method: 'POST',
-    url: 'api/Tournament/Series/',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        tournamentSeriesName: { type: graphql.GraphQLString },
-        gamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
-        tournamentSubscriptionTypeId: { type: graphql.GraphQLInt },
-        registrationOpenDateTIme: { type: graphql.GraphQLString },
-        tournamentStartDateTime: { type: graphql.GraphQLString },
-        tournamentSerieseDoesCycle: { type: graphql.GraphQLBoolean }
+    url: '/api/Tournament/Series',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlTournamentSeriesApiTournamentSeriesbody',
+            fields: {
+              TournamentSeriesName: { type: graphql.GraphQLString },
+              GamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
+              TournamentSubscriptionTypeId: { type: graphql.GraphQLInt },
+              RegistrationOpenDateTIme: { type: graphql.GraphQLString },
+              TournamentStartDateTime: { type: graphql.GraphQLString },
+              TournamentSerieseDoesCycle: { type: graphql.GraphQLBoolean }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlTournamentSeriesapiTournamentSeriesResponse',
+      name: 'controlTournamentSeriesApiTournamentSeriesResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentSeriesByseriesId: {
+  ApiTournamentSeriesByseriesId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.TournamentSeriesController.UpdateSeries',
     method: 'PUT',
-    url: 'api/Tournament/Series/{seriesId}',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        tournamentSeriesName: { type: graphql.GraphQLString },
-        gamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
-        tournamentSubscriptionTypeId: { type: graphql.GraphQLInt },
-        registrationOpenDateTIme: { type: graphql.GraphQLString },
-        tournamentStartDateTime: { type: graphql.GraphQLString },
-        tournamentSerieseDoesCycle: { type: graphql.GraphQLBoolean }
+    url: '/api/Tournament/Series/{seriesId}',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlTournamentSeriesApiTournamentSeriesByseriesIdbody',
+            fields: {
+              TournamentSeriesName: { type: graphql.GraphQLString },
+              GamePlatformFranchiseTitleId: { type: graphql.GraphQLInt },
+              TournamentSubscriptionTypeId: { type: graphql.GraphQLInt },
+              RegistrationOpenDateTIme: { type: graphql.GraphQLString },
+              TournamentStartDateTime: { type: graphql.GraphQLString },
+              TournamentSerieseDoesCycle: { type: graphql.GraphQLBoolean }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlTournamentSeriesApiTournamentSeriesByseriesIdurlParams',
+            fields: { seriesId: { type: graphql.GraphQLInt } }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlTournamentSeriesapiTournamentSeriesByseriesIdResponse',
+      name: 'controlTournamentSeriesApiTournamentSeriesByseriesIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiTournamentSeriesByseriesIdStateBystateId: {
+  ApiTournamentSeriesByseriesIdStateBystateId: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.TournamentSeriesController.UpdateSeriesState',
     method: 'PUT',
-    url: 'api/Tournament/Series/{seriesId}/state/{stateId}',
+    url: '/api/Tournament/Series/{seriesId}/state/{stateId}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlTournamentSeriesApiTournamentSeriesByseriesIdStateBystateIdurlParams',
+            fields: {
+              seriesId: { type: graphql.GraphQLInt },
+              stateId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'controlTournamentSeriesapiTournamentSeriesByseriesIdStateBystateIdResponse',
+        'controlTournamentSeriesApiTournamentSeriesByseriesIdStateBystateIdResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

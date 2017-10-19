@@ -1,5 +1,6 @@
 const {
   GraphQLBoolean,
+  GraphQLInt,
   GraphQLInputObjectType,
   GraphQLObjectType,
   GraphQLString,
@@ -9,34 +10,39 @@ const {
 } = require('graphql')
 
 module.exports = {
-  // todos: {
-  //   method: 'GET',
-  //   url: '/todo',
-  //   response: new GraphQLList(new GraphQLObjectType({
-  //     name: 'todosResponse',
-  //     fields: {
-  //       id: {
-  //         type: GraphQLString
-  //       },
-  //       name: {
-  //         type: GraphQLString
-  //       },
-  //       isComplete: {
-  //         type: GraphQLBoolean
-  //       }
-  //     }
-  //   })),
-  // },
+  todos: {
+    method: 'GET',
+    url: '/todo',
+    response: new GraphQLList(
+      new GraphQLObjectType({
+        name: 'todosResponse',
+        fields: {
+          id: {
+            type: GraphQLString
+          },
+          name: {
+            type: GraphQLString
+          },
+          isComplete: {
+            type: GraphQLBoolean
+          }
+        }
+      })
+    )
+  },
   todo: {
     method: 'GET',
-    url: '/todo/{id}',
+    url: '/todo/{id}/{id3}',
     args: {
-      args: {
+      urlParams: {
         type: new GraphQLNonNull(
           new GraphQLInputObjectType({
-            name: 'args',
+            name: 'todoUrlParams',
             fields: {
               id: {
+                type: GraphQLString
+              },
+              id3: {
                 type: GraphQLString
               }
             }
@@ -50,24 +56,17 @@ module.exports = {
             fields: {
               id2: {
                 type: GraphQLFloat
-              }
+              },
+              foo: {
+                type: GraphQLString
+              },
             }
           })
         )
       }
     },
-    urlParams: {
-      id: {
-        type: GraphQLString
-      }
-    },
-    uriParam: {
-      id2: {
-        type: GraphQLString
-      }
-    },
     response: new GraphQLObjectType({
-      name: 'todoResponse',
+      name: 'getTodoResponse',
       fields: {
         id: {
           type: GraphQLString
@@ -80,69 +79,99 @@ module.exports = {
         }
       }
     })
+  },
+  removeTodo: {
+    method: 'DELETE',
+    url: '/todo/{id}',
+    args: {
+      urlParams: {
+        type: new GraphQLNonNull(
+          new GraphQLInputObjectType({
+            name: 'removeTodoUrlParams',
+            fields: {
+              id: {
+                type: GraphQLString
+              }
+            }
+          })
+        )
+      }
+    },
+    response: GraphQLBoolean
+  },
+  addTodo: {
+    method: 'POST',
+    url: '/todo',
+    args: {
+      body: {
+        type: new GraphQLNonNull(
+          new GraphQLInputObjectType({
+            name: 'addTodoUrlParams',
+            fields: {
+              id: {
+                type: GraphQLString
+              },
+              name: {
+                type: GraphQLString
+              },
+              isComplete: {
+                type: GraphQLBoolean
+              }
+            }
+          })
+        )
+      }
+    },
+    response: new GraphQLObjectType({
+      name: 'addTodoResponse',
+      fields: {
+        id: {
+          type: GraphQLString
+        },
+        name: {
+          type: GraphQLString
+        },
+        isComplete: {
+          type: GraphQLBoolean
+        }
+      }
+    })
+  },
+  updateTodo: {
+    method: 'PUT',
+    url: '/todo/{id}',
+    args: {
+      urlParams: {
+        type: new GraphQLNonNull(
+          new GraphQLInputObjectType({
+            name: 'updateTodoUrlParams',
+            fields: {
+              id: {
+                type: GraphQLString
+              }
+            }
+          })
+        )
+      },
+      body: {
+        type: new GraphQLNonNull(
+          new GraphQLInputObjectType({
+            name: 'updateTodoBody',
+            fields: {
+              id: {
+                type: GraphQLString
+              },
+              name: {
+                type: GraphQLString
+              },
+              isComplete: {
+                type: GraphQLBoolean
+              }
+            }
+          })
+        )
+      }
+    },
+    response: GraphQLBoolean
   }
-  // removeTodo: {
-  //   method: 'DELETE',
-  //   url: '/todo/{id}',
-  //   urlParams: {
-  //     id: {
-  //       type: GraphQLString
-  //     }
-  //   },
-  //   response: GraphQLBoolean
-  // },
-  // addTodo: {
-  //   method: 'POST',
-  //   url: '/todo',
-  //   body: {
-  //     fields: {
-  //       id: {
-  //         type: GraphQLString
-  //       },
-  //       name: {
-  //         type: GraphQLString
-  //       },
-  //       isComplete: {
-  //         type: GraphQLBoolean
-  //       }
-  //     }
-  //   },
-  //   response: new GraphQLObjectType({
-  //     name: 'addTodoResponse',
-  //     fields: {
-  //       id: {
-  //         type: GraphQLString
-  //       },
-  //       name: {
-  //         type: GraphQLString
-  //       },
-  //       isComplete: {
-  //         type: GraphQLBoolean
-  //       }
-  //     }
-  //   })
-  // },
-  // updateTodo: {
-  //   method: 'PUT',
-  //   url: '/todo/{id}',
-  //   urlParams: {
-  //     id: {
-  //       type: GraphQLString
-  //     }
-  //   },
-  //   body: {
-  //     fields: {
-  //       id: {
-  //         type: GraphQLString
-  //       },
-  //       name: {
-  //         type: GraphQLString
-  //       },
-  //       isComplete: {
-  //         type: GraphQLBoolean
-  //       }
-  //     }
-  //   },
-  //   response: GraphQLBoolean
-  // }
 }

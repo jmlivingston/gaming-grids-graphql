@@ -1,105 +1,198 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiPlayerByentityNameProfile: {
+  ApiPlayerByentityNameProfile: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlayerController.UpdatePlayerProfile',
     method: 'PUT',
-    url: 'api/Player/{entityName}/profile',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlPlayerapiPlayerByentityNameProfileResponse',
-      fields: {
-        response: {
-          type: new graphql.GraphQLObjectType({
-            name: 'controlPlayerapiPlayerByentityNameProfileresponseResponse',
+    url: '/api/Player/{entityName}/profile',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameProfilebody',
             fields: {
-              entityId: { type: graphql.GraphQLInt },
-              userLoginToken: { type: graphql.GraphQLString },
-              entityMembershipId: { type: graphql.GraphQLString },
-              entityMembershipToken: { type: graphql.GraphQLString },
-              emailAddress: { type: graphql.GraphQLString },
-              firstName: { type: graphql.GraphQLString },
-              lastName: { type: graphql.GraphQLString },
-              entityName: { type: graphql.GraphQLString },
-              displayName: { type: graphql.GraphQLString },
-              isAdministrator: { type: graphql.GraphQLBoolean },
-              registrationDateTime: { type: graphql.GraphQLString },
-              lastLoginDateTime: { type: graphql.GraphQLString },
-              entityImageUrl: { type: graphql.GraphQLString },
-              playerSubscriptionTypeId: { type: graphql.GraphQLInt },
-              muut: {
+              EmailAddress: { type: graphql.GraphQLString },
+              DisplayName: { type: graphql.GraphQLString },
+              FirstName: { type: graphql.GraphQLString },
+              LastName: { type: graphql.GraphQLString },
+              Address: { type: graphql.GraphQLString },
+              City: { type: graphql.GraphQLString },
+              PostalCode: { type: graphql.GraphQLString },
+              AddressStateProvenceId: { type: graphql.GraphQLInt },
+              Birthdate: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameProfileurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlPlayerApiPlayerByentityNameProfileResponse',
+      fields: {
+        Response: {
+          type: new graphql.GraphQLObjectType({
+            name: 'controlPlayerApiPlayerByentityNameProfileResponseResponse',
+            fields: {
+              EntityId: { type: graphql.GraphQLInt },
+              UserLoginToken: { type: graphql.GraphQLString },
+              EntityMembershipId: { type: graphql.GraphQLString },
+              EntityMembershipToken: { type: graphql.GraphQLString },
+              EmailAddress: { type: graphql.GraphQLString },
+              FirstName: { type: graphql.GraphQLString },
+              LastName: { type: graphql.GraphQLString },
+              EntityName: { type: graphql.GraphQLString },
+              DisplayName: { type: graphql.GraphQLString },
+              IsAdministrator: { type: graphql.GraphQLBoolean },
+              RegistrationDateTime: { type: graphql.GraphQLString },
+              LastLoginDateTime: { type: graphql.GraphQLString },
+              EntityImageUrl: { type: graphql.GraphQLString },
+              PlayerSubscriptionTypeId: { type: graphql.GraphQLInt },
+              Muut: {
                 type: new graphql.GraphQLObjectType({
                   name:
-                    'controlPlayerapiPlayerByentityNameProfileresponsemuutResponse',
+                    'controlPlayerApiPlayerByentityNameProfileResponseMuutResponse',
                   fields: {
-                    timestamp: { type: graphql.GraphQLInt },
-                    message: { type: graphql.GraphQLString },
-                    signature: { type: graphql.GraphQLString }
+                    Timestamp: { type: graphql.GraphQLInt },
+                    Message: { type: graphql.GraphQLString },
+                    Signature: { type: graphql.GraphQLString }
                   }
                 })
               }
             }
           })
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlayerByentityNameTournamentAllowed: {
+  ApiPlayerByentityNameTournamentAllowed: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlayerController.CanPlayerCreateTournaments',
     method: 'GET',
-    url: 'api/Player/{entityName}/Tournament/Allowed',
+    url: '/api/Player/{entityName}/Tournament/Allowed',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlPlayerApiPlayerByentityNameTournamentAllowedurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlayerapiPlayerByentityNameTournamentAllowedResponse',
+      name: 'controlPlayerApiPlayerByentityNameTournamentAllowedResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlayerByentityNameChangePassword: {
+  ApiPlayerByentityNameChangePassword: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlayerController.AdminChangePlayerPassword',
     method: 'PUT',
-    url: 'api/Player/{entityName}/ChangePassword',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { newPwd: { type: graphql.GraphQLString } }
-    }),
+    url: '/api/Player/{entityName}/ChangePassword',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameChangePasswordbody',
+            fields: { NewPwd: { type: graphql.GraphQLString } }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameChangePasswordurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlayerapiPlayerByentityNameChangePasswordResponse',
+      name: 'controlPlayerApiPlayerByentityNameChangePasswordResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlayerByentityNameSteam: {
+  ApiPlayerByentityNameSteam: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlayerController.AddSteamIdToPlayer',
     method: 'PUT',
-    url: 'api/Player/{entityName}/Steam',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        steamId32: { type: graphql.GraphQLInt },
-        steamId64: { type: graphql.GraphQLInt }
+    url: '/api/Player/{entityName}/Steam',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameSteambody',
+            fields: {
+              SteamId32: { type: graphql.GraphQLInt },
+              SteamId64: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameSteamurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlayerapiPlayerByentityNameSteamResponse',
+      name: 'controlPlayerApiPlayerByentityNameSteamResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlayerByentityNameTournamentPolicy: {
+  ApiPlayerByentityNameTournamentPolicy: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlayerController.AddTournamentPolicyToPlayer',
     method: 'PUT',
-    url: 'api/Player/{entityName}/TournamentPolicy',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: { tournamentManagementPolicyId: { type: graphql.GraphQLInt } }
-    }),
+    url: '/api/Player/{entityName}/TournamentPolicy',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameTournamentPolicybody',
+            fields: {
+              TournamentManagementPolicyId: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      },
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlayerApiPlayerByentityNameTournamentPolicyurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlayerapiPlayerByentityNameTournamentPolicyResponse',
+      name: 'controlPlayerApiPlayerByentityNameTournamentPolicyResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

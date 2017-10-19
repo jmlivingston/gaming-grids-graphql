@@ -1,15 +1,18 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiTeamCaptainOnlineCount: {
+  ApiTeamCaptainOnlineCount: {
+    fullName:
+      'GamingGrids.Api.Polling.v2.Controllers.TeamController.GetOnlineCaptainCount',
     method: 'GET',
-    url: 'api/Team/Captain/Online/count',
+    url: '/api/Team/Captain/Online/count',
+    args: {},
     response: new graphql.GraphQLObjectType({
-      name: 'pollingTeamapiTeamCaptainOnlineCountResponse',
+      name: 'pollingTeamApiTeamCaptainOnlineCountResponse',
       fields: {
-        response: { type: graphql.GraphQLInt },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Response: { type: graphql.GraphQLInt },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }

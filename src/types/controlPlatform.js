@@ -1,343 +1,363 @@
 const graphql = require('graphql')
 
 module.exports = {
-  apiPlatformMaintenance: {
+  ApiPlatformMaintenance: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.UpdateMaintenanceMode',
     method: 'PUT',
-    url: 'api/Platform/Maintenance',
-    urlParams: {
-      maintenanceMode: {
-        type: graphql.GraphQLBoolean
-      },
-      administratorOnlyAccess: {
-        type: graphql.GraphQLBoolean
-      },
-      statusNoticeText: {
-        type: graphql.GraphQLString
+    url: '/api/Platform/Maintenance',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlatformApiPlatformMaintenancebody',
+            fields: {
+              MaintenanceMode: { type: graphql.GraphQLBoolean },
+              AdministratorOnlyAccess: { type: graphql.GraphQLBoolean },
+              StatusNoticeText: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
     },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformMaintenanceResponse',
+      name: 'controlPlatformApiPlatformMaintenanceResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlatformAdministrator: {
+  ApiPlatformAdministrator: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.CreateAdministrator',
     method: 'POST',
-    url: 'api/Platform/Administrator',
-    body: new graphql.GraphQLObjectType({
-      name: 'bodyResponse',
-      fields: {
-        entityName: { type: graphql.GraphQLString },
-        emailAddress: { type: graphql.GraphQLString },
-        company: { type: graphql.GraphQLString }
+    url: '/api/Platform/Administrator',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlatformApiPlatformAdministratorbody',
+            fields: {
+              EntityName: { type: graphql.GraphQLString },
+              EmailAddress: { type: graphql.GraphQLString },
+              Company: { type: graphql.GraphQLString }
+            }
+          })
+        )
       }
-    }),
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformAdministratorResponse',
+      name: 'controlPlatformApiPlatformAdministratorResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlatformAdministratorByentityName: {
+  ApiPlatformAdministratorByentityName: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.DeleteAdministrator',
     method: 'DELETE',
-    url: 'api/Platform/Administrator/{entityName}/',
+    url: '/api/Platform/Administrator/{entityName}',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlPlatformApiPlatformAdministratorByentityNameurlParams',
+            fields: { entityName: { type: graphql.GraphQLString } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformAdministratorByentityNameResponse',
+      name: 'controlPlatformApiPlatformAdministratorByentityNameResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlatformMetrics: {
+  ApiPlatformMetrics: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.Snapshots',
     method: 'GET',
-    url: 'api/Platform/Metrics',
+    url: '/api/Platform/Metrics',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlatformApiPlatformMetricsuriParams',
+            fields: {
+              startDate: { type: graphql.GraphQLString },
+              endDate: { type: graphql.GraphQLString },
+              granularity: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformMetricsResponse',
+      name: 'controlPlatformApiPlatformMetricsResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'controlPlatformapiPlatformMetricsresponseResponse',
+              name: 'controlPlatformApiPlatformMetricsResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlPlatformapiPlatformMetricsresponseitemResponse',
-                    fields: {
-                      platformMetricSnapshotId: { type: graphql.GraphQLInt },
-                      snapshotDateTime: { type: graphql.GraphQLString },
-                      userCount: { type: graphql.GraphQLInt },
-                      userUniqueLoginCount: { type: graphql.GraphQLInt },
-                      premiumUserCount: { type: graphql.GraphQLInt },
-                      verifiedIdUserCount: { type: graphql.GraphQLInt },
-                      activeTeamCount: { type: graphql.GraphQLInt },
-                      disbandedTeamCount: { type: graphql.GraphQLInt },
-                      fivePlayersOrMoreTeamCount: { type: graphql.GraphQLInt },
-                      pendingBetaWhitelistCount: { type: graphql.GraphQLInt },
-                      betaNotificationCount: { type: graphql.GraphQLInt },
-                      developerCount: { type: graphql.GraphQLInt },
-                      approvedDeveloperApiCount: { type: graphql.GraphQLInt },
-                      pendingDeveloperApiCount: { type: graphql.GraphQLInt },
-                      developerCollaboratorCount: { type: graphql.GraphQLInt },
-                      publishedGameTitleCount: { type: graphql.GraphQLInt },
-                      unpublishedGameTitleCount: { type: graphql.GraphQLInt },
-                      totalGamingServerCount: { type: graphql.GraphQLInt },
-                      onlineGamingServerCount: { type: graphql.GraphQLInt },
-                      offlineGamingServerCount: { type: graphql.GraphQLInt },
-                      liveTournamentCount: { type: graphql.GraphQLInt },
-                      completedTournamentCount: { type: graphql.GraphQLInt },
-                      upcomingTournamentCount: { type: graphql.GraphQLInt },
-                      totalFeedbackRating5: { type: graphql.GraphQLInt },
-                      totalFeedbackRating4: { type: graphql.GraphQLInt },
-                      totalFeedbackRating3: { type: graphql.GraphQLInt },
-                      totalFeedbackRating2: { type: graphql.GraphQLInt },
-                      totalFeedbackRating1: { type: graphql.GraphQLInt },
-                      tournamentMatchCount: { type: graphql.GraphQLInt },
-                      disputedTournamentMatchCount: {
-                        type: graphql.GraphQLInt
-                      },
-                      forfeitTournamentMatchCount: { type: graphql.GraphQLInt },
-                      entityStreamingServiceCount: { type: graphql.GraphQLInt },
-                      liveEntityStreamingServiceCount: {
-                        type: graphql.GraphQLInt
-                      }
-                    }
-                  })
-                }
+                PlatformMetricSnapshotId: { type: graphql.GraphQLInt },
+                SnapshotDateTime: { type: graphql.GraphQLString },
+                UserCount: { type: graphql.GraphQLInt },
+                UserUniqueLoginCount: { type: graphql.GraphQLInt },
+                PremiumUserCount: { type: graphql.GraphQLInt },
+                VerifiedIdUserCount: { type: graphql.GraphQLInt },
+                ActiveTeamCount: { type: graphql.GraphQLInt },
+                DisbandedTeamCount: { type: graphql.GraphQLInt },
+                FivePlayersOrMoreTeamCount: { type: graphql.GraphQLInt },
+                PendingBetaWhitelistCount: { type: graphql.GraphQLInt },
+                BetaNotificationCount: { type: graphql.GraphQLInt },
+                DeveloperCount: { type: graphql.GraphQLInt },
+                ApprovedDeveloperApiCount: { type: graphql.GraphQLInt },
+                PendingDeveloperApiCount: { type: graphql.GraphQLInt },
+                DeveloperCollaboratorCount: { type: graphql.GraphQLInt },
+                PublishedGameTitleCount: { type: graphql.GraphQLInt },
+                UnpublishedGameTitleCount: { type: graphql.GraphQLInt },
+                TotalGamingServerCount: { type: graphql.GraphQLInt },
+                OnlineGamingServerCount: { type: graphql.GraphQLInt },
+                OfflineGamingServerCount: { type: graphql.GraphQLInt },
+                LiveTournamentCount: { type: graphql.GraphQLInt },
+                CompletedTournamentCount: { type: graphql.GraphQLInt },
+                UpcomingTournamentCount: { type: graphql.GraphQLInt },
+                TotalFeedbackRating5: { type: graphql.GraphQLInt },
+                TotalFeedbackRating4: { type: graphql.GraphQLInt },
+                TotalFeedbackRating3: { type: graphql.GraphQLInt },
+                TotalFeedbackRating2: { type: graphql.GraphQLInt },
+                TotalFeedbackRating1: { type: graphql.GraphQLInt },
+                TournamentMatchCount: { type: graphql.GraphQLInt },
+                DisputedTournamentMatchCount: { type: graphql.GraphQLInt },
+                ForfeitTournamentMatchCount: { type: graphql.GraphQLInt },
+                EntityStreamingServiceCount: { type: graphql.GraphQLInt },
+                LiveEntityStreamingServiceCount: { type: graphql.GraphQLInt }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlatformConfiguration: {
+  ApiPlatformConfiguration: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.SaveConfiguration',
     method: 'PUT',
-    url: 'api/Platform/Configuration',
-    body: new graphql.GraphQLList(
-      new graphql.GraphQLObjectType({
-        name: 'bodyResponse',
-        fields: {
-          item: { type: graphql.GraphQLString },
-          keys: {
-            type: new graphql.GraphQLList(
-              new graphql.GraphQLObjectType({
-                name: 'bodykeysResponse',
-                fields: {
-                  count: { type: graphql.GraphQLInt },
-                  isReadOnly: { type: graphql.GraphQLBoolean }
-                }
-              })
-            )
-          },
-          values: {
-            type: new graphql.GraphQLList(
-              new graphql.GraphQLObjectType({
-                name: 'bodyvaluesResponse',
-                fields: {
-                  count: { type: graphql.GraphQLInt },
-                  isReadOnly: { type: graphql.GraphQLBoolean }
-                }
-              })
-            )
-          }
-        }
-      })
-    ),
-    response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformConfigurationResponse',
-      fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiPlatformConfigurationRaffleAvailable: {
-    method: 'GET',
-    url: 'api/Platform/Configuration/RaffleAvailable',
-    response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformConfigurationRaffleAvailableResponse',
-      fields: {
-        response: { type: graphql.GraphQLBoolean },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
-      }
-    })
-  },
-  apiPlatformFeatureTournamentPolicyList: {
-    method: 'PUT',
-    url: 'api/Platform/Feature/Tournament/PolicyList',
-    body: new graphql.GraphQLList(
-      new graphql.GraphQLObjectType({
-        name: 'bodyResponse',
-        fields: {
-          capacity: { type: graphql.GraphQLInt },
-          count: { type: graphql.GraphQLInt },
-          item: {
-            type: new graphql.GraphQLObjectType({
-              name: 'bodyitemResponse',
-              fields: {
-                tournamentManagementPolicyId: { type: graphql.GraphQLInt },
-                tournamentManagementPolicyName: { type: graphql.GraphQLString },
-                isDefault: { type: graphql.GraphQLBoolean },
-                tournamentManagementPolicyDescription: {
-                  type: graphql.GraphQLString
-                },
-                groupPurchasePrice: { type: graphql.GraphQLInt },
-                groupRenewalTimespan: { type: graphql.GraphQLInt },
-                allowPurchaseOfGroup: { type: graphql.GraphQLBoolean },
-                allowTournamentCreation: { type: graphql.GraphQLBoolean },
-                limitTournamentCreation: { type: graphql.GraphQLBoolean },
-                maxConcurrentTournaments: { type: graphql.GraphQLInt },
-                maxTournamentsPerTimespan: { type: graphql.GraphQLInt },
-                maxTournamentsTimespanSeconds: { type: graphql.GraphQLInt },
-                maxParticipantsPerTournament: { type: graphql.GraphQLInt },
-                allowPublicTournament: { type: graphql.GraphQLBoolean },
-                allowFormatSingleElimination: { type: graphql.GraphQLBoolean },
-                allowFormatDoubleElimination: { type: graphql.GraphQLBoolean },
-                allowFormatQualifiers: { type: graphql.GraphQLBoolean },
-                allowConsolationPrizes: { type: graphql.GraphQLBoolean },
-                advanceCreationTimeLimit: { type: graphql.GraphQLInt },
-                allowGlobalRegion: { type: graphql.GraphQLBoolean },
-                assignNewServerLimit: { type: graphql.GraphQLInt },
-                allowBrandedSponsorship: { type: graphql.GraphQLBoolean },
-                allowAccessAnalytics: { type: graphql.GraphQLBoolean },
-                maximumTournamentAdmins: { type: graphql.GraphQLInt },
-                allowCountryRestrictions: { type: graphql.GraphQLBoolean },
-                allowStandByList: { type: graphql.GraphQLBoolean },
-                allowRepeatAndCycle: { type: graphql.GraphQLBoolean },
-                allowLanMode: { type: graphql.GraphQLBoolean },
-                allowManualMode: { type: graphql.GraphQLBoolean },
-                authorizedGameTitlesList: { type: graphql.GraphQLString },
-                authorizedGameTitles: {
-                  type: new graphql.GraphQLList(
-                    new graphql.GraphQLObjectType({
-                      name: 'bodyitemauthorizedGameTitlesResponse',
-                      fields: {
-                        capacity: { type: graphql.GraphQLInt },
-                        count: { type: graphql.GraphQLInt },
-                        item: { type: graphql.GraphQLInt }
-                      }
-                    })
-                  )
-                },
-                authorizedGamePlatformsList: { type: graphql.GraphQLString },
-                authorizedGamePlatofrms: {
-                  type: new graphql.GraphQLList(
-                    new graphql.GraphQLObjectType({
-                      name: 'bodyitemauthorizedGamePlatofrmsResponse',
-                      fields: {
-                        capacity: { type: graphql.GraphQLInt },
-                        count: { type: graphql.GraphQLInt },
-                        item: { type: graphql.GraphQLInt }
-                      }
-                    })
-                  )
-                }
+    url: '/api/Platform/Configuration',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlatformApiPlatformConfigurationbody',
+            fields: {
+              Item: { type: graphql.GraphQLString },
+              Keys: {
+                type: new graphql.GraphQLList(
+                  new graphql.GraphQLInputObjectType({
+                    name:
+                      'controlPlatformApiPlatformConfigurationbodyKeysResponse',
+                    fields: {
+                      Count: { type: graphql.GraphQLInt },
+                      IsReadOnly: { type: graphql.GraphQLBoolean }
+                    }
+                  })
+                )
+              },
+              Values: {
+                type: new graphql.GraphQLList(
+                  new graphql.GraphQLInputObjectType({
+                    name:
+                      'controlPlatformApiPlatformConfigurationbodyValuesResponse',
+                    fields: {
+                      Count: { type: graphql.GraphQLInt },
+                      IsReadOnly: { type: graphql.GraphQLBoolean }
+                    }
+                  })
+                )
               }
-            })
-          }
-        }
-      })
-    ),
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformFeatureTournamentPolicyListResponse',
+      name: 'controlPlatformApiPlatformConfigurationResponse',
       fields: {
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlatformFeatureTournamentPolicyBypolicyIdAssignedList: {
+  ApiPlatformConfigurationRaffleAvailable: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.GetConfigRaffleAvailable',
     method: 'GET',
-    url: 'api/Platform/Feature/Tournament/Policy/{policyId}/AssignedList',
+    url: '/api/Platform/Configuration/RaffleAvailable',
+    args: {},
+    response: new graphql.GraphQLObjectType({
+      name: 'controlPlatformApiPlatformConfigurationRaffleAvailableResponse',
+      fields: {
+        Response: { type: graphql.GraphQLBoolean },
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiPlatformFeatureTournamentPolicyList: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.UpdateFeatureTournamentPolicy',
+    method: 'PUT',
+    url: '/api/Platform/Feature/Tournament/PolicyList',
+    args: {
+      body: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlatformApiPlatformFeatureTournamentPolicyListbody',
+            fields: {
+              TournamentManagementPolicyId: { type: graphql.GraphQLInt },
+              TournamentManagementPolicyName: { type: graphql.GraphQLString },
+              IsDefault: { type: graphql.GraphQLBoolean },
+              TournamentManagementPolicyDescription: {
+                type: graphql.GraphQLString
+              },
+              GroupPurchasePrice: { type: graphql.GraphQLInt },
+              GroupRenewalTimespan: { type: graphql.GraphQLInt },
+              AllowPurchaseOfGroup: { type: graphql.GraphQLBoolean },
+              AllowTournamentCreation: { type: graphql.GraphQLBoolean },
+              LimitTournamentCreation: { type: graphql.GraphQLBoolean },
+              MaxConcurrentTournaments: { type: graphql.GraphQLInt },
+              MaxTournamentsPerTimespan: { type: graphql.GraphQLInt },
+              MaxTournamentsTimespanSeconds: { type: graphql.GraphQLInt },
+              MaxParticipantsPerTournament: { type: graphql.GraphQLInt },
+              AllowPublicTournament: { type: graphql.GraphQLBoolean },
+              AllowFormatSingleElimination: { type: graphql.GraphQLBoolean },
+              AllowFormatDoubleElimination: { type: graphql.GraphQLBoolean },
+              AllowFormatQualifiers: { type: graphql.GraphQLBoolean },
+              AllowConsolationPrizes: { type: graphql.GraphQLBoolean },
+              AdvanceCreationTimeLimit: { type: graphql.GraphQLInt },
+              AllowGlobalRegion: { type: graphql.GraphQLBoolean },
+              AssignNewServerLimit: { type: graphql.GraphQLInt },
+              AllowBrandedSponsorship: { type: graphql.GraphQLBoolean },
+              AllowAccessAnalytics: { type: graphql.GraphQLBoolean },
+              MaximumTournamentAdmins: { type: graphql.GraphQLInt },
+              AllowCountryRestrictions: { type: graphql.GraphQLBoolean },
+              AllowStandByList: { type: graphql.GraphQLBoolean },
+              AllowRepeatAndCycle: { type: graphql.GraphQLBoolean },
+              AllowLanMode: { type: graphql.GraphQLBoolean },
+              AllowManualMode: { type: graphql.GraphQLBoolean },
+              AuthorizedGameTitlesList: { type: graphql.GraphQLString },
+              AuthorizedGameTitles: { type: graphql.GraphQLInt },
+              AuthorizedGamePlatformsList: { type: graphql.GraphQLString },
+              AuthorizedGamePlatofrms: { type: graphql.GraphQLInt }
+            }
+          })
+        )
+      }
+    },
+    response: new graphql.GraphQLObjectType({
+      name: 'controlPlatformApiPlatformFeatureTournamentPolicyListResponse',
+      fields: {
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
+      }
+    })
+  },
+  ApiPlatformFeatureTournamentPolicyBypolicyIdAssignedList: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.GetFeatureTournamentPolicyAssignedList',
+    method: 'GET',
+    url: '/api/Platform/Feature/Tournament/Policy/{policyId}/AssignedList',
+    args: {
+      urlParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name:
+              'controlPlatformApiPlatformFeatureTournamentPolicyBypolicyIdAssignedListurlParams',
+            fields: { policyId: { type: graphql.GraphQLInt } }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
       name:
-        'controlPlatformapiPlatformFeatureTournamentPolicyBypolicyIdAssignedListResponse',
+        'controlPlatformApiPlatformFeatureTournamentPolicyBypolicyIdAssignedListResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
               name:
-                'controlPlatformapiPlatformFeatureTournamentPolicyBypolicyIdAssignedListresponseResponse',
+                'controlPlatformApiPlatformFeatureTournamentPolicyBypolicyIdAssignedListResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlPlatformapiPlatformFeatureTournamentPolicyBypolicyIdAssignedListresponseitemResponse',
-                    fields: {
-                      entityId: { type: graphql.GraphQLInt },
-                      addressCountryId: { type: graphql.GraphQLInt },
-                      gamingServerRegionId: { type: graphql.GraphQLInt },
-                      isActive: { type: graphql.GraphQLBoolean },
-                      createdDateTime: { type: graphql.GraphQLString },
-                      matchPlayStatisticsId: { type: graphql.GraphQLInt },
-                      entityName: { type: graphql.GraphQLString },
-                      entityIsTeam: { type: graphql.GraphQLBoolean },
-                      displayName: { type: graphql.GraphQLString },
-                      entityImageUrl: { type: graphql.GraphQLString },
-                      entityImageUrlIsExternal: {
-                        type: graphql.GraphQLBoolean
-                      },
-                      entityBackgroundImageUrl: { type: graphql.GraphQLString },
-                      entityBackgroundImageUrlIsExternal: {
-                        type: graphql.GraphQLBoolean
-                      }
-                    }
-                  })
+                EntityId: { type: graphql.GraphQLInt },
+                AddressCountryId: { type: graphql.GraphQLInt },
+                GamingServerRegionId: { type: graphql.GraphQLInt },
+                IsActive: { type: graphql.GraphQLBoolean },
+                CreatedDateTime: { type: graphql.GraphQLString },
+                MatchPlayStatisticsId: { type: graphql.GraphQLInt },
+                EntityName: { type: graphql.GraphQLString },
+                EntityIsTeam: { type: graphql.GraphQLBoolean },
+                DisplayName: { type: graphql.GraphQLString },
+                EntityImageUrl: { type: graphql.GraphQLString },
+                EntityImageUrlIsExternal: { type: graphql.GraphQLBoolean },
+                EntityBackgroundImageUrl: { type: graphql.GraphQLString },
+                EntityBackgroundImageUrlIsExternal: {
+                  type: graphql.GraphQLBoolean
                 }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   },
-  apiPlatformLogging: {
+  ApiPlatformLogging: {
+    fullName:
+      'GamingGrids.Api.Control.v2.Controllers.PlatformController.GetLogging',
     method: 'GET',
-    url: 'api/Platform/Logging',
+    url: '/api/Platform/Logging',
+    args: {
+      uriParams: {
+        type: new graphql.GraphQLNonNull(
+          new graphql.GraphQLInputObjectType({
+            name: 'controlPlatformApiPlatformLogginguriParams',
+            fields: {
+              errorOnly: { type: graphql.GraphQLBoolean },
+              source: { type: graphql.GraphQLString }
+            }
+          })
+        )
+      }
+    },
     response: new graphql.GraphQLObjectType({
-      name: 'controlPlatformapiPlatformLoggingResponse',
+      name: 'controlPlatformApiPlatformLoggingResponse',
       fields: {
-        response: {
+        Response: {
           type: new graphql.GraphQLList(
             new graphql.GraphQLObjectType({
-              name: 'controlPlatformapiPlatformLoggingresponseResponse',
+              name: 'controlPlatformApiPlatformLoggingResponseResponse',
               fields: {
-                capacity: { type: graphql.GraphQLInt },
-                count: { type: graphql.GraphQLInt },
-                item: {
-                  type: new graphql.GraphQLObjectType({
-                    name:
-                      'controlPlatformapiPlatformLoggingresponseitemResponse',
-                    fields: {
-                      isError: { type: graphql.GraphQLBoolean },
-                      sourceName: { type: graphql.GraphQLString },
-                      stackTrace: { type: graphql.GraphQLString },
-                      message: { type: graphql.GraphQLString },
-                      messageDateTime: { type: graphql.GraphQLString }
-                    }
-                  })
-                }
+                IsError: { type: graphql.GraphQLBoolean },
+                SourceName: { type: graphql.GraphQLString },
+                StackTrace: { type: graphql.GraphQLString },
+                Message: { type: graphql.GraphQLString },
+                MessageDateTime: { type: graphql.GraphQLString }
               }
             })
           )
         },
-        success: { type: graphql.GraphQLBoolean },
-        message: { type: graphql.GraphQLString }
+        Success: { type: graphql.GraphQLBoolean },
+        Message: { type: graphql.GraphQLString }
       }
     })
   }
