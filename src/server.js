@@ -1,12 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
+const cors = require('cors')
 
 const schema = require('./schema')
 
 const port = 3000
 
-const app = express()
+const app = express().use('*', cors())
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
 app.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
