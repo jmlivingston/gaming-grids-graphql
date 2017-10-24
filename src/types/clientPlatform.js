@@ -10,12 +10,12 @@ module.exports = {
       uriParams: {
         type: new graphql.GraphQLNonNull(
           new graphql.GraphQLInputObjectType({
-            name: 'clientPlatformApiPlatformSearchuriParams',
+            name: 'clientPlatformApiPlatformSearchUriParams',
             fields: {
-              searchTerm: {
+              search: {
                 type: new graphql.GraphQLInputObjectType({
                   name:
-                    'clientPlatformApiPlatformSearchuriParamssearchResponse',
+                    'clientPlatformApiPlatformSearchUriParamssearchResponse',
                   fields: {
                     TopPlayersCount: { type: graphql.GraphQLFloat },
                     TopTeamsCount: { type: graphql.GraphQLFloat },
@@ -66,7 +66,9 @@ module.exports = {
                       DoesCycle: { type: graphql.GraphQLBoolean },
                       MaxCycleCount: { type: graphql.GraphQLFloat },
                       CycleCount: { type: graphql.GraphQLFloat },
-                      CanOnlyRegisterFromRegionId: { type: graphql.GraphQLFloat },
+                      CanOnlyRegisterFromRegionId: {
+                        type: graphql.GraphQLFloat
+                      },
                       CanOnlyRegisterFromRegionName: {
                         type: graphql.GraphQLString
                       },
@@ -100,7 +102,9 @@ module.exports = {
                         })
                       },
                       TeamSize: { type: graphql.GraphQLFloat },
-                      CurrentNumberOfParticipants: { type: graphql.GraphQLFloat },
+                      CurrentNumberOfParticipants: {
+                        type: graphql.GraphQLFloat
+                      },
                       MaximumNumberOfEntities: { type: graphql.GraphQLFloat },
                       TournamentId: { type: graphql.GraphQLFloat },
                       PlatformGame: {
@@ -116,7 +120,9 @@ module.exports = {
                                 name:
                                   'clientPlatformApiPlatformSearchResponseTournamentsPlatformGamePlatformResponse',
                                 fields: {
-                                  GamePlatformId: { type: graphql.GraphQLFloat },
+                                  GamePlatformId: {
+                                    type: graphql.GraphQLFloat
+                                  },
                                   GamePlatformCode: {
                                     type: graphql.GraphQLString
                                   },
@@ -796,11 +802,15 @@ module.exports = {
                               StreamCurrentlyActive: {
                                 type: graphql.GraphQLBoolean
                               },
-                              StreamActiveViewers: { type: graphql.GraphQLFloat },
+                              StreamActiveViewers: {
+                                type: graphql.GraphQLFloat
+                              },
                               LastUpdatedDateTime: {
                                 type: graphql.GraphQLString
                               },
-                              StreamingServiceId: { type: graphql.GraphQLFloat },
+                              StreamingServiceId: {
+                                type: graphql.GraphQLFloat
+                              },
                               StreamingService: { type: graphql.GraphQLString },
                               SourceName: { type: graphql.GraphQLString }
                             }
@@ -975,7 +985,7 @@ module.exports = {
         type: new graphql.GraphQLNonNull(
           new graphql.GraphQLInputObjectType({
             name:
-              'clientPlatformApiPlatformSummaryPlayerRankingMonthlyByyearBymonthurlParams',
+              'clientPlatformApiPlatformSummaryPlayerRankingMonthlyByyearBymonthUrlParams',
             fields: {
               year: { type: graphql.GraphQLFloat },
               month: { type: graphql.GraphQLFloat }

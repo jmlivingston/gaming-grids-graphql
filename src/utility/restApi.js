@@ -13,7 +13,6 @@ const getBaseUrl = url => {
 
 module.exports = {
   GET: async ({ url }) => {
-    console.log(`${getBaseUrl(url)}${url}`);
     const res = await fetch(`${getBaseUrl(url)}${url}`, { method: 'GET', headers })
     const json = await res.json()
     return res.status === 404 ? null : json // TODO: Add better error handling    
