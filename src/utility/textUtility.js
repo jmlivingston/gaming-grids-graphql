@@ -1,4 +1,4 @@
-const { encode } = require('querystring')
+const queryString = require('query-string')
 
 const mapEnclosedValueArgs = (value, args, delimiterStart, delimiterEnd) => {
     const regexValue = new RegExp(`((?!^)${delimiterStart}.*?${delimiterEnd})`)
@@ -16,9 +16,19 @@ const mapEnclosedValueArgs = (value, args, delimiterStart, delimiterEnd) => {
 
 const encodeUriParams = values => {
     let query = ''
-    if(values) {
-        query += '?' + encode(values)
+    if(values) {      
+      query = Object.keys(values).reduce((results, key) => {
+        if(Object.keys(values[key]).length > 0) {
+          results += key + '=&' + queryString.stringify(values[key])
+        } else {
+          results += queryString.stringify(values[key])
+        }
+        return results
+      }, '?')
+      return query
     }
+
+
     return query
 }
 

@@ -2,6 +2,7 @@ const {
   GraphQLBoolean,
   GraphQLInt,
   GraphQLInputObjectType,
+  GraphQLOutputObjectType,
   GraphQLObjectType,
   GraphQLString,
   GraphQLFloat,
@@ -59,7 +60,7 @@ module.exports = {
               },
               foo: {
                 type: GraphQLString
-              },
+              }
             }
           })
         )
@@ -97,7 +98,20 @@ module.exports = {
         )
       }
     },
-    response: GraphQLBoolean
+    response: new GraphQLObjectType({
+      name: 'removeTodoResponse',
+      fields: {
+        ok: {
+          type: GraphQLBoolean
+        },
+        status: {
+          type: GraphQLInt
+        },
+        statusText: {
+          type: GraphQLBoolean
+        }
+      }
+    })
   },
   addTodo: {
     method: 'POST',
@@ -172,6 +186,19 @@ module.exports = {
         )
       }
     },
-    response: GraphQLBoolean
+    response: new GraphQLObjectType({
+      name: 'updateTodoResponse',
+      fields: {
+        ok: {
+          type: GraphQLBoolean
+        },
+        status: {
+          type: GraphQLInt
+        },
+        statusText: {
+          type: GraphQLBoolean
+        }
+      }
+    })
   }
 }
