@@ -21,8 +21,8 @@ module.exports = {
                 JoiningTournamentSizeMultiplier: {
                   type: graphql.GraphQLBoolean
                 },
-                PointsForWin: { type: graphql.GraphQLFloat },
-                PointsForLoss: { type: graphql.GraphQLFloat },
+                PointsForWin: { type: new graphql.GraphQLList(graphql.GraphQLFloat) },
+                PointsForLoss: { type: new graphql.GraphQLList(graphql.GraphQLFloat) },
                 IsActive: { type: graphql.GraphQLBoolean }
               }
             })
